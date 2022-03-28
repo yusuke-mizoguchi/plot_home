@@ -1,0 +1,12 @@
+<%= search_form_for @q, url: url do |f| %>
+    <div class="input-group mb-3">
+        <%= f.search_field :title_or_plot_cont, class:'form-control', placeholder: '検索ワード' %>
+        <%= f.select :genre_eq, Novel.genres_i18n.invert.map{|key, value| [key, Novel.genres[value]]},
+            {include_blank: '検索ジャンル'}, { class: 'form-control mr-1' } %>
+        <%= f.select :story_length_eq, Novel.story_lengths_i18n.invert.map{|key, value| [key, Novel.story_lengths[value]]},
+            {include_blank: '文量'}, { class: 'form-control mr-1' } %>
+        <div class="input-group-append">
+            <%= f.submit "検索", class:'btn btn-primary' %>
+        </div>
+    </div>
+<% end %>

@@ -1,0 +1,9 @@
+<% if user_novels.user.id == current_user.id %>
+  <%= render 'users/show_novels', { user_novels: user_novels } %>
+<% elsif (user_novels.release != "draft") && current_user&.role == "writer" %>
+  <%= render 'users/show_novels', { user_novels: user_novels } %>
+<% elsif (user_novels.release == "release" || user_novels.release == "reader") && current_user&.role == "reader" %>
+  <%= render 'users/show_novels', { user_novels: user_novels } %>
+<% elsif user_novels.release == "release" %>
+  <%= render 'users/show_novels', { user_novels: user_novels } %>
+<% end %>

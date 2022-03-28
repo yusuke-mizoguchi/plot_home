@@ -1,0 +1,32 @@
+<%= stylesheet_link_tag "header" %>
+<header class="header fixed-top" style="height:80px">
+  <nav class="navbar navbar-expand-lg navbar-light pb-2 bg-opacity-50" style="height:80px">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <h2 class="mt-2 pl-4 text-white">プロットフォーム</h2>
+    <% end %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto list-unstyled">
+        <li class="nav-item dropdown dropdown-slide">
+          <a href="#" class="nav-item btn btn-secondary btn-lg dropdown-toggle bg-primary bg-opacity-50" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            小説メニュー
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <%= link_to '小説一覧', novels_path, class: 'dropdown-item' %>
+            <% if current_user.role == "writer" %>
+              <%= link_to '小説投稿', new_novel_path, class: 'dropdown-item' %>
+            <% end %>
+          </div>
+        </li>
+        <li class="nav-item dropdown dropdown-slide mr-4 ml-4">
+          <a href="#" class="nav-item btn btn-secondary btn-lg dropdown-toggle bg-primary bg-opacity-50" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.name %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <%= link_to 'マイページ', user_path(current_user.id), class: 'dropdown-item' %>
+            <%= link_to 'ログアウト', logout_path, class: 'dropdown-item', method: :delete %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

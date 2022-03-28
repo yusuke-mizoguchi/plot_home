@@ -1,0 +1,13 @@
+<div id="user_reviews-id-<%= user_reviews.id %>">
+  <table class="table">
+    <tr>
+      <td><%= link_to user_reviews.novel.title, novel_path(user_reviews.novel.id) %></td>
+    </tr>
+    <tr>
+        <td><%= user_reviews.novel.genre %></td>
+    </tr>
+    <tr>
+        <td><%= user_reviews.novel.story_length %></td>
+    </tr>
+  </table>
+</div>
