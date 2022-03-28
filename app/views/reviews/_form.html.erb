@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+        <%= form_with model: [novel, review], local: true do |f| %>
+          <div class="form-group">
+            <%= f.label :good_point %>
+            <%= f.text_field :good_point, class: 'form-control', rows: 5 %>
+          </div>
+          <div class="form-group">
+            <%= f.label :bad_point %>
+            <%= f.text_field :bad_point, class: 'form-control', rows: 5 %>
+          </div>
+
+
+          <%= f.submit class: 'btn btn-primary' %>
+        <% end %>
+    </div>
+  </div>
+</div>

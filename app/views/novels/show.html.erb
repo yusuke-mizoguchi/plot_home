@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <h1><%= 'プロット詳細' %></h1>
+      <article class="card">
+        <div class="card-body">
+          <div class='row'>
+            <div class='col-md-9'>
+              <h3 class="d-inline"><%= @novel.title %></h3>
+              <ul class="list-inline">
+                <li class="list-inline-item">作者 <%= link_to @novel.user.name, user_path(@novel.user.id) %></li>
+                <li class="list-inline-item">作成日 <%= l @novel.created_at, format: :long %></li>
+              </ul>
+              <ul class="list-inline">
+                <li class="list-inline-item">ジャンル <%= @novel.genre %></li>
+                <li class="list-inline-item">分類 <%= @novel.story_length %></li>
+              </ul>
+            </div>
+          </div>
+          <p><%= simple_format(@novel.plot) %></p>
+          <% @novel.characters.each do |c| %>
+            <p><%= simple_format(c.character_role) %></p>
+            <p><%= simple_format(c.character_text) %></p>
+          <% end %>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <% unless current_user.id == @novel.user.id %>
+    <!-- レビューフォーム -->
+    <%= render 'reviews/form', { novel: @novel, review: @review } %>
+  <% end %>
+  <!-- レビューエリア -->
+  <%= render 'reviews/reviews', { reviews: @reviews } %>
+</div>

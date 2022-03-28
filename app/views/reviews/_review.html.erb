@@ -1,0 +1,32 @@
+<tr id="review-<%= review.id %>">
+  <td>
+    <h3 class="small"><%= link_to review.user.name, user_path(review.user.id) %></h3>
+    <div id="js-review-<%= review.id %>">
+      良い点
+      <%= simple_format(review.good_point) %>
+      改善点
+      <%= simple_format(review.bad_point) %>
+    </div>
+    <div id="js-textarea-review-box-<%= review.id %>" style="display: none;">
+      <textarea id="js-textarea-review-<%= review.id %>" class="form-control mb-1"><%= review.good_point %></textarea>
+      <textarea id="js-textarea-review-<%= review.id %>" class="form-control mb-1"><%= review.bad_point %></textarea>
+    </div>
+  </td>
+
+  <% if current_user.own?(review) %>
+    <td class="action">
+      <ul class="list-inline justify-content-center" style="float: right;">
+        <li class="list-inline-item">
+          <a href="#" class='js-edit-review-button' data-review-id="<%= review.id %>">
+            
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#" class='js-delete-review-button' data-review-id="<%= review.id %>">
+            
+          </a>
+        </li>
+      </ul>
+    </td>
+  <% end %>
+</tr>

@@ -1,0 +1,22 @@
+<%= stylesheet_link_tag "header" %>
+<header class="header fixed-top" style="height:80px">
+  <nav class="navbar navbar-expand-lg navbar-light pb-2 bg-opacity-50" style="height:80px">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <h2 class="mt-2 pl-4 mb-3 text-white">プロットフォーム</h2>
+    <% end %>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto list-unstyled">
+        <li class="nav-item" type="button" data-toggle="button">
+          <%= link_to '作品一覧', novels_path, class: 'nav-link text-white btn btn-secondary btn-lg bg-primary bg-opacity-50 m-1' %>
+        </li>
+        <li class="nav-item mr-4 ml-4" type="button" data-toggle="button">
+          <%= link_to 'ログイン', login_path, class: 'nav-link  text-white btn btn-secondary btn-lg bg-primary bg-opacity-50 m-1' %>
+        </li>
+        <li class="nav-item" type="button" data-toggle="button">
+          <%= link_to '新規登録', new_user_path, class: 'nav-link  text-white btn btn-secondary btn-lg bg-primary bg-opacity-50 m-1' %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <h1><%= t ('.title') %></h1>
+        <%= form_with model: @novel_create_form, url: novels_path, local: true do |f| %>
+          <div class="form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :genre %>
+            <%= f.select :genre, Novel.genres.keys.map, include_blank: 'ジャンルを選択'%>
+          </div>
+          <div class="form-group">
+            <%= f.label :story_length %>
+            <%= f.select :story_length, Novel.story_lengths.keys.map, include_blank: '文量を選択' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :release %>
+            <%= f.select :release, Novel.releases.keys.map, include_blank: '公開範囲を選択' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :plot %>
+            <%= f.text_area :plot, class: 'form-control', rows: 20 %>
+          </div>
+          <!-- characterは、後ほどレンダーかeachで入れ替える
+          現状だと編集時にActiveRecord_Associations_CollectionProxyと、
+          character全体としてのデータで表示されるため -->
+          <div class="form-group">
+            <%= f.label :character_role %>
+            <%= f.text_field :character_role %>
+          </div>
+          <div class="form-group">
+            <%= f.label :character_text %>
+            <%= f.text_field :character_text %>
+          </div>
+  
+  
+          <%= f.submit class: 'btn btn-primary' %>
+        <% end %>
+    </div>
+  </div>
+</div>
