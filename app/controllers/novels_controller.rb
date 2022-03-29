@@ -1,5 +1,5 @@
 class NovelsController < ApplicationController
-  before_action :set_novel, only: [:show, :edit, :update]
+  before_action :set_novel, only: [:edit, :update]
   skip_before_action :require_login, only: [:index, :show]
 
   def index
@@ -24,6 +24,7 @@ class NovelsController < ApplicationController
   end
 
   def show
+    @novel = Novel.find(params[:id])
     @review = Review.new
     @reviews = @novel.reviews.includes(:user).order(created_at: :desc)
 
@@ -68,7 +69,7 @@ class NovelsController < ApplicationController
   def novel_params
     params.require(:novel).permit(
                   :title, :genre, :story_length, :plot, :image, :release,
-                  character_attributes: [:id, :character_role, :character_text, :_destroy]).merge(
+                  characters_attributes: [:id, :character_role, :character_text, :_destroy]).merge(
                   user_id: current_user.id)
   end
 end
