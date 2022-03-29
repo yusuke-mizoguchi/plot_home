@@ -8,20 +8,22 @@
             <div class='col-md-9'>
               <h3 class="d-inline"><%= @novel.title %></h3>
               <ul class="list-inline">
-                <li class="list-inline-item">作者 <%= link_to @novel.user.name, user_path(@novel.user.id) %></li>
-                <li class="list-inline-item">作成日 <%= l @novel.created_at, format: :long %></li>
+                <li class="list-inline-item">作者：<%= link_to @novel.user.name, user_path(@novel.user.id) %></li>
+                <li class="list-inline-item">作成日：<%= l @novel.created_at, format: :long %></li>
               </ul>
               <ul class="list-inline">
-                <li class="list-inline-item">ジャンル <%= @novel.genre %></li>
-                <li class="list-inline-item">分類 <%= @novel.story_length %></li>
+                <li class="list-inline-item">ジャンル：<%= @novel.genre %></li>
+                <li class="list-inline-item">分類：<%= @novel.story_length %></li>
               </ul>
+              <h5>プロット</h5>
+              <p><%= simple_format(@novel.plot) %></p>
+              <h5>キャラクター設定</h5>
+              <% @novel.characters.each do |c| %>
+                <p><%= simple_format(c.character_role) %></p>
+                <p><%= simple_format(c.character_text) %></p>
+              <% end %>
             </div>
           </div>
-          <p><%= simple_format(@novel.plot) %></p>
-          <% @novel.characters.each do |c| %>
-            <p><%= simple_format(c.character_role) %></p>
-            <p><%= simple_format(c.character_text) %></p>
-          <% end %>
         </div>
       </article>
     </div>
