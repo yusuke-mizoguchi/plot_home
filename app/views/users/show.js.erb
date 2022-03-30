@@ -1,2 +1,2 @@
-$("#js-show-novels").html("<%= escape_javascript(render 'show_novels', object: @user_novels) %>");
-$("#js-show-reviews").html("<%= escape_javascript(render 'show_reviews', object: @user_reviews) %>");
+$("#js-show-novels").html("<%= j(render 'user_novels', { user_novels: @user_novels}) %>");
+$("#js-show-reviews").html("<%= j(render 'user_reviews') %>");

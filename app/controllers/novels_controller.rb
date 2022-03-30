@@ -4,7 +4,7 @@ class NovelsController < ApplicationController
 
   def index
     @q = Novel.ransack(params[:q])
-    @novels = @q.result(distinct: true).includes(:user).order(created_at: :desc)
+    @novels = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def new
