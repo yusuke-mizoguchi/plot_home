@@ -24,11 +24,13 @@
     <ul class="col-md-10 offset-md-1">
       <div class="tab-wrap">
         <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" />
-        <label class="tab-label" for="TAB-01">投稿した作品</label>
-        <div class="tab-content">
-          <%= render partial: 'user_novels', collection: @user_novels %>
-          <%= paginate @user_novels, id: "js-show-novels", remote: true %>
-        </div>
+        <% if current_user.role == 'writer' %>
+          <label class="tab-label" for="TAB-01">投稿した作品</label>
+          <div class="tab-content">
+            <%= render partial: 'user_novels', collection: @user_novels %>
+            <%= paginate @user_novels, id: "js-show-novels", remote: true %>
+          </div>
+        <% end %>
         <input id="TAB-02" type="radio" name="TAB" class="tab-switch" checked="checked" />
         <label class="tab-label" for="TAB-02">批評した作品</label>
         <div class="tab-content">
