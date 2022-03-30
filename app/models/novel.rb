@@ -8,8 +8,8 @@ class Novel < ApplicationRecord
   validates :title, length: { maximum: 50 }, uniqueness: true, presence: true
   validates :plot, length: { maximum: 5000 }, presence: true
 
-  enum genre: { high_fantasy: 0, low_fantasy: 10, classic: 20, love: 30, comedy: 40, mystery:50,
-    reincarnation: 50, speace_fantasy: 60, horror: 70 }
-  enum story_length: { long: 0, middle: 1, short: 2 }
-  enum release: { release: 0, reader: 1, writer: 2, draft: 3 }
+  enum genre: { high_fantasy: 10, low_fantasy: 20, classic: 30, love: 40, comedy: 50, mystery:60,
+    reincarnation: 70, speace_fantasy: 80, horror: 90 }
+  enum story_length: { long: 5, middle: 15, short: 25 }
+  enum release: { release: 1, reader: 2, writer: 3, draft: 4 }
 end
