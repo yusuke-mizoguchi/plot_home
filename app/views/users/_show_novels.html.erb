@@ -1,9 +1,6 @@
 <div id="user_novels-id-<%= user_novels.id %>">
   <table class="table">
     <tr>
-      <td><%= user_novels.user.name %>
-    </tr>
-    <tr>
       <td><%= link_to user_novels.title, novel_path(user_novels.id) %></td>
     </tr>
     <tr>
