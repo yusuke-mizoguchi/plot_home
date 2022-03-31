@@ -17,8 +17,9 @@ class NovelsController < ApplicationController
   def create
     @novel = Novel.new(novel_params)
     if @novel.save
-      redirect_to novels_path
+      redirect_to novels_path, success: t('defaults.message.created', item: Novel.model_name.human)
     else
+      flash.now['danger'] = t('defaults.message.not_created', item: Novel.model_name.human)
       render :new
     end
   end
@@ -37,7 +38,7 @@ class NovelsController < ApplicationController
     elsif @novel.release == "release"
       render "novels/show"
     else
-      render novels_path
+      render novels_path, flash.now['danger'] = t('defaults.message.not_showed', item: Novel.model_name.human)
     end
   end
 
@@ -49,15 +50,16 @@ class NovelsController < ApplicationController
 
   def update
     if @novel.update(novel_params)
-      redirect_to novel_path(params[:id])
+      redirect_to novel_path(params[:id]), success: t('defaults.message.update', item: Novel.model_name.human)
     else
+      flash.now['danger'] = t('defaults.message.not_update', item: Novel.model_name.human)
       render :edit
     end
   end
 
   def destroy
     @novel.destroy!
-    redirect_to novels_path
+    redirect_to novels_path, success: t('defaults.message.delete', item: Novel.model_name.human)
   end
 
   private
