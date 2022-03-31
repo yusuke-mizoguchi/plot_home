@@ -1,8 +1,8 @@
 <ul class='crud-menu-btn list-inline float-right'>
   <li class="list-inline-item">
     <%= link_to edit_novel_path(novel), id: "button-edit-#{novel.id}" do %>
-    <% end %>
     <i class="fa-solid fa-pen-fancy"></i>
+    <% end %>
   </li>
   <li class="list-inline-item">
     <%= link_to novel_path(novel), id: "button-delete-#{novel.id}", 

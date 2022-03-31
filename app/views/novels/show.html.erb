@@ -5,9 +5,9 @@
       <article class="card">
         <div class="card-body">
           <div class='row'>
-            <div class='col-md-9'>
-              <%= render 'crud_menus', novel: @novel if current_user.own?() %>
+            <div>
               <h3 class="d-inline"><%= @novel.title %></h3>
+              <%= render 'crud_menus', novel: @novel if current_user.own?(@novel) %>
               <ul class="list-inline">
                 <li class="list-inline-item">作者：<%= link_to @novel.user.name, user_path(@novel.user.id) %></li>
                 <li class="list-inline-item">作成日：<%= l @novel.created_at, format: :long %></li>

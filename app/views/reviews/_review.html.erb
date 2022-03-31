@@ -7,24 +7,22 @@
       改善点
       <%= simple_format(review.bad_point) %>
     </div>
-    <div id="js-textarea-review-box-<%= review.id %>" style="display: none;">
-      <textarea id="js-textarea-review-<%= review.id %>" class="form-control mb-1"><%= review.good_point %></textarea>
-      <textarea id="js-textarea-review-<%= review.id %>" class="form-control mb-1"><%= review.bad_point %></textarea>
-    </div>
   </td>
 
   <% if current_user.own?(review) %>
     <td class="action">
       <ul class="list-inline justify-content-center" style="float: right;">
         <li class="list-inline-item">
-          <a href="#" class='js-edit-review-button' data-review-id="<%= review.id %>">
-            
-          </a>
+          <%= link_to "#", class: "js-edit-review-button", remote: true do %>
+            <i class="fa-solid fa-pen-fancy"></i>
+          <% end %>
         </li>
         <li class="list-inline-item">
-          <a href="#" class='js-delete-review-button' data-review-id="<%= review.id %>">
-            
-          </a>
+          <%= link_to review_path(review), class: "js-delete-review-button",
+          data: { confirm: t('defaults.message.delete_confirm') }, 
+          method: :delete, remote: true do %>
+          <i class="fa-solid fa-trash"></i>
+          <% end %>
         </li>
       </ul>
     </td>
