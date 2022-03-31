@@ -1,0 +1,36 @@
+<%= form_with model: @novel, url: novels_path, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="d-flex align-items-center">
+    <div class="form-group">
+      <%= f.label :genre %>：
+      <%= f.select :genre, Novel.genres.keys.map, include_blank: 'ジャンルを選択'%>
+    </div>
+    <div class="form-group mx-auto">
+      <%= f.label :story_length %>：
+      <%= f.select :story_length, Novel.story_lengths.keys.map, include_blank: '文量を選択' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :release %>：
+      <%= f.select :release, Novel.releases.keys.map, include_blank: '公開範囲を選択' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :plot %>
+    <%= f.text_area :plot, class: 'form-control', rows: 10 %>
+  </div>
+  <div id="characters">
+    <%= f.fields_for :characters, local: true do |character| %>
+      <%= render 'novels/character_fields', f: character %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'キャラクターの追加', f, :characters,
+      class: "btn btn-primary mb-5", type: "button" %>
+    </div>
+  </div>
+
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

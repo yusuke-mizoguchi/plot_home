@@ -51,7 +51,7 @@ class NovelsController < ApplicationController
     if @novel.update(novel_params)
       redirect_to novel_path(params[:id])
     else
-      render :new
+      render :edit
     end
   end
 
