@@ -6,6 +6,7 @@
         <div class="card-body">
           <div class='row'>
             <div class='col-md-9'>
+              <%= render 'crud_menus', novel: @novel if current_user.own?() %>
               <h3 class="d-inline"><%= @novel.title %></h3>
               <ul class="list-inline">
                 <li class="list-inline-item">作者：<%= link_to @novel.user.name, user_path(@novel.user.id) %></li>
