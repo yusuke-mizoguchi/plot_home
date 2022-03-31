@@ -18,8 +18,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    @user_novels = @user.novels.page(params[:page]).per(1)
-    @user_reviews = @user.reviews.page(params[:page]).per(1)
+    @user_novels = @user.novels.order(created_at: :desc).page(params[:novel_page]).per(4)
+    @user_reviews = @user.reviews.order(created_at: :desc).page(params[:review_page]).per(4)
 
     respond_to do |format|
       format.html
