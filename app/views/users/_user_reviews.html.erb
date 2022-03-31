@@ -1,13 +1,9 @@
-<div id="user_reviews-id-<%= user_reviews.id %>">
-  <table class="table">
-    <tr>
-      <td><%= link_to user_reviews.novel.title, novel_path(user_reviews.novel.id) %></td>
-    </tr>
-    <tr>
-        <td><%= user_reviews.novel.genre %></td>
-    </tr>
-    <tr>
-        <td><%= user_reviews.novel.story_length %></td>
-    </tr>
-  </table>
+<div id="user_novels-id-<%= user_reviews.id %>">
+  <div class="card mb-3">
+  <ul class="list-inline card-body">
+    <li class="list-inline-item mr-5"><h4><%= link_to user_reviews.novel.title, novel_path(user_reviews.novel.id) %></h4></li>
+    <li class="list-inline-item mr-3"><%= user_reviews.novel.genre %></li>
+    <li class="list-inline-item mr-3"><%= user_reviews.novel.story_length %></li>
+  </ul>
+  </div>
 </div>

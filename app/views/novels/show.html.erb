@@ -17,7 +17,9 @@
               </ul>
               <h5>プロット</h5>
               <p><%= simple_format(@novel.plot) %></p>
-              <h5>キャラクター設定</h5>
+              <% unless @novel.characters.blank? %>
+                <h5>キャラクター設定</h5>
+              <% end %>
               <% @novel.characters.each do |c| %>
                 <p><%= simple_format(c.character_role) %></p>
                 <p><%= simple_format(c.character_text) %></p>

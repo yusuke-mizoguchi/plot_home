@@ -1,16 +1,12 @@
 <div id="user_novels-id-<%= user_novels.id %>">
-  <table class="table">
-    <tr>
-      <td><%= link_to user_novels.title, novel_path(user_novels.id) %></td>
-    </tr>
-    <tr>
-      <td><%= user_novels.genre %>
-      <%= user_novels.story_length %></td>
-    </tr>
+  <div class="card mb-3">
+  <ul class="list-inline card-body">
+    <li class="list-inline-item mr-5"><h4><%= link_to user_novels.title, novel_path(user_novels.id) %></h4></li>
+    <li class="list-inline-item mr-3"><%= user_novels.genre %></li>
+    <li class="list-inline-item mr-3"><%= user_novels.story_length %></li>
     <% if user_novels.user.id == current_user.id %>
-      <tr>
-        <td><%= user_novels.release %></td>
-      </tr>
+      <li class="list-inline-item"><%= user_novels.release %></li>
     <% end %>
-  </table>
+  </ul>
+  </div>
 </div>
