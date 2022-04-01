@@ -1,0 +1,90 @@
+ja:
+  defaults:
+    login: 'ログイン'
+    register: '登録'
+    logout: 'ログアウト'
+    post: '投稿'
+    search_word: '検索ワード'
+    update: '更新する'
+    edit: '編集'
+    show: '詳細'
+    delete: '削除'
+    password_reset: 'パスワードリセット'
+    unspecified: '指定なし'
+    message:
+      require_login: 'ログインしてください'
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成できませんでした"
+      update: '%{item}を更新しました'
+      not_update: '%{item}を更新できませんでした'
+      delete: '%{item}を削除しました'
+      delete_confirm: '削除しますか？'
+      not_authorized: '権限がありません'
+  users:
+    new:
+      topic: 'ユーザー登録'
+      to_login_page: 'ログインページへ'
+    create:
+      success: 'ユーザー登録が完了しました'
+      fail: 'ユーザー登録に失敗しました'
+    show:
+      topic: 'プロフィール'
+    edit:
+      topic: 'プロフィール編集'
+  user_sessions:
+    new:
+      topic: 'ログイン'
+      to_register_page: '登録ページへ'
+      password_forget: 'パスワードをお忘れの方はこちら'
+    create:
+      success: 'ログインしました'
+      fail: 'ログインに失敗しました'
+    destroy:
+      success: 'ログアウトしました'
+  novels:
+    index:
+      topic: 'プロット一覧'
+      no_result: '該当作品がありません'
+    new:
+      topic: 'プロット投稿'
+    show:
+      topic: 'プロット詳細'
+    edit:
+      topic: 'プロット編集'
+  password_resets:
+    new:
+      topic: 'パスワードリセット申請'
+      submit: '送信'
+    edit:
+      topic: 'パスワードリセット'
+    create:
+      success: 'パスワードリセット手順を送信しました'
+    update:
+      success: 'パスワードを変更しました'
+      fail: 'パスワードの変更に失敗しました'
+  admin:
+    user_sessions:
+      new:
+        topic: 'ログイン'
+      create:
+        success: 'ログインしました'
+        fail: 'ログインに失敗しました'
+      destroy:
+        success: 'ログアウトしました'
+    dashboards:
+      index:
+        topic: 'ダッシュボード'
+    users:
+      index:
+        topic: 'ユーザー一覧'
+      show:
+        topic: 'ユーザー詳細'
+      edit:
+        topic: 'ユーザー編集'
+    novels:
+      index:
+        topic: '掲示板一覧'
+      show:
+        topic: '掲示板詳細'
+      edit:
+        topic: '掲示板編集'

@@ -1,0 +1,52 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+      novel: '小説'
+      review: '批評'
+      character: 'キャラクター'
+    attributes:
+      user:
+        name: 'ペンネーム'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        role: '読み/書き'
+      board:
+        title: 'タイトル'
+        genre: '本文'
+        story_length: 'サムネイル'
+        plot: 'プロット'
+        image: '添付画像'
+        release: '公開範囲'
+      character:
+        character_role: '役割'
+        character_text: '設定'
+      review:
+        good_point: '良い点'
+        bad_point: '改善点'
+  attributes:
+    id: 'ID'
+    created_at: '作成日時'
+    updated_at: '更新日時'
+  enums:
+    user:
+      role:
+        reader: '読み手'
+        writer: '書き手'
+    novel:
+      genre:
+        high_fantasy: 'ハイファンタジー'
+        low_fantasy: 'ローファンタジー'
+        classic: '純文学'
+        love: '恋愛'
+        love_comedy: 'ラブコメ'
+        gag: 'ギャグ'
+        mystery: 'ミステリー'
+        reincarnation: '転生/転移'
+        speace_fantasy: 'SF'
+        horror: 'ホラー'
+      story_length:
+        long: '長編'
+        middle: '中編'
+        short: '短編'
