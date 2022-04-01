@@ -1,5 +1,5 @@
 class NovelsController < ApplicationController
-  before_action :set_novel, only: [:edit, :update]
+  before_action :set_novel, only: [:edit, :update, :destroy]
   skip_before_action :require_login, only: [:index, :show]
 
   def index
