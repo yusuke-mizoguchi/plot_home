@@ -1,8 +1,9 @@
 <%= stylesheet_link_tag "users/show" %>
+<% content_for(:topic, t('.topic')) %>
 <div class="container pt-3">
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <h1 class="float-left mb-5"><%= 'プロフィール' %></h1>
+      <h1 class="float-left mb-5"><%= current_user.name %>さんの<%= t('.topic') %></h1>
       <% if current_user.id == @user.id %>
         <div class="float-end">
           <%= link_to '編集', edit_user_path(@user), class: 'btn btn-success pull-right' %>
