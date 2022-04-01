@@ -12,10 +12,10 @@ ja:
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
         role: '読み/書き'
-      board:
+      novel:
         title: 'タイトル'
         genre: '本文'
-        story_length: 'サムネイル'
+        story_length: '文量'
         plot: 'プロット'
         image: '添付画像'
         release: '公開範囲'
@@ -50,3 +50,12 @@ ja:
         long: '長編'
         middle: '中編'
         short: '短編'
+      release:
+        release: '公開'
+        reader: '読み手まで'
+        writer: '書き手まで'
+        draft: '下書き'
+  helpers:
+      submit:
+        create: '投稿する'
+        update: '更新する'

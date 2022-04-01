@@ -1,9 +1,9 @@
 ja:
   defaults:
     login: 'ログイン'
-    register: '登録'
     logout: 'ログアウト'
-    post: '投稿'
+    register: '登録'
+    new_register: '新規登録'
     search_word: '検索ワード'
     update: '更新する'
     edit: '編集'
@@ -23,14 +23,14 @@ ja:
   users:
     new:
       topic: 'ユーザー登録'
-      to_login_page: 'ログインページへ'
+      to_login_page: 'ログインページ'
     create:
       success: 'ユーザー登録が完了しました'
       fail: 'ユーザー登録に失敗しました'
     show:
-      topic: 'プロフィール'
+      topic: 'マイページ'
     edit:
-      topic: 'プロフィール編集'
+      topic: 'ユーザー情報編集'
   user_sessions:
     new:
       topic: 'ログイン'
@@ -43,14 +43,23 @@ ja:
       success: 'ログアウトしました'
   novels:
     index:
-      topic: 'プロット一覧'
+      topic: '小説一覧'
       no_result: '該当作品がありません'
     new:
-      topic: 'プロット投稿'
+      topic: '小説投稿'
     show:
-      topic: 'プロット詳細'
+      topic: '小説詳細'
     edit:
-      topic: 'プロット編集'
+      topic: '小説編集'
+  shared:
+    header:
+      main_title: 'プロットホーム'
+      novel_post: '小説投稿'
+      novel_menu: '小説メニュー'
+    footer:
+      rule: '利用規約'
+      policy: 'プライバシーポリシー'
+      inquiry: 'お問い合わせ'
   password_resets:
     new:
       topic: 'パスワードリセット申請'

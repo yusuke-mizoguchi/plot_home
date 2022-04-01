@@ -1,4 +1,5 @@
 <%= form_with model: @novel, local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>
@@ -6,15 +7,15 @@
   <div class="d-flex align-items-center">
     <div class="form-group">
       <%= f.label :genre %>：
-      <%= f.select :genre, Novel.genres.keys.map, include_blank: 'ジャンルを選択'%>
+      <%= f.select :genre, Novel.genres_i18n.invert, include_blank: 'ジャンルを選択'%>
     </div>
     <div class="form-group mx-auto">
       <%= f.label :story_length %>：
-      <%= f.select :story_length, Novel.story_lengths.keys.map, include_blank: '文量を選択' %>
+      <%= f.select :story_length, Novel.story_lengths_i18n.invert, include_blank: '文量を選択' %>
     </div>
     <div class="form-group">
       <%= f.label :release %>：
-      <%= f.select :release, Novel.releases.keys.map, include_blank: '公開範囲を選択' %>
+      <%= f.select :release, Novel.releases_i18n.invert, include_blank: '公開範囲を選択' %>
     </div>
   </div>
   <div class="form-group">
