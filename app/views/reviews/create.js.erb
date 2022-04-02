@@ -1,0 +1,8 @@
+$("#error_messages").remove()
+<% if @review.errors.present? %>
+  $("#js-new-review").prepend("<%= j(render('shared/error_messages', object: @review)) %>")
+<% else %>
+  $("#js-table-review").prepend("<%= j(render('reviews/review', review: @review)) %>")
+  $("#js-new-review-good_point").val('')
+  $("#js-new-review-bad_point").val('')
+<% end %>

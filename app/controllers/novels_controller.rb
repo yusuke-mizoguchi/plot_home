@@ -4,7 +4,7 @@ class NovelsController < ApplicationController
 
   def index
     @q = Novel.ransack(params[:q])
-    @novels = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(21)
+    @novels = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(15)
   end
 
   def new
@@ -38,7 +38,7 @@ class NovelsController < ApplicationController
     elsif @novel.release == "release"
       render "novels/show"
     else
-      render novels_path, flash.now['danger'] = t('defaults.message.not_showed', item: Novel.model_name.human)
+      render novels_path, flash.now['danger'] = t('defaults.message.not_authorized')
     end
   end
 
