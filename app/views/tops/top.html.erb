@@ -1,0 +1,9 @@
+仮トップページ
+<p>テスト</p>
+
+
+<div>
+  <% @reviews.each do |review| %>
+    <p><%= review.user.name %></p>
+  <% end %>
+</div>
