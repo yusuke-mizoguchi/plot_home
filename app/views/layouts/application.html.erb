@@ -28,7 +28,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
 
-  <body style="padding-top:100px; margin-bottom:100px;" >
+  <body style="margin-top:80px; margin-bottom:50px;" >
+
+    <div class="message">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: key) %>
+      <% end %>
+    </div>
+
     <% if logged_in? %>
       <%= render 'shared/header' %>
     <% else %>
