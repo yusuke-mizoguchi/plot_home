@@ -1,7 +1,8 @@
+<% content_for(:topic, t('.topic')) %>
 <div class="container">
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
-      <h1><%= t ('.title') %></h1>
+      <h1><%= t ('.topic') %></h1>
       <%= render 'form', { novel: @novel} %>
     </div>
   </div>

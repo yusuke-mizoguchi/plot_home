@@ -14,7 +14,7 @@ ja:
         role: '読み/書き'
       novel:
         title: 'タイトル'
-        genre: '本文'
+        genre: 'ジャンル'
         story_length: '文量'
         plot: 'プロット'
         image: '添付画像'

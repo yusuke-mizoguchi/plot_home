@@ -23,6 +23,7 @@ ja:
   users:
     new:
       topic: 'ユーザー登録'
+      role_select: '役割を選択'
       to_login_page: 'ログインページ'
     create:
       success: 'ユーザー登録が完了しました'
@@ -45,10 +46,22 @@ ja:
     index:
       topic: '小説一覧'
       no_result: '該当作品がありません'
+    search:
+      word: '検索ワード'
+      genre: 'ジャンル検索'
+      story_length: '文量検索'
+      search: '検索'
     new:
       topic: '小説投稿'
+    form:
+      genre_select: 'ジャンルを選択'
+      story_length_select: '文量を選択'
+      releace_select: '公開範囲を選択'
+      add_character: 'キャラクターの追加'
     show:
       topic: '小説詳細'
+      author: '作者'
+      character_text: 'キャラクター設定'
     edit:
       topic: '小説編集'
   shared:
