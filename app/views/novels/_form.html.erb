@@ -7,15 +7,15 @@
   <div class="d-flex align-items-center">
     <div class="form-group">
       <%= f.label :genre %>：
-      <%= f.select :genre, Novel.genres_i18n.invert, include_blank: 'ジャンルを選択'%>
+      <%= f.select :genre, Novel.genres_i18n.invert, include_blank: (t '.genre_select') %>
     </div>
     <div class="form-group mx-auto">
       <%= f.label :story_length %>：
-      <%= f.select :story_length, Novel.story_lengths_i18n.invert, include_blank: '文量を選択' %>
+      <%= f.select :story_length, Novel.story_lengths_i18n.invert, include_blank: (t '.story_length_select') %>
     </div>
     <div class="form-group">
       <%= f.label :release %>：
-      <%= f.select :release, Novel.releases_i18n.invert, include_blank: '公開範囲を選択' %>
+      <%= f.select :release, Novel.releases_i18n.invert, include_blank: (t '.releace_select') %>
     </div>
   </div>
   <div class="form-group">
@@ -27,7 +27,7 @@
       <%= render 'novels/character_fields', f: character %>
     <% end %>
     <div class="links">
-      <%= link_to_add_association 'キャラクターの追加', f, :characters,
+      <%= link_to_add_association (t '.add_character'), f, :characters,
       class: "btn btn-primary mb-5", type: "button" %>
     </div>
   </div>

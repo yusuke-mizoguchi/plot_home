@@ -1,10 +1,10 @@
 <tr id="review-<%= review.id %>">
   <td>
-    <h3 class="small"><%= link_to review.user.name, user_path(review.user.id) %></h3>
+    <h3 class="small mt-3"><%= link_to review.user.name, user_path(review.user.id) %></h3>
     <div id="js-review-<%= review.id %>">
-      良い点
+      <%= t('activerecord.attributes.review.good_point') %>
       <%= simple_format(review.good_point) %>
-      改善点
+      <%= t('activerecord.attributes.review.bad_point') %>
       <%= simple_format(review.bad_point) %>
     </div>
   </td>

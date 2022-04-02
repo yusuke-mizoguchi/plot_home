@@ -1,7 +1,8 @@
+<% content_for(:topic, t('.topic')) %>
 <div class="container">
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
-      <h1><%= 'プロット詳細' %></h1>
+      <h1><%= t('.topic') %></h1>
       <article class="card">
         <div class="card-body">
           <div class='row'>
@@ -9,17 +10,17 @@
               <h3 class="d-inline"><%= @novel.title %></h3>
               <%= render 'crud_menus', novel: @novel if current_user.own?(@novel) %>
               <ul class="list-inline">
-                <li class="list-inline-item">作者：<%= link_to @novel.user.name, user_path(@novel.user.id) %></li>
-                <li class="list-inline-item">作成日：<%= l @novel.created_at, format: :long %></li>
+                <li class="list-inline-item"><%= t('.author') %>：<%= link_to @novel.user.name, user_path(@novel.user.id) %></li>
+                <li class="list-inline-item"><%= t('attributes.created_at') %>：<%= l @novel.created_at, format: :long %></li>
               </ul>
               <ul class="list-inline">
-                <li class="list-inline-item">ジャンル：<%= @novel.genre %></li>
-                <li class="list-inline-item">分類：<%= @novel.story_length %></li>
+                <li class="list-inline-item"><%= t('activerecord.attributes.novel.genre') %>：<%= @novel.genre %></li>
+                <li class="list-inline-item"><%= t('activerecord.attributes.novel.story_length') %>：<%= @novel.story_length %></li>
               </ul>
-              <h5>プロット</h5>
+              <h5><%= t('activerecord.attributes.novel.plot') %></h5>
               <p><%= simple_format(@novel.plot) %></p>
               <% unless @novel.characters.blank? %>
-                <h5>キャラクター設定</h5>
+                <h5><%= t('.character_text') %></h5>
               <% end %>
               <% @novel.characters.each do |c| %>
                 <p><%= simple_format(c.character_role) %></p>
