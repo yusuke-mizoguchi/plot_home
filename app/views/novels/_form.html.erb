@@ -1,10 +1,11 @@
+<%= stylesheet_link_tag "actiontext" %>
 <%= form_with model: @novel, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="form-group">
-    <%= f.label :title %>
+    <h3><%= f.label :title %></h3>
     <%= f.text_field :title, class: 'form-control' %>
   </div>
-  <div class="d-flex align-items-center">
+  <div class="d-flex align-items-center mt-4 mb-3">
     <div class="form-group ml-5">
       <%= f.select :genre, Novel.genres_i18n.invert, include_blank: (t '.genre_select') %>
     </div>
@@ -15,14 +16,15 @@
       <%= f.select :release, Novel.releases_i18n.invert, include_blank: (t '.releace_select') %>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label :plot %>
-    <%= f.text_area :plot, class: 'form-control', rows: 10 %>
+  <div class="form-group mb-5">
+    <h3><%= f.label :plot %></h3>
+    <%= f.rich_text_area :plot, class: 'form-control' %>
   </div>
   <div id="characters">
     <%= f.fields_for :characters, local: true do |character| %>
       <%= render 'novels/character_fields', f: character %>
     <% end %>
+    <h3 class="mb-3">キャラクター設定</h3>
     <div class="links">
       <%= link_to_add_association (t '.add_character'), f, :characters,
       class: "btn btn-primary mb-5", type: "button" %>

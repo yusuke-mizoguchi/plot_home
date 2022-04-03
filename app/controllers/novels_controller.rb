@@ -10,7 +10,7 @@ class NovelsController < ApplicationController
   def new
     @novel = Novel.new
     unless current_user.role == "writer"
-      render novels_path
+      render novels_path, flash.now[:alert] = t('defaults.message.not_authorized')
     end
   end
 

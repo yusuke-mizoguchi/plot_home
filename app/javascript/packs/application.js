@@ -4,6 +4,8 @@
 // that code so it'll be compiled.
 require("jquery");
 require("@nathanvda/cocoon");
+require("trix");
+require("@rails/actiontext");
 
 import Rails from "@rails/ujs";
 import Turbolinks from "turbolinks";

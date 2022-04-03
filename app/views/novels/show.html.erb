@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
-      <h1><%= t('.topic') %></h1>
+      <h1 class="mt-5 mb-4"><%= t('.topic') %></h1>
       <article class="card">
         <div class="card-body">
           <div class='row'>
@@ -11,20 +11,28 @@
               <%= render 'crud_menus', novel: @novel if current_user.own?(@novel) %>
               <ul class="list-inline">
                 <li class="list-inline-item"><%= t('.author') %>：<%= link_to @novel.user.name, user_path(@novel.user.id) %></li>
-                <li class="list-inline-item"><%= t('attributes.created_at') %>：<%= l @novel.created_at, format: :long %></li>
+                <li class="list-inline-item"><%= t('attributes.created_at') %>：<%= @novel.created_at.to_s(:datetime_jp) %></li>
               </ul>
               <ul class="list-inline">
-                <li class="list-inline-item"><%= t('activerecord.attributes.novel.genre') %>：<%= @novel.genre %></li>
-                <li class="list-inline-item"><%= t('activerecord.attributes.novel.story_length') %>：<%= @novel.story_length %></li>
+                <li class="list-inline-item"><%= t('activerecord.attributes.novel.genre') %>：<%= @novel.genre_i18n %></li>
+                <li class="list-inline-item"><%= t('activerecord.attributes.novel.story_length') %>：<%= @novel.story_length_i18n %></li>
               </ul>
               <h5><%= t('activerecord.attributes.novel.plot') %></h5>
-              <p><%= simple_format(@novel.plot) %></p>
+              <div class="card">
+                <div class="ml-2 mr-2">
+                  <p><%= @novel.plot %></p>
+                </div>
+              </div>
               <% unless @novel.characters.blank? %>
-                <h5><%= t('.character_text') %></h5>
+                <h5 class="mt-4"><%= t('.character_text') %></h5>
               <% end %>
               <% @novel.characters.each do |c| %>
-                <p><%= simple_format(c.character_role) %></p>
-                <p><%= simple_format(c.character_text) %></p>
+                <div class="card mb-3">
+                  <div class="ml-2 mr-2">
+                    <p><%= c.character_role %></p>
+                    <p><%= c.character_text %></p>
+                  </div>
+                </div>
               <% end %>
             </div>
           </div>
