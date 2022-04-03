@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag "actiontext" %>
 <div class="nested-fields mb-5">
     <div class="form-group">
         <%= f.label :character_role %>：
@@ -5,7 +6,7 @@
     </div>
     <div class="form-group">
         <%= f.label :character_text %>
-        <%= f.text_area :character_text, class: 'form-control', rows: 5 %>
+        <%= f.rich_text_area :character_text, class: 'form-control', rows: 5 %>
     </div>
     <%= link_to_remove_association (t 'defaults.delete'), f %>
 </div>
