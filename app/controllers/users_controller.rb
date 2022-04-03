@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to login_path, success: t('.success')
     else
-      flash.now[:danger] = t('.fail')
+      flash.now[:alert] = t('.fail')
       render :new
     end
   end
@@ -21,11 +21,6 @@ class UsersController < ApplicationController
 
     @user_novels = @user.novels.order(created_at: :desc).page(params[:novel_page]).per(4)
     @user_reviews = @user.reviews.order(created_at: :desc).page(params[:review_page]).per(4)
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def edit
@@ -39,7 +34,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path, success: t('defaults.message.update', item: User.model_name.human)
     else
-      flash.now['danger'] = t('defaults.message.not_update', item: User.model_name.human)
+      flash.now[:alert] = t('defaults.message.not_update', item: User.model_name.human)
       render :edit
     end
   end

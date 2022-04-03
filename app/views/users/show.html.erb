@@ -3,10 +3,10 @@
 <div class="container pt-3">
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <h1 class="float-left mb-5"><%= current_user.name %>さんの<%= t('.topic') %></h1>
+      <h1 class="float-left mt-3 mb-5"><%= current_user.name %>さんの<%= t('.topic') %></h1>
       <% if current_user.id == @user.id %>
         <div class="float-end">
-          <%= link_to '編集', edit_user_path(@user), class: 'btn btn-success pull-right' %>
+          <%= link_to '編集', edit_user_path(@user), class: 'btn btn-success pull-right mt-3' %>
         </div>
       <% end %>
       <table class="table">
@@ -26,9 +26,9 @@
     </div>
     <ul class="col-md-10 offset-md-1 list-inline">
       <% if current_user.role == 'writer' %>
-        <li class="col-md-5 list-inline-item mt-5 mr-5">
+        <li class="col-md-6 list-inline-item mt-5 mr-5">
           <h3 class='mb-4'>投稿した作品</h3>
-          <div>
+          <div class="">
             <% if @user_novels.present? %>
             <%= render partial: 'user_novels', collection: @user_novels %>
           <% else %>

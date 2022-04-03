@@ -7,6 +7,9 @@ class Novel < ApplicationRecord
 
   validates :title, length: { maximum: 50 }, uniqueness: true, presence: true
   validates :plot, length: { maximum: 5000 }, presence: true
+  validates :genre, presence: true
+  validates :story_length, presence: true
+  validates :release, presence: true
 
   enum genre: { high_fantasy: 10, low_fantasy: 20, classic: 30, love: 40, love_comedy: 50,
     gag: 60, mystery:70, reincarnation: 80, speace_fantasy: 90, horror: 100 }

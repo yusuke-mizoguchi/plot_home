@@ -17,3 +17,20 @@
   .pagination>li>a:hover {        
     border-radius: 15px;    /*角を丸くする*/
   }
+
+.pagination {
+    justify-content: center;
+}
+
+.message {
+  color: $white;
+  text-align: center;  
+
+  .notice {
+    background-color: lightBlue;
+  }
+
+  .alert {
+    background-color: orange;
+  }
+}
