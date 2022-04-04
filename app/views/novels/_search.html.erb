@@ -1,10 +1,11 @@
 <%= search_form_for @q, url: url do |f| %>
     <div class="input-group mb-3">
-        <%= f.search_field :title_or_plot_cont, class:'form-control', placeholder: (t '.word') %>
+        <%= f.search_field :title_cont, class:'form-control mr-2', placeholder: (t '.title') %>
+        <%= f.search_field :user_name_cont, class:'form-control mr-2', placeholder: (t '.user_name') %>
         <%= f.select :genre_eq, Novel.genres_i18n.invert.map{|key, value| [key, Novel.genres[value]]},
-            {include_blank: (t '.genre')}, { class: 'form-control' } %>
+            {include_blank: (t '.genre')}, { class: 'form-control mr-2' } %>
         <%= f.select :story_length_eq, Novel.story_lengths_i18n.invert.map{|key, value| [key, Novel.story_lengths[value]]},
-            {include_blank: (t '.story_length')}, { class: 'form-control mr-2' } %>
+            {include_blank: (t '.story_length')}, { class: 'form-control mr-4' } %>
         <div class="input-group-append">
             <%= f.submit (t '.search'), class:'btn btn-primary' %>
         </div>
