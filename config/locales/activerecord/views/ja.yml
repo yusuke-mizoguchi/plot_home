@@ -21,9 +21,9 @@ ja:
       delete_confirm: '削除しますか？'
       not_authorized: '権限がありません'
       nill_plot: 'プロットを入力してください'
-      over_plot: 'プロットは5000文字以内で入力してください'
+      over_plot: 'プロットは7000文字以内で入力してください'
       over_profile: 'プロフィールは5000文字以内で入力してください'
-      over_character_text: 'キャラクター設定は2000文字以内で入力してください'
+      over_character_text: 'キャラクター設定は3000文字以内で入力してください'
   users:
     new:
       topic: 'ユーザー登録'
