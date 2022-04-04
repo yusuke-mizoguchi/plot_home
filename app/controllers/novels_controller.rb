@@ -3,7 +3,7 @@ class NovelsController < ApplicationController
   skip_before_action :require_login, only: [:index, :show]
 
   def index
-    @q = Novel.ransack(params[:q])
+    @q = Novel.search(params["q"])
     @novels = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(15)
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_03_142810) do
+ActiveRecord::Schema.define(version: 2022_04_04_045956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 2022_04_03_142810) do
 
   create_table "characters", force: :cascade do |t|
     t.bigint "novel_id", null: false
-    t.text "character_text"
     t.string "character_role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -67,7 +66,6 @@ ActiveRecord::Schema.define(version: 2022_04_03_142810) do
     t.string "title", null: false
     t.integer "genre", default: 0, null: false
     t.integer "story_length", default: 0, null: false
-    t.text "plot", null: false
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -93,7 +91,6 @@ ActiveRecord::Schema.define(version: 2022_04_03_142810) do
     t.string "salt"
     t.boolean "admin", default: false, null: false
     t.integer "role", default: 0, null: false
-    t.text "profile"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
