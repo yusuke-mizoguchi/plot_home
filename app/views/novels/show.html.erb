@@ -46,5 +46,7 @@
     <%= render 'reviews/form', { novel: @novel, review: @review } %>
   <% end %>
   <!-- レビューエリア -->
-  <%= render 'reviews/reviews', { reviews: @reviews } %>
+  <div id="review-area">
+    <%= render 'reviews/reviews', { reviews: @reviews } %>
+  </div>
 </div>
