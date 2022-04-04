@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
-  def show
-    @review = Review.find(params[:id])
-  end
+before_action :set_review, only: [:show, :edit, :update, :destroy]
+
+  def show; end
 
   def new
     @review = Review.new
@@ -12,22 +12,32 @@ class ReviewsController < ApplicationController
     @review.save
   end
 
-  def edit; end
+  def edit
+    @novel = @review.novel.id
+  end
 
   def update
-    @review = current_user.reviews.find(params[:id])
-    @review.update(review_params)
-    redirect_to @review
+    @novel = @review.novel.id
+    if @review.update(review_update_params)
+      redirect_to novel_path(@novel)
+    end
   end
 
   def destroy
-    @review = current_user.reviews.find(params[:id])
     @review.destroy!
   end
 
   private
 
+  def set_review
+    @review = current_user.reviews.find(params[:id])
+  end
+
   def review_params
     params.require(:review).permit(:good_point, :bad_point).merge(novel_id: params[:novel_id])
+  end
+
+  def review_update_params
+    params.require(:review).permit(:good_point, :bad_point)
   end
 end

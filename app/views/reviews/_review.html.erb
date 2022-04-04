@@ -1,7 +1,7 @@
-<tr id="review-<%= review.id %>">
+<tr>
   <td>
     <h3 class="small mt-3"><%= link_to review.user.name, user_path(review.user.id) %></h3>
-    <div id="js-review-<%= review.id %>">
+    <div id="review-<%= review.id %>">
       <%= t('activerecord.attributes.review.good_point') %>
       <%= simple_format(review.good_point) %>
       <%= t('activerecord.attributes.review.bad_point') %>
@@ -13,7 +13,7 @@
     <td class="action">
       <ul class="list-inline justify-content-center" style="float: right;">
         <li class="list-inline-item">
-          <%= link_to "#", class: "js-edit-review-button", remote: true do %>
+          <%= link_to edit_review_path(review), class: "js-edit-review-button", remote: true do %>
             <i class="fa-solid fa-pen-fancy"></i>
           <% end %>
         </li>
