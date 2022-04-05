@@ -2,49 +2,49 @@
 <% content_for(:topic, t('.topic')) %>
 <div class="container pt-3">
   <div class="row">
-    <div class="col-md-10 offset-md-1">
-      <h1 class="float-left mt-3 mb-5"><%= current_user.name %>さんの<%= t('.topic') %></h1>
+    <div class="col-lg-10 offset-md-1">
+      <h1 class="float-left mt-3 mb-5"><%= current_user.name %><%= t('.my_page') %></h1>
       <% if current_user.id == @user.id %>
         <div class="float-end">
-          <%= link_to '編集', edit_user_path(@user), class: 'btn btn-success pull-right mt-3' %>
+          <%= link_to (t 'defaults.edit'), edit_user_path(@user), class: 'btn btn-success pull-right mt-3' %>
         </div>
       <% end %>
       <table class="table">
         <tr>
-          <th scope="row"><%= 'メールアドレス' %></th>
+          <th scope="row"><%= t('activerecord.attributes.user.email') %></th>
           <td><%= @user.email %></td>
         </tr>
         <tr>
-          <th scope="row"><%= '名前' %></th>
+          <th scope="row"><%= t('activerecord.attributes.user.name') %></th>
           <td><%= @user.name %></td>
         </tr>
         <tr>
-          <th scope="row"><%= '自己紹介' %></th>
+          <th scope="row"><%= t('activerecord.attributes.user.profile') %></th>
           <td><%= @user.profile %></td>
         </tr>
       </table>
     </div>
     <ul class="col-md-10 offset-md-1 list-inline">
       <% if current_user.role == 'writer' %>
-        <li class="col-md-6 list-inline-item mt-5 mr-5">
-          <h3 class='mb-4'>投稿した作品</h3>
-          <div class="">
+        <li class="col-sm-6 list-inline-item mt-5 mr-5">
+          <h3 class='mb-4'><%= t('.post_novel') %></h3>
+          <div>
             <% if @user_novels.present? %>
             <%= render partial: 'user_novels', collection: @user_novels %>
           <% else %>
-            <h5 class='mb-5'>投稿した作品はありません</h5>
+            <h5 class='mb-5'><%= t('.nilnovel') %></h5>
           <% end %>
             <%= paginate @user_novels, param_name: 'novel_page' %>
           </div>
         </li>
       <% end %>
       <li class="col-md-5 list-inline-item mt-5">
-        <h3 class='mb-4'>批評した作品</h3>
+        <h3 class='mb-4'><%= t('.review_novel') %></h3>
         <div>
           <% if @user_reviews.present? %>
             <%= render partial: 'user_reviews', collection: @user_reviews %>
           <% else %>
-            <h5 class='mb-5'>批評した作品はありません</h5>
+            <h5 class='mb-5'><%= t('.nil_review') %></h5>
           <% end %>
           <%= paginate @user_reviews, param_name: 'review_page' %>
         </div>

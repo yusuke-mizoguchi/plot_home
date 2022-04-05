@@ -1,15 +1,22 @@
-仮トップページ
-<p>テスト</p>
-
-
-<div>
-  <% @reviews.each do |review| %>
-    <p><%= review.user.name %></p>
-  <% end %>
+<%= stylesheet_link_tag "top" %>
+<div class='top-wrapper'>
+  <div class='row top-inner-text'>
+    <ul class='col-md-10 col-sm-6 offset-md-1 list-inline'>
+      <li class='list-inline-item col-md-4 card'>
+      <h3>最近批評した人</h3>
+      <% @reviews.each do |review| %>
+        <p><%= review.user.name %></p>
+      <% end %>
+      </li>
+      <li class='list-inline-item sol-md-6 card'>
+      <h3>最近投稿された作品</h3>
+      <% @novels.each do |novel| %>
+        <p><%= novel.title %></p>
+      <% end %>
+      </li>
+    </ul>
+  </div>
 </div>
 
-<div>
-  <% @novels.each do |novel| %>
-    <p><%= novel.title %></p>
-  <% end %>
-</div>
+
+

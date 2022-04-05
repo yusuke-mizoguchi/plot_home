@@ -19,7 +19,7 @@ before_action :set_review, only: [:show, :edit, :update, :destroy]
   def update
     @novel = @review.novel.id
     if @review.update(review_update_params)
-      redirect_to novel_path(@novel)
+      @reviews = @novel.reviews.order(created_at: :desc).page(paramas[:page]).per(5)
     end
   end
 
