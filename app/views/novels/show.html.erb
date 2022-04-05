@@ -41,9 +41,14 @@
     </div>
   </div>
 
-
+  <% unless current_user.id == @novel.user.id %>
+    <!-- レビューフォーム -->
+    <div id='review_form'>
+      <%= render 'reviews/form', { novel: @novel, review: @review } %>
+    </div>
+  <% end %>
   <!-- レビューエリア -->
-  <div id="review-area">
+  <div id='review-area'>
     <%= render 'reviews/reviews', { reviews: @reviews } %>
   </div>
 </div>

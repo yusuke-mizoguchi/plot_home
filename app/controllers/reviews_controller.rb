@@ -9,22 +9,28 @@ before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   def create
     @review = current_user.reviews.build(review_params)
-    @review.save
+    @novel = Novel.find_by(id: params[:novel_id])
+    if @review.save
+      @reviews = @novel.reviews.order(created_at: :desc).page(params[:page]).per(5)
+    end
   end
 
   def edit
-    @novel = @review.novel.id
+    @novel = Novel.find_by(id: params[:novel_id])
   end
 
   def update
-    @novel = @review.novel.id
+    @novel = Novel.find_by(id: params[:novel_id])
     if @review.update(review_update_params)
-      @reviews = @novel.reviews.order(created_at: :desc).page(paramas[:page]).per(5)
+      @reviews = @novel.reviews.order(created_at: :desc).page(params[:page]).per(5)
     end
   end
 
   def destroy
-    @review.destroy!
+    @novel = Novel.find_by(id: params[:novel_id])
+    if @review.destroy
+      @reviews = @novel.reviews.order(created_at: :desc).page(params[:page]).per(5)
+    end
   end
 
   private
