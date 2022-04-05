@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'tops#top'
   get 'rule', to: 'static_pages#rule'
   get 'privacy', to: 'static_pages#privacy'
+  get 'about', to: 'static_pages#about'
   
   get 'login', to: 'user_sessions#new'
   delete 'logout', to: 'user_sessions#destroy'
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[new create edit update show ]
   resources :novels do
-    resources :reviews, only: %i[create edit update destroy], shallow: true
+    resources :reviews, only: %i[create edit update destroy]
     resources :characters, only: %i[create update destroy], shallow: true
   end
 end

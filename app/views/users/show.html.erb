@@ -24,30 +24,24 @@
         </tr>
       </table>
     </div>
-    <ul class="col-md-10 offset-md-1 list-inline">
-      <% if current_user.role == 'writer' %>
-        <li class="col-sm-6 list-inline-item mt-5 mr-5">
-          <h3 class='mb-4'><%= t('.post_novel') %></h3>
-          <div>
-            <% if @user_novels.present? %>
-            <%= render partial: 'user_novels', collection: @user_novels %>
-          <% else %>
-            <h5 class='mb-5'><%= t('.nilnovel') %></h5>
-          <% end %>
-            <%= paginate @user_novels, param_name: 'novel_page' %>
-          </div>
-        </li>
-      <% end %>
-      <li class="col-md-5 list-inline-item mt-5">
+    <ul class="row offset-md-1 list-inline">
+      <li class="col-sm-6 list-inline-item mt-5 mr-5">
+        <h3 class='mb-4'><%= t('.post_novel') %></h3>
+        <% if @user_novels.present? %>
+          <%= render partial: 'user_novels', collection: @user_novels %>
+        <% else %>
+          <h5 class='mb-5'><%= t('.nilnovel') %></h5>
+        <% end %>
+        <%= paginate @user_novels, param_name: 'novel_page' %>
+      </li>
+      <li class="col-sm-5 list-inline-item mt-5">
         <h3 class='mb-4'><%= t('.review_novel') %></h3>
-        <div>
-          <% if @user_reviews.present? %>
-            <%= render partial: 'user_reviews', collection: @user_reviews %>
-          <% else %>
-            <h5 class='mb-5'><%= t('.nil_review') %></h5>
-          <% end %>
-          <%= paginate @user_reviews, param_name: 'review_page' %>
-        </div>
+        <% if @user_reviews.present? %>
+          <%= render partial: 'user_reviews', collection: @user_reviews %>
+        <% else %>
+          <h5 class='mb-5'><%= t('.nil_review') %></h5>
+        <% end %>
+        <%= paginate @user_reviews, param_name: 'review_page' %>
       </li>
     </ul>
   </div>
