@@ -34,6 +34,11 @@ ja:
       fail: 'ユーザー登録に失敗しました'
     show:
       topic: 'マイページ'
+      post_novel: '投稿した作品'
+      nil_novel: '投稿した作品はありません'
+      review_novel: '批評した作品'
+      nil_review: '批評した作品はありません'
+      my_page: 'さんのマイページ'
     edit:
       topic: 'ユーザー情報編集'
   user_sessions:
