@@ -27,7 +27,7 @@ class NovelsController < ApplicationController
   def show
     @novel = Novel.find(params[:id])
     @review = Review.new
-    @reviews = @novel.reviews.includes(:user).order(created_at: :desc).page(params[:page]).per(5)
+    @reviews = @novel.reviews.includes(:user).order(created_at: :desc).page(params[:page]).per(4)
 
     if @novel.user.id == current_user.id
       render "novels/show"

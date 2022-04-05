@@ -83,6 +83,7 @@ ja:
       rule: '利用規約'
       policy: 'プライバシーポリシー'
       inquiry: 'お問い合わせ'
+      about_app: 'このサイトについて'
   password_resets:
     new:
       topic: 'パスワードリセット申請'

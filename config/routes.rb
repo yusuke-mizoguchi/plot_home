@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'tops#top'
   get 'rule', to: 'static_pages#rule'
   get 'privacy', to: 'static_pages#privacy'
+  get 'about', to: 'static_pages#about'
   
   get 'login', to: 'user_sessions#new'
   delete 'logout', to: 'user_sessions#destroy'

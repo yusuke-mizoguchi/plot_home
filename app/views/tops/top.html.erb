@@ -1,20 +1,24 @@
 <%= stylesheet_link_tag "top" %>
 <div class='top-wrapper'>
-  <div class='row top-inner-text'>
-    <ul class='col-md-10 col-sm-6 offset-md-1 list-inline'>
-      <li class='list-inline-item col-md-4 card'>
-      <h3>最近批評した人</h3>
-      <% @reviews.each do |review| %>
-        <p><%= review.user.name %></p>
-      <% end %>
-      </li>
-      <li class='list-inline-item sol-md-6 card'>
-      <h3>最近投稿された作品</h3>
-      <% @novels.each do |novel| %>
-        <p><%= novel.title %></p>
-      <% end %>
-      </li>
-    </ul>
+  <div class='top-inner-text'>
+    <div class='row d-flex flex-row align-items-center justify-content-center'>
+      <div class='col-md-3' style='width: 15rem;'>
+        <div class='background'>
+          <h4 class='mb-3'>最近批評した人</h4>
+          <% @reviews.each do |review| %>
+            <p><%= link_to review.user.name, user_path(review.user_id), class: 'link-text' %></p>
+          <% end %>
+        </div>
+      </div>
+      <div class='col-md-4' style='width: 18rem;'>
+        <div class='background'>
+          <h4 class='mb-3'>最近投稿された作品</h4>
+          <% @novels.each do |novel| %>
+            <p><%= link_to novel.title, novel_path(novel), class: 'link-text' %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

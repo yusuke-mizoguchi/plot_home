@@ -11,7 +11,7 @@ before_action :set_review, only: [:show, :edit, :update, :destroy]
     @review = current_user.reviews.build(review_params)
     @novel = Novel.find_by(id: params[:novel_id])
     if @review.save
-      @reviews = @novel.reviews.order(created_at: :desc).page(params[:page]).per(5)
+      @reviews = @novel.reviews.order(created_at: :desc).page(params[:page]).per(4)
     end
   end
 
@@ -22,14 +22,14 @@ before_action :set_review, only: [:show, :edit, :update, :destroy]
   def update
     @novel = Novel.find_by(id: params[:novel_id])
     if @review.update(review_update_params)
-      @reviews = @novel.reviews.order(created_at: :desc).page(params[:page]).per(5)
+      @reviews = @novel.reviews.order(created_at: :desc).page(params[:page]).per(4)
     end
   end
 
   def destroy
     @novel = Novel.find_by(id: params[:novel_id])
     if @review.destroy
-      @reviews = @novel.reviews.order(created_at: :desc).page(params[:page]).per(5)
+      @reviews = @novel.reviews.order(created_at: :desc).page(params[:page]).per(4)
     end
   end
 
