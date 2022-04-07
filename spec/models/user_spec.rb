@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'バリデーション'
+  describe 'バリデーション' do
     it 'attributes' do
       user = build(:user)
       expect(user).to be_valid
@@ -39,9 +39,11 @@ RSpec.describe User, type: :model do
       expect(user_with_duplicated_email.errors[email]).to eq ["has already been taken"]
     end
 
-    it '別のemail'
-    user = create(:user)
-    user_with_anoher_email = build(:user, email: 'another_email@example.com')
-    expect(user_with_anoher_email).to be_valid
-    expect(user_with_anoher_email.errors).to be_empty
+    it '別のemail' do
+      user = create(:user)
+      user_with_anoher_email = build(:user, email: 'another_email@example.com')
+      expect(user_with_anoher_email).to be_valid
+      expect(user_with_anoher_email.errors).to be_empty
+    end
+  end
 end
