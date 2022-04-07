@@ -36,7 +36,7 @@ RSpec.describe Novel, type: :model do
       novel = create(:novel)
       novel_with_duplicated_title = build(:novel, title: novel.title)
       expect(novel_with_duplicated_title).to be_invalid
-      expect(novel_with_duplicated_title.errors[title]).to eq ["has already been taken"]
+      expect(novel_with_duplicated_title.errors[:title]).to eq ["has already been taken"]
     end
 
     it '別のtitle' do
