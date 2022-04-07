@@ -13,5 +13,17 @@ RSpec.describe Review, type: :model do
       expect(review_without_good_point).to be_invalid
       expect(review_without_good_point.errors[:good_point]).to eq["can't be blank"]
     end
+
+    it 'good_point文字数超過' do
+      review_over_good_point = build(:review, good_point: "a" * 1501)
+      expect(review_over_good_point).to be_invalid
+      expect(review_over_good_point.errors[:good_point]).to eq ["can't be over"]
+    end
+
+    it 'badd_point文字数超過' do
+      review_over_bad_point = build(:review, bad_point: "a" * 1501)
+      expect(review_over_bad_point).to be_invalid
+      expect(review_over_bad_point.errors[:bad_point]).to eq ["can't be over"]
+    end
   end
 end

@@ -6,12 +6,12 @@ class User < ApplicationRecord
 
   authenticates_with_sorcery!
 
-  validates :password, length: { minimum: 4, maximum: 15 }, if: -> { new_record? || changes[:crypted_password] }
+  validates :password, length: { minimum: 4, maximum: 20 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :profile, length: { maximum: 5000 }
 
-  validates :name, presence: true
+  validates :name, length: { maximum: 30 }, presence: true
   validates :email, uniqueness: true, presence: true
   validates :role, presence: true
 

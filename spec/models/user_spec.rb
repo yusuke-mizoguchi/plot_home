@@ -32,6 +32,12 @@ RSpec.describe User, type: :model do
       expect(user_without_password_confimation.errors[:password_confirmation]).to eq ["can't be blank"]
     end
 
+    it 'name文字数超過' do
+      user_over_name = build(:user, name: "a" * 31)
+      expect(user_over_name).to be_invalid
+      expect(user_over_name.errors[:name]).to eq ["can't be over"]
+    end
+
     it 'email重複' do
       user = create(:user)
       user_with_duplicated_email = build(:user, email: user.email)

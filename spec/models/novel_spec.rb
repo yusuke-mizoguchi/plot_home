@@ -32,6 +32,12 @@ RSpec.describe Novel, type: :model do
       expect(novel_without_release.errors[:release]).to eq["can't be blank"]
     end
 
+    it 'title文字数超過' do
+      novel_over_title = build(:novel, title: "a" * 51)
+      expect(novel_over_title).to be_invalid
+      expect(novel_over_title.errors[:title]).to eq ["can't be over"]
+    end
+
     it 'title重複' do
       novel = create(:novel)
       novel_with_duplicated_title = build(:novel, title: novel.title)
