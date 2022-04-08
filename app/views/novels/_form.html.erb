@@ -21,10 +21,10 @@
     <%= f.rich_text_area :plot, class: 'form-control' %>
   </div>
   <div id="characters">
+    <h3 class="mb-3">キャラクター設定</h3>
     <%= f.fields_for :characters, local: true do |character| %>
       <%= render 'novels/character_fields', f: character %>
     <% end %>
-    <h3 class="mb-3">キャラクター設定</h3>
     <div class="links">
       <%= link_to_add_association (t '.add_character'), f, :characters,
       class: "btn btn-primary mb-5", type: "button" %>
@@ -32,5 +32,5 @@
   </div>
 
 
-  <%= f.submit class: 'btn btn-primary' %>
+  <%= f.submit class: 'btn btn-primary mb-5', id: 'novel-post' %>
 <% end %>

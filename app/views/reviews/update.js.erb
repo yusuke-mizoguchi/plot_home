@@ -1,1 +1,6 @@
-$('#review-area').html("<%= escape_javascript(render 'reviews/reviews', reviews: @reviews) %>")
+$("#error_messages").remove()
+<% if @review.errors.present? %>
+  $("#js-new-review").prepend("<%= j(render('shared/error_messages', object: @review)) %>")
+<% else %>
+  $('#review-area').html("<%= escape_javascript(render 'reviews/reviews', reviews: @reviews) %>")
+<% end %>
