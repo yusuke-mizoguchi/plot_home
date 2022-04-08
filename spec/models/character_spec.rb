@@ -9,15 +9,15 @@ RSpec.describe Character, type: :model do
     end
 
     it 'character_role文字数超過' do
-      character_over_character_role = build(:character, character_role: "a" * 20)
+      character_over_character_role = build(:character, character_role: "a" * 21)
       expect(character_over_character_role).to be_invalid
-      expect(character_over_character_role.errors[:character_role]).to eq ["can't be over"]
+      expect(character_over_character_role.errors[:character_role]).to eq ["は20文字以内で入力してください"]
     end
 
     it 'character_text文字数超過' do
       character_over_character_text = build(:character, character_text: "a" * 3001)
       expect(character_over_character_text).to be_invalid
-      expect(character_over_character_role.errors[:character_text]).to eq ["can't be over"]
+      expect(character_over_character_text.errors[:character_text]).to eq ["は3000文字以内で入力してください"]
     end
   end
 end

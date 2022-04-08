@@ -3,6 +3,7 @@ FactoryBot.define do
     sequence(:title) { |n| "title-#{n}"}
     genre { :high_fantasy }
     story_length { :long }
+    plot { 'test_plot' }
     release { :release }
     association :user
 
