@@ -2,8 +2,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-      <h1><%= t('.topic') %></h1>
+      <h1 class="mt-5"><%= t('.topic') %></h1>
       <%= form_with model: @user, local: true do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
         <div class="form-group">
           <%= f.label :name %>
           <%= f.text_field :name, class: 'form-control' %>
@@ -24,7 +25,7 @@
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation, class: 'form-control' %>
         </div>
-        <%= f.submit t('.register'), class: 'btn btn-primary' %>
+        <%= f.submit t('.topic'), class: 'btn btn-primary' %>
       <% end %>
       <div class='text-center'>
         <%= link_to t('.to_login_page'), login_path %>

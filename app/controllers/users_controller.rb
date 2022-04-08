@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to login_path, success: t('.success')
+      redirect_to login_path, notice: t('.success')
     else
       flash.now[:alert] = t('.fail')
       render :new
@@ -26,13 +26,14 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     unless @user.id == current_user.id
-      redirect_to root_path
+      flash[:alert] = t('defaults.message.not_authorized')
+      redirect_to user_path(current_user)
     end
   end
 
   def update
     if @user.update(user_params)
-      redirect_to user_path, success: t('defaults.message.update', item: User.model_name.human)
+      redirect_to user_path, notice: t('defaults.message.update', item: User.model_name.human)
     else
       flash.now[:alert] = t('defaults.message.not_update', item: User.model_name.human)
       render :edit
