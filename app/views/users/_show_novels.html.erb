@@ -5,7 +5,7 @@
       <ul class="list-inline justify-content-center">
         <li class="mr-3"><%= user_novels.genre_i18n %></li>
         <li class="mr-3"><%= user_novels.story_length_i18n %></li>
-        <% if user_novels.user.id == current_user.id %>
+        <% if user_novels.user.id == current_user&.id %>
           <li><%= user_novels.release_i18n %></li>
         <% end %>
       </ul>

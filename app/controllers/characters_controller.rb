@@ -6,7 +6,7 @@ class CharactersController < ApplicationController
   end
 
   def create
-    @character = current_user.character.build(character_params)
+    @character = current_user&.character.build(character_params)
     @character.save
   end
 

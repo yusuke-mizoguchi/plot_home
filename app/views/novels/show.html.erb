@@ -8,7 +8,7 @@
           <div class='row'>
             <div>
               <h3 class="d-inline"><%= @novel.title %></h3>
-              <%= render 'crud_menus', novel: @novel if current_user.own?(@novel) %>
+              <%= render 'crud_menus', novel: @novel if current_user&.own?(@novel) %>
               <ul class="list-inline">
                 <li class="list-inline-item"><%= t('.author') %>：<%= link_to @novel.user.name, user_path(@novel.user.id) %></li>
                 <li class="list-inline-item"><%= t('attributes.created_at') %>：<%= @novel.created_at.to_s(:datetime_jp) %></li>
@@ -41,7 +41,7 @@
     </div>
   </div>
 
-  <% unless current_user.id == @novel.user.id %>
+  <% unless current_user&.id == @novel.user.id %>
     <!-- レビューフォーム -->
     <div id='review_form'>
       <%= render 'reviews/form', { novel: @novel, review: @review } %>

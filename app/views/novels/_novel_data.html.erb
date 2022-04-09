@@ -5,7 +5,7 @@
           <h4 class="card-title">
             <%= link_to novel.title, novel_path(novel) %>
           </h4>
-        <% if current_user.own?(novel) %>
+        <% if current_user&.own?(novel) %>
           <%= render 'crud_menus', novel: novel %>
         <% end %>
           <ul class="list-inline">
