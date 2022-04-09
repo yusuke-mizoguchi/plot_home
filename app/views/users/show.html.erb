@@ -3,8 +3,8 @@
 <div class="container pt-3">
   <div class="row">
     <div class="col-lg-10 offset-md-1">
-      <h1 class="float-left mt-3 mb-5"><%= current_user.name %><%= t('.my_page') %></h1>
-      <% if current_user.id == @user.id %>
+      <h1 class="float-left mt-3 mb-5"><%= @user.name %><%= t('.my_page') %></h1>
+      <% if current_user&.id == @user.id %>
         <div class="float-end">
           <%= link_to (t 'defaults.edit'), edit_user_path(@user), class: 'btn btn-success pull-right mt-3' %>
         </div>

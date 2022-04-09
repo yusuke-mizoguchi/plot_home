@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create, :show]
 
   def new
     @user = User.new
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    unless @user.id == current_user.id
+    unless @user.id == current_user&.id
       flash[:alert] = t('defaults.message.not_authorized')
       redirect_to user_path(current_user)
     end

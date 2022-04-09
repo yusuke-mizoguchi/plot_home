@@ -1,4 +1,4 @@
-<% if novel.user.id == current_user.id %>
+<% if novel.user.id == current_user&.id %>
   <%= render 'novel_data', {novel: novel} %>
 <% elsif (novel.release != "draft") && current_user&.role == "writer" %>
   <%= render 'novel_data', {novel: novel} %>

@@ -9,7 +9,7 @@ class NovelsController < ApplicationController
 
   def new
     @novel = Novel.new
-    unless current_user.role == "writer"
+    unless current_user&.role == "writer"
       render novels_path, flash.now[:alert] = t('defaults.message.not_authorized')
     end
   end
@@ -29,7 +29,7 @@ class NovelsController < ApplicationController
     @review = Review.new
     @reviews = @novel.reviews.includes(:user).order(created_at: :desc).page(params[:page]).per(4)
 
-    if @novel.user.id == current_user.id
+    if @novel.user.id == current_user&.id
       render "novels/show"
     elsif (@novel.release != "draft") && current_user&.role == "writer"
       render "novels/show"

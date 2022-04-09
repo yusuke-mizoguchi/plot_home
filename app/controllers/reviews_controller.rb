@@ -8,7 +8,7 @@ before_action :set_review, only: [:show, :edit, :update, :destroy]
   end
 
   def create
-    @review = current_user.reviews.build(review_params)
+    @review = current_user&.reviews.build(review_params)
     @novel = Novel.find_by(id: params[:novel_id])
     if @review.save
       @reviews = @novel.reviews.order(created_at: :desc).page(params[:page]).per(4)
