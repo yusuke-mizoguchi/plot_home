@@ -20,7 +20,7 @@ class NovelsController < ApplicationController
       redirect_to novels_path, notice: t('defaults.message.created', item: Novel.model_name.human)
     else
       flash.now[:alert] = t('defaults.message.not_created', item: Novel.model_name.human)
-      render :new
+      render new_novel_path
     end
   end
 
@@ -38,14 +38,12 @@ class NovelsController < ApplicationController
     elsif @novel.release == "release"
       render "novels/show"
     else
-      render novels_path, flash.now[:alert] = t('defaults.message.not_authorized')
+      flash[:alert] = t('defaults.message.not_authorized')
+      redirect_to novels_path
     end
   end
 
   def edit
-    unless @novel.user.id == current_user.id
-      redirect_to novel_path(@novel)
-    end
   end
 
   def update
