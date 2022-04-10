@@ -61,6 +61,9 @@ ja:
       genre: 'ジャンル検索'
       story_length: '文量検索'
       search: '検索'
+      title_sort: 'タイトル順'
+      created_sort: '投稿日時順'
+      updated_sort: '更新日時順'
     new:
       topic: '小説投稿'
     form:

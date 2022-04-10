@@ -122,9 +122,9 @@ RSpec.describe "Novels", type: :system do
           select 'ハイファンタジー', from: 'novel_genre'
           select '中編', from: 'novel_story_length'
           select '読み手まで', from: 'novel_release'
-          fill_in_rich_text_area 'プロット', with: 'a' * 7001
+          fill_in_rich_text_area 'プロット', with: 'a' * 5001
           click_button '投稿する'
-          expect(page).to have_content 'プロットは7000文字以内で入力してください'
+          expect(page).to have_content 'プロットは5000文字以内で入力してください'
           expect(page).to have_content '小説を投稿できませんでした'
           expect(current_path).to eq novels_path
         end
@@ -233,9 +233,9 @@ RSpec.describe "Novels", type: :system do
           select 'ホラー', from: 'novel_genre'
           select '短編', from: 'novel_story_length'
           select '公開', from: 'novel_release'
-          fill_in_rich_text_area 'プロット', with: 'a' * 7001
+          fill_in_rich_text_area 'プロット', with: 'a' * 5001
           click_button '更新する'
-          expect(page).to have_content 'プロットは7000文字以内で入力してください'
+          expect(page).to have_content 'プロットは5000文字以内で入力してください'
           expect(page).to have_content '小説を更新できませんでした'
           expect(current_path).to eq novel_path(novel)
         end
@@ -283,7 +283,5 @@ RSpec.describe "Novels", type: :system do
         expect(current_path).to eq novels_path
       end
     end
-
-
   end
 end

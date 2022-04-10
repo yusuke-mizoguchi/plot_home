@@ -11,7 +11,6 @@ class Novel < ApplicationRecord
   validates :genre, presence: true
   validates :story_length, presence: true
   validates :release, presence: true
-  validates :plot, length: { maximum: 7000}
   validate :plot_required
 
   enum genre: { high_fantasy: 10, low_fantasy: 20, classic: 30, love: 40, love_comedy: 50,
@@ -23,5 +22,6 @@ class Novel < ApplicationRecord
 
   def plot_required
     errors.add(:plot, I18n.t('defaults.message.nill_plot')) unless plot.body.present?
+    errors.add(:plot, I18n.t('defaults.message.over_plot')) unless ApplicationController.helpers.strip_tags(plot.to_s).gsub(/[\n]/,"").strip.length < 5001
   end
 end
