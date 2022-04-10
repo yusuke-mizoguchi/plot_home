@@ -19,7 +19,15 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    @user_novels = @user.novels.order(created_at: :desc).page(params[:novel_page]).per(4)
+    if @user.novels.where.not(release: 'draft') && current_user&.role == "writer"
+      @narrow = @user.novels.where.not(release: 'draft')
+    elsif user_narrow && current_user&.role == "reader"
+      @narrow = user_narrow
+    elsif @user.novels.where(release: 'release')
+      @narrow = @user.novels.where(release: 'release')
+    end
+
+    @user_novels = @narrow.order(created_at: :desc).page(params[:novel_page]).per(4)
     @user_reviews = @user.reviews.order(created_at: :desc).page(params[:review_page]).per(4)
   end
 
@@ -41,6 +49,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_narrow
+    @user.novels.where(release: 'reader').or(@user.novels.where(release: 'release'))
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :role, :profile)
