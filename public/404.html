@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>404</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
@@ -51,17 +51,47 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  .error-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    margin-top: 10rem;
+  }
+
+  .error-title {
+    color: #e0720a;
+    font-size: 160px;
+    font-weight: bold;
+  }
+
+  .error-heading {
+    font-size: 30px;
+    color: #e0720a;
+    font-weight: bold;
+    margin: 0;
+    padding-left: 1em;
+  }
+
+  .error-sentence {
+    font-size: 14px;
+    padding-bottom: 40px;
+    font-size: 16px;
+    padding-left: 1em;
+  }
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+  <div class="error-content">
+    <div class="error-title">
+    404
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
+    <h1 class="error-heading">お探しのページは見つかりませんでした。</h1>
+    <p class="error-sentence">URLが間違っているか、ページが移動した可能性があります。</p>
+</div>
 </body>
 </html>

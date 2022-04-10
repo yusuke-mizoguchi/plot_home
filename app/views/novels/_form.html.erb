@@ -3,7 +3,7 @@
   <%= render 'shared/error_messages', object: f.object %>
   <div class="form-group">
     <h3><%= f.label :title %></h3>
-    <%= f.text_field :title, class: 'form-control' %>
+    <%= f.text_field :title, class: 'form-control', placeholder: (t '.title_word') %>
   </div>
   <div class="d-flex align-items-center mt-4 mb-3">
     <div class="form-group ml-5">
@@ -18,7 +18,7 @@
   </div>
   <div class="form-group mb-5">
     <h3><%= f.label :plot %></h3>
-    <%= f.rich_text_area :plot, class: 'form-control' %>
+    <%= f.rich_text_area :plot, class: 'form-control', placeholder: (t '.plot_word') %>
   </div>
   <div id="characters">
     <h3 class="mb-3">キャラクター設定</h3>

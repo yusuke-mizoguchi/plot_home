@@ -4,3 +4,7 @@
 //= link header.css
 //= link actiontext.css
 //= link novels/search.css
+//= link novels/index.css
+//= link static_pages/about.css
+//= link static_pages/privacy.css
+//= link static_pages/rule.css

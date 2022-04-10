@@ -28,6 +28,7 @@ ja:
     new:
       topic: 'ユーザー登録'
       role_select: '役割を選択'
+      rule: '利用規約に同意して登録しますか？'
       to_login_page: 'ログインページ'
     create:
       success: 'ユーザー登録が完了しました'
@@ -67,10 +68,15 @@ ja:
     new:
       topic: '小説投稿'
     form:
+      title_word: '50文字以内で入力してください'
       genre_select: 'ジャンルを選択'
       story_length_select: '文量を選択'
       releace_select: '公開範囲を選択'
+      plot_word: '5000文字以内で入力してください'
       add_character: 'キャラクターの追加'
+    character_fields:
+      character_role_word: '20文字以内で入力してください'
+      character_text_word: '5000文字以内で入力してください'
     show:
       topic: '小説詳細'
       author: '作者'
@@ -87,6 +93,15 @@ ja:
       policy: 'プライバシーポリシー'
       inquiry: 'お問い合わせ'
       about_app: 'このサイトについて'
+  static_pages:
+    about:
+      topic: 'このサイトについて'
+      plot_home: 'プロットホームとは'
+      use_plot_home: 'プロットホームの使い方'
+    rule:
+      topic: '利用規約'
+    privacy:
+      topic: 'プライバシーポリシー'
   password_resets:
     new:
       topic: 'パスワードリセット申請'

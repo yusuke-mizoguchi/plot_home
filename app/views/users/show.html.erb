@@ -25,7 +25,7 @@
       </table>
     </div>
     <ul class="row offset-md-1 list-inline">
-      <li class="col-sm-6 list-inline-item mt-5 mr-5">
+      <li class="col-sm-6 col-lg-4 list-inline-item mt-5 mr-5">
         <h3 class='mb-4'><%= t('.post_novel') %></h3>
         <% if @user_novels.present? %>
           <%= render partial: 'user_novels', collection: @user_novels %>
@@ -34,7 +34,7 @@
         <% end %>
         <%= paginate @user_novels, param_name: 'novel_page' %>
       </li>
-      <li class="col-sm-5 list-inline-item mt-5">
+      <li class="col-sm-5 col-lg-6 list-inline-item mt-5">
         <h3 class='mb-4'><%= t('.review_novel') %></h3>
         <% if @user_reviews.present? %>
           <%= render partial: 'user_reviews', collection: @user_reviews %>
