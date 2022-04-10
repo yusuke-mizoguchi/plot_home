@@ -3,7 +3,14 @@ class NovelsController < ApplicationController
   skip_before_action :require_login, only: [:index, :show]
 
   def index
-    @q = Novel.search(params["q"])
+    if Novel.where.not(release: 'draft') && current_user&.role == "writer"
+      @q = Novel.where.not(release: 'draft').ransack(params["q"])
+    elsif novel_narrow && current_user&.role == "reader"
+      @q = novel_narrow.ransack(params["q"])
+    elsif Novel.where(release: 'release')
+      @q = Novel.where(release: 'release').ransack(params["q"])
+    end
+
     @novels = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(15)
   end
 
@@ -61,6 +68,10 @@ class NovelsController < ApplicationController
   end
 
   private
+
+  def novel_narrow
+    Novel.where(release: 'reader').or(Novel.where(release: 'release'))
+  end
 
   def set_novel
     @novel = current_user.novels.find(params[:id])
