@@ -1,18 +1,25 @@
+<%= stylesheet_link_tag "novels/search" %>
 <%= search_form_for @q, url: url do |f| %>
     <div class="input-group mb-3">
-        <%= f.search_field :title_cont, class:'form-control mr-2', placeholder: (t '.title') %>
-        <%= f.search_field :user_name_cont, class:'form-control mr-2', placeholder: (t '.user_name') %>
+        <%= f.search_field :title_cont, class:'form-control mr-2 rounded', placeholder: (t '.title') %>
+        <%= f.search_field :user_name_cont, class:'form-control mr-2 rounded', placeholder: (t '.user_name') %>
         <%= f.select :genre_eq, Novel.genres_i18n.invert.map{|key, value| [key, Novel.genres[value]]},
-            {include_blank: (t '.genre')}, { class: 'form-control mr-2' } %>
+            {include_blank: (t '.genre')}, { class: 'form-control mr-2 rounded' } %>
         <%= f.select :story_length_eq, Novel.story_lengths_i18n.invert.map{|key, value| [key, Novel.story_lengths[value]]},
-            {include_blank: (t '.story_length')}, { class: 'form-control mr-4' } %>
+            {include_blank: (t '.story_length')}, { class: 'form-control mr-4 rounded' } %>
         <div class="input-group-append">
-            <%= f.submit (t '.search'), class:'btn btn-primary' %>
+            <%= f.submit (t '.search'), class:'btn btn-primary rounded' %>
         </div>
     </div>
     <ul class="list-inline d-flex justify-content-center">
-        <li class="list-inline-item mr-5"><%= sort_link(@q, :title, 'タイトル') %></li>
-        <li class="list-inline-item mr-5 ml-5"><%= sort_link(@q, :created_at, '投稿日時' ) %></li>
-        <li class="list-inline-item ml-5"><%= sort_link(@q, :updated_at, '更新日時') %></li>
+        <li class="list-inline-item mr-5 p-1 rounded sort-list">
+            <%= sort_link(@q, :title, (t '.title_sort')) %>
+        </li>
+        <li class="list-inline-item mr-5 ml-5 p-1 rounded sort-list text-white text-decoration-none">
+            <%= sort_link(@q, :created_at, (t '.created_sort')) %>
+        </li>
+        <li class="list-inline-item ml-5 p-1 rounded sort-list text-white text-decoration-none">
+            <%= sort_link(@q, :updated_at, (t '.updated_sort')) %>
+        </li>
     </ul>
 <% end %>

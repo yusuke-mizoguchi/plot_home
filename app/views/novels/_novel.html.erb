@@ -1,9 +1,33 @@
-<% if novel.user.id == current_user&.id %>
-  <%= render 'novel_data', {novel: novel} %>
-<% elsif (novel.release != "draft") && current_user&.role == "writer" %>
-  <%= render 'novel_data', {novel: novel} %>
-<% elsif (novel.release == "release" || novel.release == "reader") && current_user&.role == "reader" %>
-  <%= render 'novel_data', {novel: novel} %>
-<% elsif novel.release == "release" %>
-  <%= render 'novel_data', {novel: novel} %>
-<% end %>
+<div class="col-sm-12 col-lg-4 mb-3">
+  <div id="novel-id-<%= novel.id %>">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">
+          <%= link_to novel.title.truncate(28), novel_path(novel) %>
+        </h4>
+        <% if current_user&.own?(novel) %>
+          <%= render 'crud_menus', novel: novel %>
+        <% end %>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <%= novel.genre_i18n %>
+          </li>
+          <li class="list-inline-item">
+            <%= novel.story_length_i18n %>
+          </li>
+          <li class="list-inline-item">
+            <i class="fa-solid fa-user"></i>
+            <%= link_to novel.user.name, user_path(novel.user.id) %>
+          </li>
+          <li class="list-inline-item">
+            <i class="fa-solid fa-calendar-days"></i>
+            <%= novel.created_at.to_s(:datetime_jp) %>
+          </li>
+          <li>
+            <%= strip_tags(novel.plot.to_s).gsub(/[\n]/,"").strip.truncate(5) %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

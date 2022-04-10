@@ -1,9 +1,14 @@
-<% if user_novels.user.id == current_user&.id %>
-  <%= render 'users/show_novels', { user_novels: user_novels } %>
-<% elsif (user_novels.release != "draft") && current_user&.role == "writer" %>
-  <%= render 'users/show_novels', { user_novels: user_novels } %>
-<% elsif (user_novels.release == "release" || user_novels.release == "reader") && current_user&.role == "reader" %>
-  <%= render 'users/show_novels', { user_novels: user_novels } %>
-<% elsif user_novels.release == "release" %>
-  <%= render 'users/show_novels', { user_novels: user_novels } %>
-<% end %>
+<div id="user_novels-id-<%= user_novels.id %>">
+  <div class="card mb-3">
+    <div class="card-body">
+      <h4 class="text-center"><%= link_to user_novels.title, novel_path(user_novels.id) %></h4>
+      <ul class="list-inline justify-content-center">
+        <li class="mr-3"><%= user_novels.genre_i18n %></li>
+        <li class="mr-3"><%= user_novels.story_length_i18n %></li>
+        <% if user_novels.user.id == current_user&.id %>
+          <li><%= user_novels.release_i18n %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
