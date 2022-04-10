@@ -16,6 +16,4 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[create edit update destroy]
     resources :characters, only: %i[create update destroy], shallow: true
   end
-
-  get '*path', to: 'application#render_404'
 end

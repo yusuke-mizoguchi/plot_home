@@ -1,13 +1,16 @@
-  <footer class="footer fixed-bottom bg-info" style="height:55px" >
-    <div class="container list-inline list-unstyled d-flex align-items-center" style="height:50px">
-      <div class="float-start list-inline-item">
-        <%= link_to (t 'shared.footer.rule'), rule_path, class:'text-white text-decoration-none' %>
-      </div>
-      <div class="mx-auto list-inline-item">
+  <footer class="footer fixed-bottom bg-info" style="height:60px" >
+    <div class="container list-inline list-unstyled d-flex align-items-center" style="height:35px">
+      <div class="mr-auto list-inline-item">
         <%= link_to (t 'shared.footer.policy'), privacy_path, class:'text-white text-decoration-none' %>
       </div>
-      <div class="float-enr list-inline-item">
+      <div class="mx-auto list-inline-item">
+        <%= link_to (t 'shared.footer.rule'), rule_path, class:'text-white text-decoration-none' %>
+      </div>
+      <div class="ml-auto list-inline-item">
         <%= link_to (t 'shared.footer.about_app'), about_path, class:'text-white text-decoration-none' %>
       </div>
+    </div>
+    <div class="d-flex justify-content-center"  style="height:25px">
+      <%= 'Copyright ©︎ 2022 PlotHome' %>
     </div>
   </footer>

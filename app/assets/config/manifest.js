@@ -4,3 +4,4 @@
 //= link header.css
 //= link actiontext.css
 //= link novels/search.css
+//= link novels/index.css

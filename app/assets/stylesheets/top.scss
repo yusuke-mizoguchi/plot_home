@@ -12,18 +12,36 @@
       width: 100%;
       text-align: center;
       font-size: 1.2rem;
-      font-family: "游教科書体 横用","YuKyokasho Yoko";
       color: rgb(64, 151, 233);
-  
+
+      .top-meaasege {
+          padding-bottom:  20px;
+          text-align:  center;
+      }
+
+        .top-word {
+          margin-bottom: 5rem;
+        }
+    
+
+      .reviews {
+        width: 15rem;
+      }
+      .novels {
+        width: 18rem;
+      }
+
       @media screen and (max-width: 767px) {
         font-size: 2.0rem;
+
       }
     }
     .background {
-      background-color:rgba(162, 245, 141, 0.562);
+      background-color: rgba(206, 248, 206, 0.5);
       border-radius: 1rem;
       color: rgb(243, 126, 31);
       padding: 1rem;
+      box-shadow: 2px 2px 4px gray;
     }
     .link-text {
       color: rgb(243, 126, 31);
