@@ -93,6 +93,15 @@ ja:
       policy: 'プライバシーポリシー'
       inquiry: 'お問い合わせ'
       about_app: 'このサイトについて'
+  static_pages:
+    about:
+      topic: 'このサイトについて'
+      plot_home: 'プロットホームとは'
+      use_plot_home: 'プロットホームの使い方'
+    rule:
+      topic: '利用規約'
+    privacy:
+      topic: 'プライバシーポリシー'
   password_resets:
     new:
       topic: 'パスワードリセット申請'
