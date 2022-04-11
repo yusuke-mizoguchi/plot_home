@@ -1,5 +1,4 @@
 @import 'bootstrap/scss/bootstrap';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 body {
   font-family: "Toppan Bunkyu Mincho","凸版文久明朝";
@@ -29,7 +28,7 @@ a {
 }
 
 .message {
-  color: $white;
+  color: white;
   text-align: center;  
 
   .notice {

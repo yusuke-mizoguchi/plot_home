@@ -1,7 +1,12 @@
 <div id="user_novels-id-<%= user_novels.id %>">
   <div class="card mb-3">
     <div class="card-body">
-      <h4 class="text-center"><%= link_to user_novels.title, novel_path(user_novels.id) %></h4>
+      <div class="text-center">
+        <%= link_to user_novels.title, novel_path(user_novels.id), class: 'h4' %>
+        <% if current_user&.own?(user_novels) %>
+          <%= render 'crud_menus', user_novels: user_novels %>
+        <% end %>
+      </div>
       <ul class="list-inline justify-content-center">
         <li class="list-inline-item mr-3"><%= user_novels.genre_i18n %></li>
         <li class="list-inline-item mr-3"><%= user_novels.story_length_i18n %></li>
