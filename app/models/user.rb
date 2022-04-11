@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :role, presence: true
   validate :profile_word_count
 
-  enum role: { reader: 0,  writer: 10}
+  enum role: { writer: 10,  reader: 20}
 
   def own?(object)
     id == object.user_id
