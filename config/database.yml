@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: plot_home_production
-  username: plot_home
-  password: <%= ENV['PLOT_HOME_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
