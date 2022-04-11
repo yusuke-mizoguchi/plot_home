@@ -1,7 +1,54 @@
+.input-group {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.sort {
+    display: flex;
+    justify-content: center;
+    .list-inline-item {
+        margin: 1Z0px;
+        width: 350px;
+    }
+}
+
 .sort-list {
     background-color: #1E00FF;
+    padding: 5px;
 
     .sort_link {
         color: white;
     }
+}
+
+@media (min-width:992px) {
+    input {
+        margin-right: 5px;
+    }
+    .user_name {
+        margin-right: 15px;
+    }
+    select {
+        margin-right: 5px;
+    }
+    .story_length {
+        margin-right: 15px;
+    }
+}
+
+@media (max-width:720px) {
+    input {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    select {
+        width: 100%;
+        height: 30px;
+        margin-bottom: 20px;
+    }
+    .search-button {
+        width: 300px;
+    }
+
 }
