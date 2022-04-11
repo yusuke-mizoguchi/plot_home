@@ -85,6 +85,7 @@ ja:
       topic: '小説編集'
   shared:
     header:
+      menu: 'メニュー'
       main_title: 'プロットホーム'
       novel_post: '小説投稿'
       novel_menu: '小説メニュー'

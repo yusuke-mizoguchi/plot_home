@@ -1,3 +1,33 @@
 .header {
   background: linear-gradient(-150deg, #05FBFF, #1E00FF);
+
+  .navbar-toggler {
+    background-color: aquamarine;
+    background-color: rgba(255, 255, 255,0.7);
+    width: 120px;
+    height: 50px;
+
+    .navbar-toggler-icon {
+      background-color: #1E00FF;
+      opacity: 100%;
+      width: 90px;
+      height: 40px;
+      color: white;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .doropdown-content {
+    align-items: center;
+  }
+}
+
+ul{
+  margin: 0;
+}
+li {
+  margin: 0;
 }
