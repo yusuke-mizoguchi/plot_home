@@ -15,12 +15,13 @@
       color: rgb(64, 151, 233);
 
       .top-meaasege {
+          padding: 0;
           padding-bottom:  20px;
           text-align:  center;
       }
 
         .top-word {
-          margin-bottom: 5rem;
+          margin-bottom: 40px;
         }
     
 
@@ -31,8 +32,12 @@
         width: 18rem;
       }
 
-      @media screen and (max-width: 767px) {
+      @media screen and (max-width: 720px) {
         font-size: 2.0rem;
+
+        .top-word {
+
+        }
 
       }
     }

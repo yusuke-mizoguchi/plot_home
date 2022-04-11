@@ -1,3 +1,5 @@
+
+
 .input-group {
     display: flex;
     justify-content: center;
@@ -15,10 +17,11 @@
 .sort-list {
     background-color: #1E00FF;
     padding: 5px;
+    width: 250px;
 
     .sort_link {
         color: white;
-        width: 300px;
+        display: block;
     }
 }
 
