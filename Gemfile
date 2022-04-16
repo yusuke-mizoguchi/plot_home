@@ -59,6 +59,8 @@ gem 'enum_help'
 gem 'validate_url'
 gem 'validates_email_format_of'
 
+gem 'config', '2.0.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -99,6 +101,8 @@ group :development do
   gem 'rubocop-checkstyle_formatter'
   gem 'rubocop-rails'
   gem 'scss_lint', require: false
+
+  gem 'letter_opener_web', '~> 1.0'
 end
 
 group :test do
