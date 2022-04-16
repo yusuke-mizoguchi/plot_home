@@ -136,8 +136,15 @@ ja:
         topic: 'ユーザー編集'
     novels:
       index:
-        topic: '掲示板一覧'
+        topic: '小説一覧'
       show:
-        topic: '掲示板詳細'
+        topic: '小説詳細'
       edit:
-        topic: '掲示板編集'
+        topic: '小説編集'
+    reviews:
+      index:
+        topic: '批評一覧'
+      show:
+        topic: '批評詳細'
+      edit:
+        topic: '批評編集'

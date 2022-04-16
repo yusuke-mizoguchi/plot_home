@@ -1,0 +1,16 @@
+<tr>
+  <td>
+    <%= review.id %>
+  </td>
+  <td>
+    <%= review.user.name %>
+  </td>
+  <td>
+    <%= review.created_at.to_s(:datetime_jp) %>
+  </td>
+  <td>
+    <%= link_to t('defaults.show'), admin_review_path(review), class: 'btn btn-info' %>
+    <%= link_to t('defaults.edit'), edit_admin_review_path(review), class: 'btn btn-success' %>
+    <%= link_to t('defaults.delete'), admin_review_path(review), method: :delete, data: { confirm: t('defaults.message.delete_confirm') }, class: 'btn btn-danger' %>
+  </td>
+</tr>

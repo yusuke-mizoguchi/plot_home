@@ -24,7 +24,7 @@ end
         password: "test",
         password_confirmation: "test", 
         admin: "false",
-        role: 0
+        role: 20
     )
 end
 

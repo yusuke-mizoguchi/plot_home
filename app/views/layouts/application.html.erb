@@ -42,17 +42,17 @@
 
   <body style="margin-top:80px; margin-bottom:80px;" >
 
-    <div class="message">
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: key) %>
-      <% end %>
-    </div>
-
     <% if logged_in? %>
-      <%= render 'shared/header_b' %>
+      <%= render 'shared/header' %>
     <% else %>
       <%= render 'shared/before_login_header' %>
     <% end %>
+
+    <div class="message">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: key) %>
+    <% end %>
+    </div>
     <%= yield %>
     <%= render 'shared/footer' %>
   </body>

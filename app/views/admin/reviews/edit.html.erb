@@ -1,0 +1,20 @@
+<% content_for(:topic, t('.topic')) %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h1><%= t '.title' %></h1>
+      <%= form_with model: @review, url: admin_review_path(@review), local: true do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class="form-group">
+          <%= f.label :good_point %>
+          <%= f.text_area :good_point, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :bad_point %>
+          <%= f.text_area :bad_point, class: 'form-control' %>
+        </div>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

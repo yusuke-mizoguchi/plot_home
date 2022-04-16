@@ -1,0 +1,45 @@
+<% content_for(:topic, @novel.title) %>
+<%= stylesheet_link_tag "actiontext" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h1><%= t '.title' %></h1>
+      <%= form_with model: @novel, url: admin_novel_path(@novel), local: true do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :genre %>
+          <%= f.select :genre, Novel.genres_i18n.invert, {}, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :story_length %>
+          <%= f.select :story_length, Novel.story_lengths_i18n.invert, {}, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :release %>
+          <%= f.select :release, Novel.releases_i18n.invert, {}, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :plot %>
+          <%= f.rich_text_area :plot, class: 'form-control' %>
+        </div>
+
+        <div id="characters">
+          <h3 class="mb-3">キャラクター設定</h3>
+          <%= f.fields_for :characters, local: true do |character| %>
+            <%= render 'novels/character_fields', f: character %>
+          <% end %>
+          <div class="links">
+            <%= link_to_add_association (t 'novels.form.add_character'), f, :characters,
+            class: "btn btn-primary mb-5", type: "button" %>
+          </div>
+        </div>
+
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
