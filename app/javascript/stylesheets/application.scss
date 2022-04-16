@@ -1,7 +1,7 @@
 @import 'bootstrap/scss/bootstrap';
 
 body {
-  font-family: "Toppan Bunkyu Mincho","凸版文久明朝";
+  font-family: "游明朝", YuMincho, "Hiragino Mincho ProN W3", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
 }
 
 a {
@@ -17,7 +17,7 @@ a {
     background: #93c9ff;
     border-radius: 15px;
   }
-  
+
   .pagination>li>a:hover {        
     border-radius: 15px;
   }

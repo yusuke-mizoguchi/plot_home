@@ -16,7 +16,7 @@ class User < ApplicationRecord
   validates :reset_password_token, uniqueness: true, allow_nil: true
   validate :profile_word_count
 
-  enum role: { reader: 0,  writer: 10}
+  enum role: { writer: 10,  reader: 20}
 
   def own?(object)
     id == object.user_id

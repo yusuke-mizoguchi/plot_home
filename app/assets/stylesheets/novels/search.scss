@@ -1,3 +1,5 @@
+
+
 .input-group {
     display: flex;
     justify-content: center;
@@ -8,17 +10,18 @@
     display: flex;
     justify-content: center;
     .list-inline-item {
-        margin: 1Z0px;
-        width: 350px;
+        margin: 10px;
     }
 }
 
 .sort-list {
     background-color: #1E00FF;
     padding: 5px;
+    width: 250px;
 
     .sort_link {
         color: white;
+        display: block;
     }
 }
 
@@ -26,14 +29,15 @@
     input {
         margin-right: 5px;
     }
-    .user_name {
+    .user-name {
         margin-right: 15px;
     }
     select {
         margin-right: 5px;
     }
-    .story_length {
+    .story-length {
         margin-right: 15px;
+        padding: 0 20px 0px 20px;
     }
 }
 

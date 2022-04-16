@@ -25,7 +25,9 @@
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation, class: 'form-control' %>
         </div>
-        <%= f.submit t('.topic'), class: 'btn btn-primary', data: { confirm: (t '.rule')}   %>
+        <div class="text-center">
+          <%= f.submit t('.topic'), class: 'btn btn-primary mb-5', data: { confirm: (t '.rule')}   %>
+        </div>
       <% end %>
       <div class='text-center'>
         <%= link_to t('.to_login_page'), login_path %>

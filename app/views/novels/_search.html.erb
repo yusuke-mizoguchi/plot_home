@@ -1,12 +1,12 @@
 <%= stylesheet_link_tag "novels/search" %>
 <%= search_form_for @q, url: url do |f| %>
     <div class="input-group mb-3">
-        <%= f.search_field :title_cont, class:'rounded title', placeholder: (t '.title') %>
-        <%= f.search_field :user_name_cont, class:'rounded user_name', placeholder: (t '.user_name') %>
+        <%= f.search_field :title_cont, class:'rounded text-center', placeholder: (t '.title') %>
+        <%= f.search_field :user_name_cont, class:'rounded text-center user-name', placeholder: (t '.user_name') %>
         <%= f.select :genre_eq, Novel.genres_i18n.invert.map{|key, value| [key, Novel.genres[value]]},
-            {include_blank: (t '.genre')}, { class: 'rounded genre' } %>
+            {include_blank: (t '.genre')}, { class: 'rounded text-center' } %>
         <%= f.select :story_length_eq, Novel.story_lengths_i18n.invert.map{|key, value| [key, Novel.story_lengths[value]]},
-            {include_blank: (t '.story_length')}, { class: 'pr-4 rounded story_length' } %>
+            {include_blank: (t '.story_length')}, { class: 'rounded text-center story-length' } %>
         <div class="input-group-append">
             <%= f.submit (t '.search'), class:'btn btn-primary search-button rounded pl-4 pr-4' %>
         </div>
