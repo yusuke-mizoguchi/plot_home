@@ -1,0 +1,52 @@
+<% content_for(:topic, @novel.title) %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h1><%= t('.topic') %></h1>
+      <div class="text-right mb-3">
+        <%= link_to t('defaults.edit'), edit_admin_novel_path(@novel), class: 'btn btn-success' %>
+        <%= link_to t('defaults.delete'), admin_novel_path(@novel), method: :delete, data: { confirm: t('defaults.message.delete_confirm') }, class: 'btn btn-danger' %>
+      </div>
+      <table class="table table-bordered bg-white">
+        <tr>
+          <th scope="row"><%= Novel.human_attribute_name(:id) %></th>
+          <td><%= @novel.id %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= Novel.human_attribute_name(:title) %></th>
+          <td><%= @novel.title %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= Novel.human_attribute_name(:genre) %></th>
+          <td><%= @novel.genre_i18n %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= Novel.human_attribute_name(:story_length) %></th>
+          <td><%= @novel.story_length_i18n %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= Novel.human_attribute_name(:release) %></th>
+          <td><%= @novel.release_i18n %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= Novel.human_attribute_name(:plot) %></th>
+          <td><%= @novel.plot %></td>
+        </tr>
+        <% @novel.characters.each do |c| %>
+          <tr>
+            <th scope="row"><%= Character.human_attribute_name(:character_role) %></th>
+            <td><%= c.character_role %></td>
+          </tr>
+          <tr>
+            <th scope="row"><%= Character.human_attribute_name(:character_text) %></th>
+            <td><%= c.character_text %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <th scope="row"><%= Novel.human_attribute_name(:created_at) %></th>
+          <td><%= @novel.created_at.to_s(:datetime_jp) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

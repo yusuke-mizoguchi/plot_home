@@ -1,0 +1,11 @@
+<div class="nested-fields mb-5">
+    <div class="form-group">
+        <%= f.label :character_role %>
+        <%= f.text_field :character_role, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :character_text %>
+        <%= f.rich_text_area :character_text, class: 'form-control' %>
+    </div>
+    <%= link_to_remove_association (t 'defaults.delete'), f %>
+</div>

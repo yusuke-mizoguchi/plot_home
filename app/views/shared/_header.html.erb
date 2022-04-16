@@ -1,14 +1,19 @@
 <%= stylesheet_link_tag "header" %>
 <header class="header fixed-top" style="height:80px">
-  <nav class="navbar navbar-expand-lg navbar-light pb-2 bg-opacity-50" style="height:80px">
+  <nav class="navbar navbar-expand-lg pb-2 bg-opacity-50" style="height:80px">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <h2 class="mt-2 pl-5 text-white"><%= t('shared.header.main_title') %></h2>
+      <h2 class="mt-2 pl-3 text-white"><%= t('shared.header.main_title') %></h2>
     <% end %>
 
-    <div class="ml-auto d-flex flex-row">
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <a class="nav-link btn btn-secondary btn-lg dropdown-toggle bg-primary bg-opacity-50 text-white"
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#responsiveMenu" aria-controls="responsiveMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"><%= t('shared.header.menu') %></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="responsiveMenu">
+      <ul class="navbar-nav ml-auto list-unstyled">
+
+        <li class="nav-item dropdown m-2 ">
+          <a class="nav-link btn btn-secondary btn-lg dropdown-toggle bg-primary text-white"
             href="#"role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <%= t('shared.header.novel_menu') %>
           </a>
@@ -19,10 +24,9 @@
             <% end %>
           </ul>
         </li>
-      </ul>
-      <ul class="navbar-nav mr-4 ml-4">
-        <li class="nav-item dropdown">
-          <a class="nav-link btn btn-secondary btn-lg dropdown-toggle bg-primary bg-opacity-50  text-white" 
+
+        <li class="nav-item dropdown m-2">
+          <a class="nav-link btn btn-secondary btn-lg dropdown-toggle bg-primary text-white" 
             href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <%= current_user.name %>
           </a>
