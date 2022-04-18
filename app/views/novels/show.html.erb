@@ -41,11 +41,13 @@
     </div>
   </div>
 
-  <% unless current_user&.id == @novel.user.id %>
+  <% if current_user&.id != @novel.user.id && current_user.present? %>
     <!-- レビューフォーム -->
     <div id='review_form'>
       <%= render 'reviews/form', { novel: @novel, review: @review } %>
     </div>
+  <% elsif current_user.blank? %>
+    <p class="text-center m-3">批評にはログインが必要です</p>
   <% end %>
   <!-- レビューエリア -->
   <div id='review-area'>

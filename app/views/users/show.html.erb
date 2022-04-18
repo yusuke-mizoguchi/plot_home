@@ -30,7 +30,7 @@
         <% if @user_novels.present? %>
           <%= render partial: 'user_novels', collection: @user_novels %>
         <% else %>
-          <h5 class='mb-5'><%= t('.nil_novel') %></h5>
+          <h5 class='mb-5 text-center'><%= t('.nil_novel') %></h5>
         <% end %>
         <%= paginate @user_novels, param_name: 'novel_page' %>
       </li>
@@ -39,7 +39,7 @@
         <% if @user_reviews.present? %>
           <%= render partial: 'user_reviews', collection: @user_reviews %>
         <% else %>
-          <h5 class='mb-5'><%= t('.nil_review') %></h5>
+          <h5 class='mb-5 text-center'><%= t('.nil_review') %></h5>
         <% end %>
         <%= paginate @user_reviews, param_name: 'review_page' %>
       </li>

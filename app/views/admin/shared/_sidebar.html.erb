@@ -15,7 +15,7 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
           <%= link_to admin_novels_path, class: "nav-link #{active_if('admin/novels')}" do %>
-            
+            <i class="fa-solid fa-book-open"></i>
             <p>
               <%= t('admin.novels.index.topic') %>
             </p>
@@ -23,7 +23,7 @@
         </li>
         <li class="nav-item">
           <%= link_to admin_users_path, class: "nav-link #{active_if('admin/users')}" do %>
-            
+            <i class="fa-solid fa-users"></i>
             <p>
               <%= t('admin.users.index.topic') %>
             </p>
@@ -31,7 +31,7 @@
         </li>
         <li class="nav-item">
           <%= link_to admin_reviews_path, class: "nav-link #{active_if('admin/reviews')}" do %>
-            
+            <i class="fa-solid fa-comment"></i>
             <p>
               <%= t('admin.reviews.index.topic') %>
             </p>
