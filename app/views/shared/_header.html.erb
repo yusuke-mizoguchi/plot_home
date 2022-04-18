@@ -25,12 +25,22 @@
           </ul>
         </li>
 
-        <li class="nav-item dropdown m-2">
+        <li class="nav-item dropdown mr-4 m-2">
           <a class="nav-link btn btn-secondary btn-lg dropdown-toggle bg-primary text-white" 
             href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <%= current_user.name %>
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <div class="d-flex">
+              <% if current_user.role == "writer" %>
+                <%= link_to notifications_path, class: 'dropdown-item notification' do %>
+                  <%= t ('defaults.notification') %>
+                  <% if unchecked_notifications.any? %>
+                    <i class="fa-solid fa-comment" style="color: orange;"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
             <%= link_to (t 'users.show.topic'), user_path(current_user.id), class: 'dropdown-item' %>
             <%= link_to (t 'defaults.logout'), logout_path, class: 'dropdown-item', method: :delete %>
           </ul>

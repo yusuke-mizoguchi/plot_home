@@ -12,6 +12,7 @@ ja:
     password_reset: 'パスワードリセット'
     password_reset_mail: 'パスワードリセット/PlotHome'
     unspecified: '指定なし'
+    notification: '通知'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を投稿しました"
@@ -84,6 +85,10 @@ ja:
       character_text: 'キャラクター設定'
     edit:
       topic: '小説編集'
+  notifications:
+      index:
+        topic: '通知一覧'
+        delete: '通知削除'
   shared:
     header:
       menu: 'メニュー'
