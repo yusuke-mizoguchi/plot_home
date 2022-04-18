@@ -1,7 +1,10 @@
-<div class="notification-view">
-    <%= notification_form(notification) %>
-    <span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span>
-    <%= link_to notification_path(notification), method: :delete, class: 'float-end' do %>
-        通知を確認
-    <% end %>
+<div class="card m-4">
+    <div class="card-body">
+        <%= notification_form(notification) %>
+        <span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span>
+        <br>
+        <%= link_to notification_path(notification), method: :delete, class: 'text-center' do %>
+            通知を削除
+        <% end %>
+    </div>
 </div>
