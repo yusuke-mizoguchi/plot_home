@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_16_044923) do
+ActiveRecord::Schema.define(version: 2022_04_18_115300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,20 @@ ActiveRecord::Schema.define(version: 2022_04_16_044923) do
     t.index ["novel_id"], name: "index_characters_on_novel_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "visitor_id", null: false
+    t.bigint "visited_id", null: false
+    t.bigint "novel_id"
+    t.bigint "review_id"
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["novel_id"], name: "index_notifications_on_novel_id"
+    t.index ["review_id"], name: "index_notifications_on_review_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
+  end
+
   create_table "novels", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title", null: false
@@ -104,6 +118,10 @@ ActiveRecord::Schema.define(version: 2022_04_16_044923) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "characters", "novels"
+  add_foreign_key "notifications", "novels"
+  add_foreign_key "notifications", "reviews"
+  add_foreign_key "notifications", "users", column: "visited_id"
+  add_foreign_key "notifications", "users", column: "visitor_id"
   add_foreign_key "novels", "users"
   add_foreign_key "reviews", "novels"
   add_foreign_key "reviews", "users"

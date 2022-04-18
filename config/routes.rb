@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :characters, only: %i[create update destroy], shallow: true
   end
   resources :password_resets, only: %i[new create edit update]
+  resources :notifications, only: [:index, :destroy]
 
   namespace :admin do
     root to: 'dashboards#index'

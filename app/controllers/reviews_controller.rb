@@ -8,9 +8,10 @@ before_action :set_review, only: [:show, :edit, :update, :destroy]
   end
 
   def create
-    @review = current_user&.reviews.build(review_params)
     @novel = Novel.find_by(id: params[:novel_id])
+    @review = current_user&.reviews.build(review_params)
     if @review.save
+      @novel.create_notification_review(current_user, @review.id)
       @reviews = @novel.reviews.order(created_at: :desc).page(params[:page]).per(4)
     end
   end
