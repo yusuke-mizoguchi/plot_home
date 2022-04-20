@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= display_meta_tags(default_meta_tags) %>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-225495460-1"></script>
     <script>
@@ -10,13 +15,6 @@
 
       gtag('config', 'UA-225495460-1');
     </script>
-
-
-    <title><%= page_title(yield(:topic)) %></title>
-    <%= favicon_link_tag 'favicon.ico' %>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
