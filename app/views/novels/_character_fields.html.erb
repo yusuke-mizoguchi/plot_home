@@ -8,5 +8,6 @@
         <%= f.label :character_text %>
         <%= f.rich_text_area :character_text, class: 'form-control', placeholder: (t '.character_text_word') %>
     </div>
-    <%= link_to_remove_association (t 'defaults.delete'), f %>
+    <%= link_to_remove_association (t 'defaults.delete'), f,
+        id: "button-delete-#{character.id}", data: { confirm: t('defaults.message.delete_confirm') } %>
 </div>
