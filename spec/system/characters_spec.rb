@@ -41,7 +41,9 @@ RSpec.describe "Characters", type: :system do
         it 'キャラクター削除' do
           visit edit_novel_path(novel)
           execute_script('window.scroll(0,10000)')
-          find(:xpath, '//*[@id="characters"]/div[1]/a').hover.click
+          page.accept_confirm("削除しますか？") do
+            find(id: 'delete-character').click
+          end
           expect(page).not_to have_content character.character_role
           expect(page).not_to have_content character.character_text
           expect(current_path).to eq novel_path(novel)

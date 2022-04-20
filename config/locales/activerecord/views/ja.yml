@@ -25,7 +25,7 @@ ja:
       nill_plot: 'を入力してください'
       over_plot: 'は5000文字以内で入力してください'
       over_profile: 'は5000文字以内で入力してください'
-      over_character_text: 'は2000文字以内で入力してください'
+      over_character_text: 'は5000文字以内で入力してください'
   users:
     new:
       topic: 'ユーザー登録'

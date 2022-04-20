@@ -263,10 +263,8 @@ RSpec.describe "Novels", type: :system do
 
         it '編集ページへのアクセスが失敗する' do
           visit edit_novel_path(other_novel)
-          expect(current_path).to eq edit_novel_path(other_novel)
-          expect(page).to have_content '404'
-          expect(page).to have_content 'お探しのページは見つかりませんでした。'
-          expect(page).to have_content 'URLが間違っているか、ページが移動した可能性があります。'
+          expect(current_path).to eq novel_path(other_novel)
+          expect(page).to have_content("権限がありません")
         end
       end
     end

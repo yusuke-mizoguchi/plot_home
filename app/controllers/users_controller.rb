@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:show, :edit, :update]
   skip_before_action :require_login, only: [:new, :create, :show]
 
   def new
@@ -17,8 +17,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-
     if @user.novels.where.not(release: 'draft') && current_user&.role == "writer"
       @narrow = @user.novels.where.not(release: 'draft')
     elsif user_narrow && current_user&.role == "reader"
@@ -32,7 +30,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
     unless @user.id == current_user&.id
       flash[:alert] = t('defaults.message.not_authorized')
       redirect_to user_path(current_user)
@@ -59,6 +56,6 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
   end
 end

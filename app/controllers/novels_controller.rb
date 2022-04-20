@@ -1,5 +1,5 @@
 class NovelsController < ApplicationController
-  before_action :set_novel, only: [:edit, :update, :destroy]
+  before_action :set_novel, only: [:show, :edit, :update, :destroy]
   skip_before_action :require_login, only: [:index, :show]
 
   def index
@@ -32,7 +32,6 @@ class NovelsController < ApplicationController
   end
 
   def show
-    @novel = Novel.find(params[:id])
     @review = Review.new
     @reviews = @novel.reviews.includes(:user).order(created_at: :desc).page(params[:page]).per(4)
 
@@ -51,6 +50,11 @@ class NovelsController < ApplicationController
   end
 
   def edit
+    @user = @novel.user_id
+    unless @user == current_user&.id
+      flash[:alert] = t('defaults.message.not_authorized')
+      redirect_to novel_path(@novel)
+    end
   end
 
   def update
@@ -74,7 +78,7 @@ class NovelsController < ApplicationController
   end
 
   def set_novel
-    @novel = current_user.novels.find(params[:id])
+    @novel = Novel.find(params[:id])
   end
 
   def novel_params
