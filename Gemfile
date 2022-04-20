@@ -60,6 +60,7 @@ gem 'validate_url'
 gem 'validates_email_format_of'
 
 gem 'config', '2.0.0'
+gem 'meta-tags'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
