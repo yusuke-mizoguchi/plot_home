@@ -59,9 +59,9 @@ RSpec.describe Novel, type: :model do
     end
 
     it 'plot文字数超過' do
-      novel_over_plot = build(:novel, plot: "a" * 7001)
+      novel_over_plot = build(:novel, plot: "a" * 5001)
       expect(novel_over_plot).to be_invalid
-      expect(novel_over_plot.errors[:plot]).to eq ["は7000文字以内で入力してください"]
+      expect(novel_over_plot.errors[:plot]).to eq ["は5000文字以内で入力してください"]
     end
   end
 end
