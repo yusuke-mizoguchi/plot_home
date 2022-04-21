@@ -21,8 +21,8 @@ module ApplicationHelper
         { href: image_url('favicon.ico') },
         { href: image_url('apple_touch.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' },],
       og: {
-        title: :site,
-        description: :description, 
+        title: 'PlotHome - プロットホーム',
+        description: '小説のプロットを投稿し、批評し合う場所です。書き手、読み手を問わず、率直な批評をお待ちしております。', 
         type: 'website',
         url: 'https://www.plot-home.com',
         image: image_url('ogp.jpg'),
