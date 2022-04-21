@@ -15,7 +15,7 @@ module ApplicationHelper
       separator: '|',
       description: '小説のプロットを投稿し、批評し合う場所です。書き手、読み手を問わず、率直な批評をお待ちしております。',
       keywords: 'プロットホーム,plothome,小説,批評',
-      canonical: 'https://plot-home.com',
+      canonical: 'https://www.plot-home.com',
       noindex: ! Rails.env.production?,
       icon: [
         { href: image_url('favicon.ico') },
@@ -24,7 +24,7 @@ module ApplicationHelper
         title: :site,
         description: :description, 
         type: 'website',
-        url: 'https://plot-home.com',
+        url: 'https://www.plot-home.com',
         image: image_url('ogp.jpg'),
         locale: 'ja_JP',
       },
