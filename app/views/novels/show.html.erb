@@ -20,7 +20,9 @@
               <h2><%= t('activerecord.attributes.novel.plot') %></h2>
               <div class="card">
                 <div class="ml-2 mr-2">
-                  <p><%= @novel.plot %></p>
+                  <div class="m-2">
+                    <%= @novel.plot %>
+                  </div>
                 </div>
               </div>
               <% unless @novel.characters.blank? %>
