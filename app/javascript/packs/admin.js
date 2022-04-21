@@ -8,6 +8,7 @@ import Rails from "@rails/ujs";
 import * as ActiveStorage from "@rails/activestorage";
 import "../trix-editor-overrides";
 import "jquery";
+import '@fortawesome/fontawesome-free/js/all'
 
 Rails.start()
 ActiveStorage.start()
