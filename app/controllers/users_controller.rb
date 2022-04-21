@@ -17,7 +17,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    if @user.novels.where.not(release: 'draft') && current_user&.role == "writer"
+    if @user.id == current_user&.id
+      @narrow = @user.novels
+    elsif @user.novels.where.not(release: 'draft') && current_user&.role == "writer"
       @narrow = @user.novels.where.not(release: 'draft')
     elsif user_narrow && current_user&.role == "reader"
       @narrow = user_narrow
