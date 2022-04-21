@@ -7,7 +7,7 @@
         <div class="card-body">
           <div class='row'>
             <div>
-              <h3 class="d-inline"><%= @novel.title %></h3>
+              <h2 class="d-inline"><%= @novel.title %></h2>
               <%= render 'crud_menus', novel: @novel if current_user&.own?(@novel) %>
               <ul class="list-inline">
                 <li class="list-inline-item"><%= t('.author') %>：<%= link_to @novel.user.name, user_path(@novel.user.id) %></li>
@@ -17,19 +17,19 @@
                 <li class="list-inline-item"><%= t('activerecord.attributes.novel.genre') %>：<%= @novel.genre_i18n %></li>
                 <li class="list-inline-item"><%= t('activerecord.attributes.novel.story_length') %>：<%= @novel.story_length_i18n %></li>
               </ul>
-              <h5><%= t('activerecord.attributes.novel.plot') %></h5>
+              <h2><%= t('activerecord.attributes.novel.plot') %></h2>
               <div class="card">
                 <div class="ml-2 mr-2">
                   <p><%= @novel.plot %></p>
                 </div>
               </div>
               <% unless @novel.characters.blank? %>
-                <h5 class="mt-4"><%= t('.character_text') %></h5>
+                <h2 class="mt-4"><%= t('.character_text') %></h2>
               <% end %>
               <% @novel.characters.each do |c| %>
                 <div class="card mb-3">
                   <div class="ml-2 mr-2">
-                    <p><%= c.character_role %></p>
+                    <h3><%= c.character_role %></h3>
                     <p><%= c.character_text %></p>
                   </div>
                 </div>
