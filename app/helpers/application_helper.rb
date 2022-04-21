@@ -1,11 +1,6 @@
 module ApplicationHelper
-  def page_title(page_title = '', admin = false)
-      base_title = if admin
-                     'Plot Home(管理画面)'
-                   else
-                     'Plot Home'
-                   end
-  
+  def page_title(page_title = '')
+    base_title = 'PlotHome - プロットホーム(管理画面)'
     page_title.empty? ? base_title : page_title + " | " + base_title
   end
 
@@ -15,10 +10,10 @@ module ApplicationHelper
 
   def default_meta_tags
     {
-      site: 'プロットホーム',
+      site: 'PlotHome - プロットホーム',
       reverse: true,
       separator: '|',
-      description: '小説のプロットを投稿し、批評し合う場所です',
+      description: '小説のプロットを投稿し、批評し合う場所です。書き手、読み手を問わず、率直な批評をお待ちしております。',
       keywords: 'プロットホーム,plothome,小説,批評',
       canonical: 'https://plot-home.com',
       noindex: ! Rails.env.production?,

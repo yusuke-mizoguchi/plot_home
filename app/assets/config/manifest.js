@@ -5,6 +5,7 @@
 //= link actiontext.css
 //= link novels/search.css
 //= link novels/index.css
+//= link novels/form.css
 //= link static_pages/about.css
 //= link static_pages/privacy.css
 //= link static_pages/rule.css

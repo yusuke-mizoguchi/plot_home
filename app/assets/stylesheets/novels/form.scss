@@ -1,0 +1,20 @@
+@media (min-width:721px){
+    .select-box {
+        display: flex;
+        align-items: center;
+        margin: 2rem;
+
+        .genre {
+            margin-left: 4rem;
+        }
+        .release {
+            margin-right: 4rem;
+        }
+    }
+}
+
+@media (max-width:720px) {
+    .select-box {
+        text-align: center;
+    }
+}
