@@ -4,6 +4,7 @@
 // that code so it'll be compiled.
 require("jquery");
 require("@nathanvda/cocoon");
+var Trix = require("trix")
 require("trix");
 require("@rails/actiontext");
 
@@ -21,3 +22,7 @@ import "../trix-editor-overrides";
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+Trix.config.blockAttributes.heading1 = {
+    tagName: "h4"
+}

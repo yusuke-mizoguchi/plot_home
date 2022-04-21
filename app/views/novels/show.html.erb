@@ -29,8 +29,10 @@
               <% @novel.characters.each do |c| %>
                 <div class="card mb-3">
                   <div class="ml-2 mr-2">
-                    <h3><%= c.character_role %></h3>
-                    <p><%= c.character_text %></p>
+                    <h4 class="m-2"><%= c.character_role %></h4>
+                    <div class="m-2">
+                      <%= c.character_text %>
+                    </div>
                   </div>
                 </div>
               <% end %>
