@@ -3,11 +3,10 @@
     <div class="cerd-body">
       <h4 class="text-center"><%= link_to user_reviews.novel.title, novel_path(user_reviews.novel.id) %></h4>
       <ul class="list-inline justify-content-center">
-        <li class="list-inline-item mr-3"><h5><%= link_to user_reviews.user.name, user_path(user_reviews.user.id) %></h5>
         <li class="list-inline-item mr-3"><%= user_reviews.novel.genre_i18n %></li>
         <li class="list-inline-item"><%= user_reviews.novel.story_length_i18n %></li>
-        <li><%= strip_tags(user_reviews.novel.plot.to_s).gsub(/[\n]/,"").strip.truncate(53) %></li>
       </ul>
+      <p class="text-center"><%= strip_tags(user_reviews.novel.plot.to_s).gsub(/[\n]/,"").strip.truncate(53) %></p>
     </div>
   </div>
 </div>
