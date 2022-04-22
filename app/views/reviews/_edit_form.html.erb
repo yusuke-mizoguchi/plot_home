@@ -1,0 +1,21 @@
+<div class="container mt-4 mb-4" id="review-form">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+        <%= form_with model: [novel, review], id: 'js-new-review', local: false do |f| %>
+          <div class="form-group">
+            <%= f.label :good_point %>
+            <%= f.text_area :good_point, class: 'form-control', id: 'js-new-review-good_point', rows: 3 %>
+          </div>
+          <div class="form-group">
+            <%= f.label :bad_point %>
+            <%= f.text_area :bad_point, class: 'form-control', id: 'js-new-review-bad_point', rows: 3 %>
+          </div>
+
+          <div class="text-center">
+            <%= link_to (t 'defaults.cancel'), novel_path(@novel), class: 'btn btn-secondary', id: 'cancel-button', local: false %>
+            <%= f.submit class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

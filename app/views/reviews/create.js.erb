@@ -1,12 +1,11 @@
 $("#error_messages").remove()
 <% if @review.errors.present? %>
-  $("#js-new-review").prepend("<%= j(render('shared/error_messages', object: @review)) %>")
+  $("#js-new-review").prepend("<%= j(render 'shared/error_messages', object: @review) %>")
 <% elsif @review.comment.blank? %>
-  $("#js-table-review").prepend("<%= j(render('reviews/review', review: @review)) %>")
+  $("#js-table-review").prepend("<%= j(render 'reviews/review', review: @review) %>")
   $("#js-new-review-good_point").val('')
   $("#js-new-review-bad_point").val('')
 <% else %>
-  $("#js-reply-create").prepend("<%= j(render('reviews/reply', reply: @review)) %>")
+  $("#js-reply-create").prepend("<%= j(render 'reviews/reply', reply: @review) %>")
   $("#js-new-reply").hide()
-  $("#js-new-review-comment").val('')
 <% end %>
