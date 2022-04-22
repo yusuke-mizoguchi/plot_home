@@ -1,4 +1,4 @@
-<% if @review.comment.nil? %>
+<% if @review.comment.blank? %>
     $('#review-text-<%= @review.id %>').html("<%= escape_javascript(render 'reviews/edit_form', novel: @novel, review: @review) %>")
 <% else %>
     $('#js-reply-<%= @reply.id %>').html("<%= escape_javascript(render 'reviews/reply_form', review: @review) %>")

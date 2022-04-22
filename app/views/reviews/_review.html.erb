@@ -10,7 +10,7 @@
       </div>
       <% if review.replies.any? %>
         <div id="js-reply-create">
-          <% review.replies.reverse.each do |reply| %>
+          <% review.replies.order(created_at: :desc).each do |reply| %>
             <%= render 'reviews/reply', { reply: reply } %>
           <% end %>
         </div>
