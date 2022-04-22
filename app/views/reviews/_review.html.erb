@@ -10,9 +10,10 @@
       </div>
       <% if review.replies.any? %>
         <div id="js-reply-create">
-        <% review.replies.reverse.each do |reply| %>
-          <%= render partial: 'reviews/reply', locals: { reply: reply } %>
-        <% end %>
+          <% review.replies.order(created_at: :desc).each do |reply| %>
+            <%= render 'reviews/reply', { reply: reply } %>
+          <% end %>
+        </div>
       <% end %>
       <div id="reply-form-<%= review.id %>"></div>
     </td>

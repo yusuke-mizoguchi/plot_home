@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     end
 
     @user_novels = @narrow.order(created_at: :desc).page(params[:novel_page]).per(4)
-    @user_reviews = @user.reviews.order(created_at: :desc).page(params[:review_page]).per(4)
+    @user_reviews = @user.reviews.where(comment: nil).order(created_at: :desc).page(params[:review_page]).per(4)
   end
 
   def edit

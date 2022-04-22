@@ -18,7 +18,9 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  @reply = @review
+  end
 
   def update
     if @review.update(review_update_params)
@@ -48,6 +50,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_update_params
-    params.require(:review).permit(:good_point, :bad_point)
+    params.require(:review).permit(:good_point, :bad_point, :comment, :parent_id)
   end
 end

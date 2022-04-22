@@ -1,17 +1,21 @@
-<div class="card m-3" id="reply-<%= reply.id %>">
-  <ul class="m-2 pl-2">
+<div class="m-3" id="js-reply-<%= reply.id %>">
+  <ul class="card m-2 p-3">
     <li class="card-title">
-        <%= link_to reply.user.name, user_path(reply.user) %>
-        <% if current_user.id == reply.user_id %>
-            <%= link_to novel_review_path(novel_id: reply.novel_id, id: reply.id), class: "js-delete-review-button float-end",
-                data: { confirm: t('defaults.message.delete_confirm') }, name: 'delete-button',
-                method: :delete, remote: true do %>
-                <i class="fa-solid fa-trash"></i>
-            <% end %>
+      <%= link_to reply.user.name, user_path(reply.user) %>
+      <% if current_user&.own?(reply) %>
+        <%= link_to novel_review_path(novel_id: reply.novel_id, id: reply.id), class: "js-delete-reply-button float-end",
+          data: { confirm: t('defaults.message.delete_confirm') }, name: 'delete-button',
+          method: :delete, remote: true do %>
+          <i class="fa-solid fa-trash"></i>
         <% end %>
+        <%= link_to edit_novel_review_path(novel_id: reply.novel_id, id: reply.id),
+          class: "js-edit-reply-button mr-2 float-end", name: 'edit-button', remote: true do %>
+          <i class="fa-solid fa-pen-fancy"></i>
+        <% end %>
+      <% end %>
     </li>
     <li class="card-body p-0">
-        <%= reply.comment %>
+      <%= reply.comment %>
     </li>
   </ul>
 </div>

@@ -1,13 +1,13 @@
 class NotificationsController < ApplicationController
   def index
-    @notifications = current_user.passive_notifications
+    @notifications = current_user.passive_notifications.page(params[:page]).per(5)
     @notifications.where(checked: false).each do |notification|
       notification.update(checked: true)
     end
   end
 
   def destroy
-    @notifications =current_user.passive_notifications.destroy_all
+    @notifications =current_user.passive_notifications.destroy
     redirect_to notifications_path
   end
 end
