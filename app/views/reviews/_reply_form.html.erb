@@ -1,5 +1,5 @@
-<div class="container">
-      <ul>
+<div class="container p-0">
+      <ul class="p-0">
         <%= form_with model: [@novel, @review], id: "js-new-reply", local: false do |f| %>
           <div class="form-group">
             <%= f.hidden_field :parent_id, class: 'form-control' %>
@@ -9,7 +9,7 @@
           </div>
           <li>
             <div class="form-group">
-              <%= f.text_area :comment, class: 'form-control', rows: 2 %>
+              <%= f.text_area :comment, class: 'form-control', rows: 4 %>
             </div>
           </li>
 
@@ -20,5 +20,5 @@
             </div>
           </li>
         <% end %>
-      <ul>
+      </ul>
 </div>
