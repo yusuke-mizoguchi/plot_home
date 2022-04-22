@@ -1,6 +1,7 @@
 <tr id="review-<%= review.id %>">
   <% if !review.parent_id %>
     <td>
+      <br>
       <%= link_to review.user.name, user_path(review.user.id), class: 'h5' %>
       <ul class="list-inline justify-content-center" style="float: right;">
         <% if current_user&.id == @novel.user_id || current_user&.id == review.user_id %>
