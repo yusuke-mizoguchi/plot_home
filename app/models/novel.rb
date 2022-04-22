@@ -23,7 +23,7 @@ class Novel < ApplicationRecord
     temp_ids = Review.where(novel_id: id).select(:user_id).where.not(
                 "user_id = ? or user_id = ?", current_user.id, user_id).distinct 
     temp_ids.each do |temp_id|
-      save_notification_review!(current_user, review_id, temp_id['user_id'])
+      save_notification_review(current_user, review_id, temp_id['user_id'])
     end
     save_notification_review(current_user, review_id, user_id)
   end

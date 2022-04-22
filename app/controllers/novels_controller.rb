@@ -33,7 +33,7 @@ class NovelsController < ApplicationController
 
   def show
     @review = Review.new
-    @reviews = @novel.reviews.includes(:user).order(created_at: :desc).page(params[:page]).per(4)
+    @reviews = @novel.reviews.includes(:user).order(created_at: :desc)
 
     if @novel.user.id == current_user&.id
       render "novels/show"

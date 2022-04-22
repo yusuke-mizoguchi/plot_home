@@ -1,1 +1,5 @@
-$("#review-<%= @review.id %>").remove();
+<% if @review.good_point != 'Reply' %>
+    $("#review-<%= @review.id %>").remove();
+<% else %>
+    $("#reply-<%= @reply.id %>").remove();
+<% end %>

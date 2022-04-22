@@ -1,0 +1,17 @@
+<div class="card m-3" id="reply-<%= reply.id %>">
+  <ul class="m-2 pl-2">
+    <li class="card-title">
+        <%= link_to reply.user.name, user_path(reply.user) %>
+        <% if current_user.id == reply.user_id %>
+            <%= link_to novel_review_path(novel_id: reply.novel_id, id: reply.id), class: "js-delete-review-button float-end",
+                data: { confirm: t('defaults.message.delete_confirm') }, name: 'delete-button',
+                method: :delete, remote: true do %>
+                <i class="fa-solid fa-trash"></i>
+            <% end %>
+        <% end %>
+    </li>
+    <li class="card-body p-0">
+        <%= reply.comment %>
+    </li>
+  </ul>
+</div>

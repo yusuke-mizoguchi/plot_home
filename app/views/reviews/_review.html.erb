@@ -1,4 +1,5 @@
 <tr id="review-<%= review.id %>">
+  <% if !review.parent_id %>
     <td>
       <div id="review-text-<%= review.id %>">
         <h3 class="small mt-3"><%= link_to review.user.name, user_path(review.user.id) %></h3>
@@ -7,11 +8,18 @@
         <%= t('activerecord.attributes.review.bad_point') %>
         <%= simple_format(review.bad_point) %>
       </div>
+      <% if review.replies.any? %>
+        <div id="js-reply-create">
+        <% review.replies.reverse.each do |reply| %>
+          <%= render partial: 'reviews/reply', locals: { reply: reply } %>
+        <% end %>
+      <% end %>
+      <div id="reply-form-<%= review.id %>"></div>
     </td>
 
-    <% if current_user&.own?(review) %>
-      <td class="action">
-        <ul class="list-inline justify-content-center" style="float: right;">
+    <td class="action">
+      <ul class="list-inline justify-content-center" style="float: right;">
+        <% if current_user&.own?(review) %>
           <li class="list-inline-item">
             <%= link_to edit_novel_review_path(novel_id: review.novel_id, id: review.id),
               class: "js-edit-review-button", name: 'edit-button', remote: true do %>
@@ -25,7 +33,13 @@
             <i class="fa-solid fa-trash"></i>
             <% end %>
           </li>
-        </ul>
-      </td>
-    <% end %>
+        <% end %>
+        <% if current_user&.id == @novel.user_id || current_user&.id == review.user_id %>
+          <li>
+            <%= link_to (t 'reviews.reply_form.comment'), new_novel_review_path(@novel, parent_id: review.id), remote: true %>
+          </li>
+        <% end %>
+      </ul>
+    </td>
+  <% end %>
 </tr>

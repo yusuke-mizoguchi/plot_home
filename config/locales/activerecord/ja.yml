@@ -26,6 +26,7 @@ ja:
       review:
         good_point: '良い点'
         bad_point: '改善点'
+        comment: '返信'
   attributes:
     id: 'ID'
     created_at: '作成日時'
