@@ -7,7 +7,8 @@ class NotificationsController < ApplicationController
   end
 
   def destroy
-    @notifications =current_user.passive_notifications.destroy
+    @notifications = Notification.find(params[:id])
+    @notifications.destroy
     redirect_to notifications_path
   end
 end
