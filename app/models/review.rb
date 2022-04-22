@@ -7,5 +7,5 @@ class Review < ApplicationRecord
 
   validates :good_point, presence: true, length: { maximum: 1500 }
   validates :bad_point, length: { maximum: 1500 }
-  validates :comment, length: { maximum: 100 }
+  validates :comment, length: { maximum: 1000 }
 end

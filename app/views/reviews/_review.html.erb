@@ -1,9 +1,39 @@
 <tr id="review-<%= review.id %>">
   <% if !review.parent_id %>
     <td>
-      <div id="review-text-<%= review.id %>">
-        <h3 class="small mt-3"><%= link_to review.user.name, user_path(review.user.id) %></h3>
-        <%= t('activerecord.attributes.review.good_point') %>
+      <%= link_to review.user.name, user_path(review.user.id), class: 'h5' %>
+      <ul class="list-inline justify-content-center" style="float: right;">
+        <% if current_user&.id == @novel.user_id || current_user&.id == review.user_id %>
+          <li>
+            <%= link_to (t 'reviews.reply_form.comment'), new_novel_review_path(@novel, parent_id: review.id), remote: true %>
+          </li>
+        <% end %>
+      </ul>
+
+      <br>
+      <br>
+
+      <div class="card card-body m-2 p-3" id="review-text-<%= review.id %>">
+        <ul class="m-0 p-0">
+          <li class="list-inline-item">
+            <%= t('activerecord.attributes.review.good_point') %>
+          </li>
+          <% if current_user&.own?(review) %>
+            <li class="list-inline-item float-end ml-2">
+              <%= link_to novel_review_path(novel_id: review.novel_id, id: review.id), class: "js-delete-review-button",
+              data: { confirm: t('defaults.message.delete_confirm') }, name: 'delete-button',
+              method: :delete, remote: true do %>
+              <i class="fa-solid fa-trash"></i>
+              <% end %>
+              <li class="list-inline-item float-end">
+              <%= link_to edit_novel_review_path(novel_id: review.novel_id, id: review.id),
+                class: "js-edit-review-button", name: 'edit-button', remote: true do %>
+                <i class="fa-solid fa-pen-fancy"></i>
+              <% end %>
+            </li>
+            </li>
+          <% end %>
+          </ul>
         <%= simple_format(review.good_point) %>
         <%= t('activerecord.attributes.review.bad_point') %>
         <%= simple_format(review.bad_point) %>
@@ -16,31 +46,6 @@
         </div>
       <% end %>
       <div id="reply-form-<%= review.id %>"></div>
-    </td>
-
-    <td class="action">
-      <ul class="list-inline justify-content-center" style="float: right;">
-        <% if current_user&.own?(review) %>
-          <li class="list-inline-item">
-            <%= link_to edit_novel_review_path(novel_id: review.novel_id, id: review.id),
-              class: "js-edit-review-button", name: 'edit-button', remote: true do %>
-              <i class="fa-solid fa-pen-fancy"></i>
-            <% end %>
-          </li>
-          <li class="list-inline-item">
-            <%= link_to novel_review_path(novel_id: review.novel_id, id: review.id), class: "js-delete-review-button",
-            data: { confirm: t('defaults.message.delete_confirm') }, name: 'delete-button',
-            method: :delete, remote: true do %>
-            <i class="fa-solid fa-trash"></i>
-            <% end %>
-          </li>
-        <% end %>
-        <% if current_user&.id == @novel.user_id || current_user&.id == review.user_id %>
-          <li>
-            <%= link_to (t 'reviews.reply_form.comment'), new_novel_review_path(@novel, parent_id: review.id), remote: true %>
-          </li>
-        <% end %>
-      </ul>
     </td>
   <% end %>
 </tr>

@@ -1,5 +1,5 @@
-<div class="container float-start p-0">
-      <ul class="list-inline">
+<div class="container">
+      <ul>
         <%= form_with model: [@novel, @review], id: "js-new-reply", local: false do |f| %>
           <div class="form-group">
             <%= f.hidden_field :parent_id, class: 'form-control' %>
@@ -7,16 +7,16 @@
           <div class="form-group">
             <%= f.hidden_field :good_point, class: 'form-control', value: 'Reply' %>
           </div>
-          <li class="list-inline-item">
+          <li>
             <div class="form-group">
               <%= f.text_area :comment, class: 'form-control', rows: 2 %>
             </div>
           </li>
 
-          <li class="list-inline-item">
+          <li>
             <div class="text-center">
-              <%= f.submit (t '.comment'), class: 'btn btn-primary' %>
               <%= link_to (t 'defaults.cancel'), novel_path(@novel), class: 'btn btn-secondary', id: 'cancel-button', local: false %>
+              <%= f.submit class: 'btn btn-primary' %>
             </div>
           </li>
         <% end %>
