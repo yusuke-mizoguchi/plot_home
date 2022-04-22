@@ -32,12 +32,12 @@
       </li>
       <li class="col-sm-5 col-lg-6 list-inline-item mt-5">
         <h3 class='mb-4 text-center'><%= t('.review_novel') %></h3>
-        <% if @user_reviews.present? %>
-          <%= render partial: 'user_reviews', collection: @user_reviews %>
+        <% if @narrow_reviews.present? %>
+          <%= render partial: 'narrow_reviews', collection: @narrow_reviews %>
         <% else %>
           <h5 class='mb-5 text-center'><%= t('.nil_review') %></h5>
         <% end %>
-        <%= paginate @user_reviews, param_name: 'review_page' %>
+        <%= paginate @narrow_reviews, param_name: 'review_page' %>
       </li>
     </ul>
   </div>
