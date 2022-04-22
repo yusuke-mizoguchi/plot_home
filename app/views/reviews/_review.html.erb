@@ -34,9 +34,11 @@
             <% end %>
           </li>
         <% end %>
-        <li>
-          <%= link_to (t 'reviews.reply_form.comment'), new_novel_review_path(@novel, parent_id: review.id), remote: true %>
-        </li>
+        <% if current_user&.id == @novel.user_id || current_user&.id == review.user_id %>
+          <li>
+            <%= link_to (t 'reviews.reply_form.comment'), new_novel_review_path(@novel, parent_id: review.id), remote: true %>
+          </li>
+        <% end %>
       </ul>
     </td>
   <% end %>

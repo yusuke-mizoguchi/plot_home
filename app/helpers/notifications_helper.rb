@@ -8,7 +8,7 @@ module NotificationsHelper
         @review_bad = @review.bad_point
         @micropost_title =@review.novel.title
         tag.a(@visitor.name, href: user_path(@visitor)) + 'さんが' + 
-        tag.a("#{notification.novel.title}", href: novel_path(notification.novel_id)) + 'を批評しました'
+        tag.a("#{notification.novel.title}", href: novel_path(notification.novel_id)) + 'にコメントしました'
     end
 
     def unchecked_notifications
