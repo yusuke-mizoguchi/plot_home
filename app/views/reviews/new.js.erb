@@ -1,0 +1,1 @@
+document.querySelector("#reply-form-<%= @review.parent_id %>").innerHTML = ("<%= j(render 'reviews/reply_form', review: @review) %>");

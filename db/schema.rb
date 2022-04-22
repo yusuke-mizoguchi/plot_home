@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_18_115300) do
+ActiveRecord::Schema.define(version: 2022_04_22_004638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,7 +94,10 @@ ActiveRecord::Schema.define(version: 2022_04_18_115300) do
     t.text "bad_point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "comment"
+    t.bigint "parent_id"
     t.index ["novel_id"], name: "index_reviews_on_novel_id"
+    t.index ["parent_id"], name: "index_reviews_on_parent_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -124,5 +127,6 @@ ActiveRecord::Schema.define(version: 2022_04_18_115300) do
   add_foreign_key "notifications", "users", column: "visitor_id"
   add_foreign_key "novels", "users"
   add_foreign_key "reviews", "novels"
+  add_foreign_key "reviews", "reviews", column: "parent_id"
   add_foreign_key "reviews", "users"
 end

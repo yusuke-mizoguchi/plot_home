@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-lg-8 offset-lg-2">
     <table id="js-table-review" class="table">
-      <%= render reviews %>
+      <%= render partial: 'reviews/review', collection: @reviews, locals: { novel: novel, review: review } %>
     </table>
   </div>
 </div>
