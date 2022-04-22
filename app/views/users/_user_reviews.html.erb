@@ -1,12 +1,11 @@
-<div id="user_novels-id-<%= user_reviews.id %>">
+
   <div class="card mb-3">
     <div class="card-body">
-      <h4 class="text-center"><%= link_to user_reviews.novel.title, novel_path(user_reviews.novel.id) %></h4>
+      <h4 class="text-center"><%= link_to narrow_reviews.novel.title, novel_path(narrow_reviews.novel.id) %></h4>
       <ul class="list-inline justify-content-center">
-        <li class="list-inline-item mr-3"><%= user_reviews.novel.genre_i18n %></li>
-        <li class="list-inline-item"><%= user_reviews.novel.story_length_i18n %></li>
+        <li class="list-inline-item mr-3"><%= narrow_reviews.novel.genre_i18n %></li>
+        <li class="list-inline-item"><%= narrow_reviews.novel.story_length_i18n %></li>
       </ul>
-      <p class="text-center m-0"><%= strip_tags(user_reviews.novel.plot.to_s).gsub(/[\n]/,"").strip.truncate(53) %></p>
+      <p class="text-center m-0"><%= strip_tags(narrow_reviews.novel.plot.to_s).gsub(/[\n]/,"").strip.truncate(53) %></p>
     </div>
   </div>
-</div>
