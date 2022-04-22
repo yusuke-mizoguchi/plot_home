@@ -1,6 +1,6 @@
-<div class="container float-start p-0 ml-3" id="review-form">
+<div class="container float-start p-0 ml-3">
       <ul class="list-inline">
-        <%= form_with model: [@novel, @review], id: 'js-new-review', local: false do |f| %>
+        <%= form_with model: [@novel, @review], id: "js-new-reply", local: false do |f| %>
           <div class="form-group">
             <%= f.hidden_field :parent_id, class: 'form-control' %>
           </div>

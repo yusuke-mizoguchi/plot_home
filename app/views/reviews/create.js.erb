@@ -7,5 +7,6 @@ $("#error_messages").remove()
   $("#js-new-review-bad_point").val('')
 <% else %>
   $("#js-reply-create").prepend("<%= j(render('reviews/reply', reply: @review)) %>")
+  $("#js-new-reply").hide()
   $("#js-new-review-comment").val('')
 <% end %>
