@@ -2,7 +2,7 @@ class TopsController < ApplicationController
     skip_before_action :require_login
 
     def top
-        @reviews = Review.select(:user_id).where(id: Review.select("DISTINCT ON (user_id) id").order(:user_id, created_at: :desc)).order(created_at: :desc).limit(3)
+        @reviews = Review.select(:user_id).where(comment: nil, id: Review.select("DISTINCT ON (user_id) id").order(:user_id, created_at: :desc)).order(created_at: :desc).limit(3)
         @novels_post = Novel.where.not(release: 'draft').order(created_at: :desc)
 
         if current_user&.role == 'writer' && @novels_post.where.not(release: 'draft')
