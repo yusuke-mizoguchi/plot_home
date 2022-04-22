@@ -19,6 +19,11 @@
         <tr>
           <th scope="row"><%= Review.human_attribute_name(:bad_point) %></th>
           <td><%= @review.bad_point %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= Review.human_attribute_name(:comment) %></th>
+          <td><%= @review.comment %></td>
+        </tr>
         <tr>
           <th scope="row"><%= Review.human_attribute_name(:created_at) %></th>
           <td><%= @review.created_at.to_s(:datetime_jp) %></td>

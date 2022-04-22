@@ -31,6 +31,6 @@ class Admin::ReviewsController < Admin::BaseController
     end
 
     def review_params
-        params.require(:review).permit(:good_point, :bad_point)
+        params.require(:review).permit(:good_point, :bad_point, :comment, :perent_id)
     end
 end
