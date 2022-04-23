@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
     @review.novel_id = @novel.id
     @review.user_id = current_user.id
     if @review.save
-      @novel.create_notification_review(current_user, @review.id)
+      @novel.create_notification_review!(current_user, @review.id)
       @reviews = @novel.reviews.order(created_at: :desc)
     end
   end
