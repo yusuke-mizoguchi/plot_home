@@ -1,7 +1,8 @@
 # プロットホーム(PlotHome)
 
 https://www.plot-home.com
-![new_top_cut](https://user-images.githubusercontent.com/88316627/165034527-0df44292-3f8c-4531-b61e-c6f7631ffb73.jpeg)
+![new_top](https://user-images.githubusercontent.com/88316627/165045760-5979a513-5dde-43a1-bd76-eedbed596832.jpeg)
+
 
 # サービス概要
 こんな話を思いついたけど、という時に
@@ -56,7 +57,7 @@ https://www.plot-home.com
 SNSや匿名掲示板では使用目的が多岐に渡り、かえって人が集まり辛い面があるので、目的を絞った場所を作りたい。
 
 ## 画面遷移図
-　https://www.figma.com/file/RL7Dxn3pC6FwoH9WpR9ynS/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA%2F%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0
+　https://www.figma.com/file/cgih3TY4eChXL8ExLkZfYX/%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E3%83%9B%E3%83%BC%E3%83%A0
 
 ## ER図の追加
 https://drive.google.com/file/d/14NDI51d2AXFV5TR_1n5ktcL_Qn31uz46/view?usp=sharing
