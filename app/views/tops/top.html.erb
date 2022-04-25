@@ -19,6 +19,7 @@
         <div class='background mb-3'>
           <h4 class='mb-3'>最近投稿された作品</h4>
           <% @novels.each do |novel| %>
+            <!-- 表示するタイトルの字数を制限 -->
             <p><%= link_to novel.title.truncate(18), novel_path(novel), class: 'link-text' %></p>
           <% end %>
         </div>

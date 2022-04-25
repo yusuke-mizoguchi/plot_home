@@ -10,12 +10,20 @@
               <h2 class="d-inline"><%= @novel.title %></h2>
               <%= render 'crud_menus', novel: @novel if current_user&.own?(@novel) %>
               <ul class="list-inline">
-                <li class="list-inline-item"><%= t('.author') %>：<%= link_to @novel.user.name, user_path(@novel.user.id) %></li>
-                <li class="list-inline-item"><%= t('attributes.created_at') %>：<%= @novel.created_at.to_s(:datetime_jp) %></li>
+                <li class="list-inline-item">
+                  <%= t('.author') %>：<%= link_to @novel.user.name, user_path(@novel.user.id) %>
+                </li>
+                <li class="list-inline-item">
+                  <%= t('attributes.created_at') %>：<%= @novel.created_at.to_s(:datetime_jp) %>
+                </li>
               </ul>
               <ul class="list-inline">
-                <li class="list-inline-item"><%= t('activerecord.attributes.novel.genre') %>：<%= @novel.genre_i18n %></li>
-                <li class="list-inline-item"><%= t('activerecord.attributes.novel.story_length') %>：<%= @novel.story_length_i18n %></li>
+                <li class="list-inline-item">
+                  <%= t('activerecord.attributes.novel.genre') %>：<%= @novel.genre_i18n %>
+                </li>
+                <li class="list-inline-item">
+                  <%= t('activerecord.attributes.novel.story_length') %>：<%= @novel.story_length_i18n %>
+                </li>
               </ul>
               <h2><%= t('activerecord.attributes.novel.plot') %></h2>
               <div class="card">

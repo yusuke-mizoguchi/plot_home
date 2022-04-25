@@ -2,6 +2,7 @@
 <div class="row">
   <div class="col-lg-8 offset-lg-2">
     <table id="js-table-review" class="table">
+      <!-- 返信用フォームがreviewの先にある -->
       <%= render partial: 'reviews/review', collection: @reviews, locals: { novel: @novel, review: @review } %>
     </table>
   </div>
