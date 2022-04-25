@@ -18,5 +18,12 @@ FactoryBot.define do
     sequence(:email) { |n| "read-#{n}@example.com" }
     role { :reader }
     end
+
+    trait :admin do
+    sequence(:name) { |n| "admin-#{n}" }
+    sequence(:email) { |n| "admin-#{n}@example.com"}
+    role { :writer }
+    admin { true }
+    end
   end
 end
