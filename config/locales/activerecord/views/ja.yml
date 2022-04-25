@@ -92,7 +92,7 @@ ja:
   notifications:
     index:
       topic: '通知一覧'
-      notificayions_nil: '通知はありません'
+      notifications_nil: '通知はありません'
     notification:
       delete: '通知を削除'
   shared:

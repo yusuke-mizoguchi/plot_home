@@ -5,5 +5,10 @@ FactoryBot.define do
     association :user
     association :novel
     association :parent, class_name: 'Review'
+
+    trait :comment do
+      sequence(:good_point) { |n| "reply-#{n}" }
+      sequence(:comment) { |n| "comment-#{n}" }
+    end
   end
 end

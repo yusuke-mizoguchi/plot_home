@@ -14,8 +14,8 @@ RSpec.describe "Reviews", type: :system do
             fill_in 'review[good_point]', with: 'good_point'
             fill_in 'review[bad_point]', with: 'bad_point'
             click_button '投稿する'
-            expect(page).to have_content('good_point')
-            expect(page).to have_content('bad_point')
+            expect(page).to have_content 'good_point'
+            expect(page).to have_content 'bad_point'
             expect(current_path).to eq novel_path(novel)
           end
         end
@@ -54,8 +54,8 @@ RSpec.describe "Reviews", type: :system do
             find("input[value='#{review.good_point}']").set('update_good')
             find("input[value='#{review.bad_point}']").set('update_bad')
             click_button '更新する'
-            expect(page).to have_content('update_good')
-            expect(page).to have_content('update_bad')
+            expect(page).to have_content 'update_good'
+            expect(page).to have_content 'update_bad'
             expect(current_path).to eq novel_path(novel)
           end
         end
