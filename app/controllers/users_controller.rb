@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    #投稿した作品に表示する作品の振り分け
     if @user.id == current_user&.id
       @narrow = @user.novels
     elsif @user.novels.where.not(release: 'draft') && current_user&.role == "writer"
@@ -28,12 +29,9 @@ class UsersController < ApplicationController
     end
     @user_novels = @narrow.order(created_at: :desc).page(params[:novel_page]).per(4)
 
-    #下記のコードはselectする対象がDBに2つないと機能しない
-    #@reviews = Review.select(:novel_id, :user_id).where(comment: nil, user_id: params[:id], id: Review.select("DISTINCT ON (novel_id) id").order(:novel_id, created_at: :desc)).order(created_at: :desc)
-    
+    #批評した作品に表示する作品を抽出
     @reviews = Review.from(Review.where(comment: nil, user_id: params[:id]).select('DISTINCT ON ("novel_id") *').order("novel_id, created_at DESC"),:reviews).order(created_at: :desc)
     @narrow_reviews = @reviews.page(params[:review_page]).per(4)
-
   end
 
   def edit
@@ -54,6 +52,7 @@ class UsersController < ApplicationController
 
   private
 
+  #メソッド化で記述省略
   def user_narrow
     @user.novels.where(release: 'reader').or(@user.novels.where(release: 'release'))
   end

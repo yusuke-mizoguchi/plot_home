@@ -124,6 +124,11 @@ ja:
     update:
       success: 'パスワードを変更しました'
       fail: 'パスワードの変更に失敗しました'
+  notifications:
+    index:
+      notificayions_nil: '通知はありません'
+    notification:
+      delete: '通知を削除'
   admin:
     user_sessions:
       new:
