@@ -4,5 +4,6 @@ FactoryBot.define do
     sequence(:bad_point) { |n| "bad-#{n}"}
     association :user
     association :novel
+    association :parent, class_name: 'Review'
   end
 end

@@ -20,10 +20,16 @@ RSpec.describe Review, type: :model do
       expect(review_over_good_point.errors[:good_point]).to eq ["は1500文字以内で入力してください"]
     end
 
-    it 'badd_point文字数超過' do
+    it 'bad_point文字数超過' do
       review_over_bad_point = build(:review, bad_point: "a" * 1501)
       expect(review_over_bad_point).to be_invalid
       expect(review_over_bad_point.errors[:bad_point]).to eq ["は1500文字以内で入力してください"]
+    end
+
+    it 'comment文字数超過' do
+      review_over_comment = build(:review, comment: "a" * 1501)
+      expect(review_over_comment).to be_invalid
+      expect(review_over_comment.errors[:comment]).to eq ["は1500文字以内で入力してください"]
     end
   end
 end

@@ -41,7 +41,6 @@ class Novel < ApplicationRecord
     notification.save if notification.valid?
   end
 
-
   private
 
   def plot_required
