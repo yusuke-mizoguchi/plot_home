@@ -3,6 +3,7 @@ class NovelsController < ApplicationController
   skip_before_action :require_login, only: [:index, :show]
 
   def index
+    #公開範囲毎に表示する小説を振り分け
     if Novel.where.not(release: 'draft') && current_user&.role == "writer"
       @q = Novel.where.not(release: 'draft').ransack(params["q"])
     elsif novel_narrow && current_user&.role == "reader"
@@ -35,6 +36,7 @@ class NovelsController < ApplicationController
     @review = Review.new
     @reviews = @novel.reviews.includes(:user).order(created_at: :desc)
 
+    #公開範囲毎にアクセスできる小説を振り分け
     if @novel.user.id == current_user&.id
       render "novels/show"
     elsif (@novel.release != "draft") && current_user&.role == "writer"
@@ -73,6 +75,7 @@ class NovelsController < ApplicationController
 
   private
 
+  #メソッド化で記述省略
   def novel_narrow
     Novel.where(release: 'reader').or(Novel.where(release: 'release'))
   end

@@ -19,6 +19,7 @@ class Novel < ApplicationRecord
   enum story_length: { long: 5, middle: 15, short: 25 }
   enum release: { release: 1, reader: 2, writer: 3, draft: 4 }
 
+  #通知用メソッド
   def create_notification_review!(current_user, review_id)
     temp_ids = Review.where(novel_id: id).select(:user_id).where.not(
                 "user_id = ? or user_id = ?", current_user.id, user_id).distinct 
