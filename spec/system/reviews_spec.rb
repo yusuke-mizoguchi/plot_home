@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Reviews", type: :system do
-  let!(:novel) { create(:novel) }
+  let(:user) { create(:user) }
+  let(:novel) { create(:novel, user: user) }
   let(:other_user) { create(:user, :reader) }
 
   describe 'ログイン後' do
@@ -72,7 +73,7 @@ RSpec.describe "Reviews", type: :system do
           end
         end
 
-        context '字数制限超過' do
+        context '字数超過' do
           it '批評編集が失敗する' do
             visit novel_path(novel)
             find('.js-edit-review-button').click
@@ -96,6 +97,95 @@ RSpec.describe "Reviews", type: :system do
           end
           expect(page).not_to have_content review.good_point
           expect(page).not_to have_content review.bad_point
+          expect(current_path).to eq novel_path(novel)
+        end
+      end
+
+
+      describe '返信投稿' do
+        let!(:review) {create(:review, user: other_user, novel: novel)}
+
+        context '入力値が正常' do
+          it '返信が成功する' do
+            visit novel_path(novel)
+            click_link '返信'
+            fill_in 'review[comment]', with: 'reply'
+            find('reply-commit').click
+            expect(page).to have_content 'reply'
+            expect(current_path).to eq novel_path(novel)
+          end
+        end
+
+        context 'commentが未入力' do
+          it '返信が失敗する' do
+            visit novel_path(novel)
+            click_link '返信'
+            fill_in 'review[comment]', with: ''
+            find('reply-commit').click
+            expect(page).to have_content '返信を入力してください'
+            expect(current_path).to eq novel_path(novel)
+          end
+        end
+
+        context '字数超過' do
+          it '返信が失敗する' do
+            visit novel_path(novel)
+            click_link '返信'
+            fill_in 'review[comment]', with: 'a' * 1001
+            find('reply-commit').click
+            expect(page).to have_content '返信は1000文字以内で入力してください'
+            expect(current_path).to eq novel_path(novel)
+          end
+        end
+      end
+
+      describe '返信編集' do
+        let!(:review) {create(:review, user: other_user, novel: novel)}
+        let!(:reply) { create(:review, parent_id: review.id, novel: novel, user: user) }
+
+        context '入力値が正常' do
+          it '更新が成功する' do
+            visit novel_path(novel)
+            find('.js-edit-reply-button').click
+            fill_in 'review[comment]', with: 'update-reply'
+            find('reply-commit').click
+            expect(page).to have_content 'update-reply'
+            expect(current_path).to eq novel_path(novel)
+          end
+        end
+
+        context 'commentが未入力' do
+          it '返信が失敗する' do
+            visit novel_path(novel)
+            find('.js-edit-reply-button').click
+            find("input[value='#{reply.comment}']").set('')
+            expect(page).to have_content '返信を入力してください'
+            expect(current_path).to eq novel_path(novel)
+          end
+        end
+
+        context '字数超過' do
+          it '返信が失敗する' do
+            visit novel_path(novel)
+            find('.js-edit-reply-button').click
+            find("input[value='#{reply.comment}']").set('r' * 1001)
+            expect(page).to have_content '返信は1000文字以内で入力してください'
+            expect(current_path).to eq novel_path(novel)
+          end
+        end
+      end
+
+      describe '返信削除' do
+        let!(:review) {create(:review, user: other_user, novel: novel)}
+        let!(:reply) { create(:review, parent_id: review.id, novel: novel, user: user) }
+
+        it '返信の削除が成功する' do
+          login(user)
+          visit novel_path(novel)
+          page.accept_confirm("削除しますか？") do
+            find('.js-delete-reply-button').click
+          end
+          expect(page).not_to have_content reply.comment
           expect(current_path).to eq novel_path(novel)
         end
       end
