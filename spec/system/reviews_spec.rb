@@ -51,7 +51,7 @@ RSpec.describe "Reviews", type: :system do
         context 'フォームの入力値が正常' do
           it '批評編集が成功する' do
             visit novel_path(novel)
-            find('.js-edit-review-button').click
+            find('.js-edit-review-button').clickgit 
             find("input[value='#{review.good_point}']").set('update_good')
             find("input[value='#{review.bad_point}']").set('update_bad')
             click_button '更新する'
@@ -107,10 +107,11 @@ RSpec.describe "Reviews", type: :system do
 
         context '入力値が正常' do
           it '返信が成功する' do
+            login(user)
             visit novel_path(novel)
             click_link '返信'
             fill_in 'review[comment]', with: 'reply'
-            find('reply-commit').click
+            find('.reply-commit').click
             expect(page).to have_content 'reply'
             expect(current_path).to eq novel_path(novel)
           end
@@ -118,10 +119,12 @@ RSpec.describe "Reviews", type: :system do
 
         context 'commentが未入力' do
           it '返信が失敗する' do
+            login(user)
             visit novel_path(novel)
+            visit current_path
             click_link '返信'
             fill_in 'review[comment]', with: ''
-            find('reply-commit').click
+            find('.reply-commit').click
             expect(page).to have_content '返信を入力してください'
             expect(current_path).to eq novel_path(novel)
           end
@@ -129,10 +132,12 @@ RSpec.describe "Reviews", type: :system do
 
         context '字数超過' do
           it '返信が失敗する' do
+            login(user)
             visit novel_path(novel)
+            visit current_path
             click_link '返信'
             fill_in 'review[comment]', with: 'a' * 1001
-            find('reply-commit').click
+            find('.reply-commit').click
             expect(page).to have_content '返信は1000文字以内で入力してください'
             expect(current_path).to eq novel_path(novel)
           end
@@ -145,10 +150,11 @@ RSpec.describe "Reviews", type: :system do
 
         context '入力値が正常' do
           it '更新が成功する' do
+            login(user)
             visit novel_path(novel)
             find('.js-edit-reply-button').click
             fill_in 'review[comment]', with: 'update-reply'
-            find('reply-commit').click
+            find('.reply-commit').click
             expect(page).to have_content 'update-reply'
             expect(current_path).to eq novel_path(novel)
           end
@@ -156,9 +162,11 @@ RSpec.describe "Reviews", type: :system do
 
         context 'commentが未入力' do
           it '返信が失敗する' do
+            login(user)
             visit novel_path(novel)
             find('.js-edit-reply-button').click
             find("input[value='#{reply.comment}']").set('')
+            find('.reply-commit').click
             expect(page).to have_content '返信を入力してください'
             expect(current_path).to eq novel_path(novel)
           end
@@ -166,9 +174,11 @@ RSpec.describe "Reviews", type: :system do
 
         context '字数超過' do
           it '返信が失敗する' do
+            login(user)
             visit novel_path(novel)
             find('.js-edit-reply-button').click
             find("input[value='#{reply.comment}']").set('r' * 1001)
+            find('.reply-commit').click
             expect(page).to have_content '返信は1000文字以内で入力してください'
             expect(current_path).to eq novel_path(novel)
           end

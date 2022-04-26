@@ -36,8 +36,9 @@ RSpec.describe "AdminUsers", type: :system do
 
             context '登録済みのメールアドレスを使用' do
                 it 'ユーザーの編集が失敗する' do
+                    existed_user = create(:user)
                     visit edit_admin_user_path(reader)
-                    fill_in 'メールアドレス', with: reader.email
+                    fill_in 'メールアドレス', with: existed_user.email
                     fill_in 'ペンネーム', with: 'update_name'
                     fill_in_rich_text_area 'プロフィール', with: 'update_profile'
                     click_button '更新する'
@@ -64,9 +65,8 @@ RSpec.describe "AdminUsers", type: :system do
         describe 'ユーザー削除' do
             it 'ユーザーの削除が成功する' do
                 visit admin_user_path(reader)
-                click_button '削除'
                 page.accept_confirm("削除しますか？") do
-                    click_button '削除'
+                    click_link '削除'
                 end
                 expect(page).to have_content 'ユーザーを削除しました'
                 expect(current_path).to eq admin_users_path
