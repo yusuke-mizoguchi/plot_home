@@ -5,13 +5,12 @@ RSpec.describe "AdminNovels", type: :system do
     let!(:writer) { create(:user, :writer) }
     let(:novel) { create(:novel, user: writer) }
 
-    before
-        login(admin)
-        visit edit_admin_novels_path(novel)
+    before { login(admin) }
 
         describe '小説編集' do
             context 'フォームの入力値が正常' do
                 it '小説編集が成功する' do
+                    visit edit_admin_novels_path(novel)
                     fill_in 'タイトル', with: 'update-test-title'
                     select 'ホラー', from: 'novel_genre'
                     select '短編', from: 'novel_story_length'
@@ -25,6 +24,7 @@ RSpec.describe "AdminNovels", type: :system do
 
             context '空白' do
                 it '小説編集が失敗する' do
+                    visit edit_admin_novels_path(novel)
                     fill_in 'タイトル', with: ''
                     select 'ジャンルを選択', from: 'novel_genre'
                     select '文量を選択', from: 'novel_story_length'
@@ -42,7 +42,8 @@ RSpec.describe "AdminNovels", type: :system do
             end
 
             context '字数超過' do
-                it '小説投稿が失敗する' do
+                it '小説編種が失敗する' do
+                    visit edit_admin_novels_path(novel)
                     fill_in 'タイトル', with: 'a' * 51
                     select 'ホラー', from: 'novel_genre'
                     select '短編', from: 'novel_story_length'
@@ -57,7 +58,8 @@ RSpec.describe "AdminNovels", type: :system do
             end
 
             context 'タイトル重複' do
-                it '小説投稿が失敗する' do
+                it '小説編集が失敗する' do
+                    visit edit_admin_novels_path(novel)
                     existed_novel = create(:novel)
                     fill_in 'タイトル', with: existed_novel.title
                     select 'ハイファンタジー', from: 'novel_genre'
@@ -76,7 +78,7 @@ RSpec.describe "AdminNovels", type: :system do
             let!(:novel) { create(:novel, user: writer) }
 
             it '小説の削除ができる' do
-                visit novel_path(novel)
+                visit admin_novel_path(novel)
                 page.accept_confirm("削除しますか？") do
                     click_button '削除'
                 end

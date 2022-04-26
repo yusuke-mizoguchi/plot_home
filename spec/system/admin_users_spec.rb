@@ -4,13 +4,12 @@ RSpec.describe "AdminUsers", type: :system do
     let(:admin) { create(:user, :admin) }
     let(:reader) { create(:user, :reader) }
 
-    before 
-        login(admin)
-        visit edit_admin_user_path(reader)
+    before { login(admin) }
 
         describe 'ユーザー情報の編集' do
             context '入力値が正常' do
                 it 'ユーザー情報の編集' do
+                    visit edit_admin_user_path(reader)
                     fill_in 'ペンネーム', with: 'update-name'
                     fill_in 'メールアドレス', with: 'update@example.com'
                     select '書き手', from: 'user_role'
@@ -23,6 +22,7 @@ RSpec.describe "AdminUsers", type: :system do
 
             context '未入力' do
                 it 'ユーザーの編集が失敗する' do
+                    visit edit_admin_user_path(reader)
                     fill_in 'メールアドレス', with: ''
                     fill_in 'ペンネーム', with: ''
                     fill_in_rich_text_area 'プロフィール', with: 'update_profile'
@@ -36,6 +36,7 @@ RSpec.describe "AdminUsers", type: :system do
 
             context '登録済みのメールアドレスを使用' do
                 it 'ユーザーの編集が失敗する' do
+                    visit edit_admin_user_path(reader)
                     fill_in 'メールアドレス', with: reader.email
                     fill_in 'ペンネーム', with: 'update_name'
                     fill_in_rich_text_area 'プロフィール', with: 'update_profile'
@@ -48,6 +49,7 @@ RSpec.describe "AdminUsers", type: :system do
 
             context 'プロフィール字数超過' do
                 it 'ユーザーの編集が失敗する' do
+                    visit edit_admin_user_path(reader)
                     fill_in 'メールアドレス', with: 'update@example.com'
                     fill_in 'ペンネーム', with: 'update_name'
                     fill_in_rich_text_area 'プロフィール', with: 'a' * 5001
