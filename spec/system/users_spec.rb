@@ -132,6 +132,19 @@ RSpec.describe "Users", type: :system do
           end
         end
 
+        context 'プロフィール字数超過' do
+          it 'ユーザーの編集が失敗する' do
+            visit edit_user_path(user)
+            fill_in 'メールアドレス', with: 'update@example.com'
+            fill_in 'ペンネーム', with: 'update_name'
+            fill_in_rich_text_area 'プロフィール', with: 'a' * 5001
+            click_button '更新する'
+            xpect(page).to have_content 'ユーザーを更新できませんでした'
+            expect(page).to have_content 'プロフィールは5000文字以内で入力してください'
+            expect(current_path).to eq user_path(user)
+          end
+        end
+
 
         context '他ユーザーの編集ページにアクセス' do
           let!(:other_user) { create(:user, email: "other_user@example.com") }
