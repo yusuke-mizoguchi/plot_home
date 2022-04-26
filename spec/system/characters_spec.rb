@@ -6,6 +6,7 @@ RSpec.describe "Characters", type: :system do
   describe 'ログイン後' do
     before { login(novel.user) }
 
+    #スクロールできれば通ると思われる
       describe 'キャラクター追加' do
         context 'フォームの入力値が正常' do
           it 'キャラクターの追加が成功する' do
@@ -20,6 +21,7 @@ RSpec.describe "Characters", type: :system do
           end
         end
 
+        #スクロールできれば通ると思われる
         context '字数超過' do
           it 'キャラクターの追加が失敗する' do
             visit edit_novel_path(novel)

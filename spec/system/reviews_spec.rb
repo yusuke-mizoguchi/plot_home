@@ -48,12 +48,13 @@ RSpec.describe "Reviews", type: :system do
       describe '批評編集' do
         let!(:review) {create(:review, user: other_user, novel: novel)}
 
+        
         context 'フォームの入力値が正常' do
           it '批評編集が成功する' do
             visit novel_path(novel)
             find('.js-edit-review-button').click
-            find("input[value='#{review.good_point}']").set('update_good')
-            find("input[value='#{review.bad_point}']").set('update_bad')
+            find('.edit-good').set('update_good')
+            find('.edit-bad').set('update_bad')
             execute_script('window.scroll(0,10000)')
             click_button '更新する'
             expect(page).to have_content 'update_good'
@@ -66,8 +67,8 @@ RSpec.describe "Reviews", type: :system do
           it '批評編集が失敗する' do
             visit novel_path(novel)
             find('.js-edit-review-button').click
-            find("input[value='#{review.good_point}']").set('')
-            find("input[value='#{review.bad_point}']").set('update_bad')
+            find('.edit-good').set('')
+            find('.edit-bad').set('update_bad')
             execute_script('window.scroll(0,10000)')
             click_button '更新する'
             expect(page).to have_content '良い点を入力してください'
@@ -79,8 +80,8 @@ RSpec.describe "Reviews", type: :system do
           it '批評編集が失敗する' do
             visit novel_path(novel)
             find('.js-edit-review-button').click
-            find("input[value='#{review.good_point}']").set('g' * 1501)
-            find("input[value='#{review.bad_point}']").set('b' * 1501)
+            find('.edit-good').set('g' * 1501)
+            find('.edit-bad').set('b' * 1501)
             execute_script('window.scroll(0,10000)')
             click_button '更新する'
             expect(page).to have_content '良い点は1500文字以内で入力してください'
@@ -120,6 +121,7 @@ RSpec.describe "Reviews", type: :system do
           end
         end
 
+        #上にスクロールできれば通ると思われる
         context 'commentが未入力' do
           it '返信が失敗する' do
             login(user)
@@ -133,6 +135,7 @@ RSpec.describe "Reviews", type: :system do
           end
         end
 
+        #上にスクロールできれば通ると思われる
         context '字数超過' do
           it '返信が失敗する' do
             login(user)
@@ -163,6 +166,7 @@ RSpec.describe "Reviews", type: :system do
           end
         end
 
+        #上にスクロールできれば通ると思われる
         context 'commentが未入力' do
           it '返信が失敗する' do
             login(user)
@@ -176,6 +180,7 @@ RSpec.describe "Reviews", type: :system do
           end
         end
 
+        #上にスクロールできれば通ると思われる
         context '字数超過' do
           it '返信が失敗する' do
             login(user)
