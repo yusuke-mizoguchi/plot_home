@@ -212,7 +212,7 @@ RSpec.describe "Novels", type: :system do
       end
 
       context 'タイトル字数超過' do
-        it '小説投稿が失敗する' do
+        it '小説編集が失敗する' do
           visit edit_novel_path(novel)
           fill_in 'タイトル', with: 'a' * 51
           select 'ホラー', from: 'novel_genre'
@@ -227,7 +227,7 @@ RSpec.describe "Novels", type: :system do
       end
 
       context 'プロット字数超過' do
-        it '小説投稿が失敗する' do
+        it '小説編集が失敗する' do
           visit edit_novel_path(novel)
           fill_in 'タイトル', with: 'update-test-title'
           select 'ホラー', from: 'novel_genre'
@@ -242,7 +242,7 @@ RSpec.describe "Novels", type: :system do
       end
 
       context 'タイトル重複' do
-        it '小説投稿が失敗する' do
+        it '小説編集が失敗する' do
           existed_novel = create(:novel)
           visit edit_novel_path(novel)
           fill_in 'タイトル', with: existed_novel.title
