@@ -51,7 +51,7 @@ RSpec.describe "Reviews", type: :system do
         context 'フォームの入力値が正常' do
           it '批評編集が成功する' do
             visit novel_path(novel)
-            find('.js-edit-review-button').clickgit 
+            find('.js-edit-review-button').click 
             find("input[value='#{review.good_point}']").set('update_good')
             find("input[value='#{review.bad_point}']").set('update_bad')
             click_button '更新する'
@@ -165,7 +165,7 @@ RSpec.describe "Reviews", type: :system do
             login(user)
             visit novel_path(novel)
             find('.js-edit-reply-button').click
-            find("input[value='#{reply.comment}']").set('')
+            fill_in 'review[comment]', with: ''
             find('.reply-commit').click
             expect(page).to have_content '返信を入力してください'
             expect(current_path).to eq novel_path(novel)
