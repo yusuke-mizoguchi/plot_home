@@ -12,7 +12,7 @@ RSpec.describe Notification, type: :model do
 
       it "批評がついた際に保存できる" do
         login(:other_user)
-        notification = build(:notification, review_id: review.id, novel_id: novel.id, visited_id: novel.user_id)
+        notification = build(:notification, review: review, novel: novel, visited: novel.user_id)
         expect(notification).to be_valid
       end
     end

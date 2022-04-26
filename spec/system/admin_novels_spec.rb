@@ -10,7 +10,7 @@ RSpec.describe "AdminNovels", type: :system do
         describe '小説編集' do
             context 'フォームの入力値が正常' do
                 it '小説編集が成功する' do
-                    visit edit_admin_novels_path(novel)
+                    visit edit_admin_novel_path(novel)
                     fill_in 'タイトル', with: 'update-test-title'
                     select 'ホラー', from: 'novel_genre'
                     select '短編', from: 'novel_story_length'
@@ -24,17 +24,11 @@ RSpec.describe "AdminNovels", type: :system do
 
             context '空白' do
                 it '小説編集が失敗する' do
-                    visit edit_admin_novels_path(novel)
+                    visit edit_admin_novel_path(novel)
                     fill_in 'タイトル', with: ''
-                    select 'ジャンルを選択', from: 'novel_genre'
-                    select '文量を選択', from: 'novel_story_length'
-                    select '公開範囲を選択', from: 'novel_release'
-                    fill_in_rich_text_area 'プロット', with: 'u'
+                    fill_in_rich_text_area 'プロット', with: ''
                     click_button '更新する'
                     expect(page).to have_content 'タイトルを入力してください'
-                    expect(page).to have_content 'ジャンルを入力してください'
-                    expect(page).to have_content '文量を入力してください'
-                    expect(page).to have_content '公開範囲を入力してください'
                     expect(page).to have_content 'プロットを入力してください'
                     expect(page).to have_content '小説を更新できませんでした'
                     expect(current_path).to eq admin_novel_path(novel)
@@ -43,7 +37,7 @@ RSpec.describe "AdminNovels", type: :system do
 
             context '字数超過' do
                 it '小説編種が失敗する' do
-                    visit edit_admin_novels_path(novel)
+                    visit edit_admin_novel_path(novel)
                     fill_in 'タイトル', with: 'a' * 51
                     select 'ホラー', from: 'novel_genre'
                     select '短編', from: 'novel_story_length'
@@ -59,7 +53,7 @@ RSpec.describe "AdminNovels", type: :system do
 
             context 'タイトル重複' do
                 it '小説編集が失敗する' do
-                    visit edit_admin_novels_path(novel)
+                    visit edit_admin_novel_path(novel)
                     existed_novel = create(:novel)
                     fill_in 'タイトル', with: existed_novel.title
                     select 'ハイファンタジー', from: 'novel_genre'
@@ -80,7 +74,7 @@ RSpec.describe "AdminNovels", type: :system do
             it '小説の削除ができる' do
                 visit admin_novel_path(novel)
                 page.accept_confirm("削除しますか？") do
-                    click_button '削除'
+                    click_link '削除'
                 end
                 expect(page).to have_content '小説を削除しました'
                 expect(current_path).to eq admin_novels_path
