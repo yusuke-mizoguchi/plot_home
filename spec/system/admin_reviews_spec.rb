@@ -6,14 +6,13 @@ RSpec.describe "AdminReviews", type: :system do
     let!(:novel) { create(:novel, user: admin) }
     let!(:review) { create(:review, novel: novel, user: reader) }
 
-    before
-        login(admin)
-        visit edit_admin_reviews_path(review)
+    before { login(admin) }
 
         describe '批評編集' do
 
             context 'フォームの入力値が正常' do
                 it '批評編集が成功する' do
+                    visit edit_admin_reviews_path(review)
                     fill_in '良い点', with: 'update_good'
                     fill_in '改善点', with: 'update_bad'
                     click_button '更新する'
@@ -25,6 +24,7 @@ RSpec.describe "AdminReviews", type: :system do
 
             context 'good_pointが未入力' do
                 it '批評編集が失敗する' do
+                    visit edit_admin_reviews_path(review)
                     fill_in '良い点', with: ''
                     fill_in '改善点', with: 'update_bad'
                     click_button '更新する'
@@ -35,6 +35,7 @@ RSpec.describe "AdminReviews", type: :system do
 
             context '字数制限超過' do
                 it '批評編集が失敗する' do
+                    visit edit_admin_reviews_path(review)
                     fill_in '良い点', with: 'g' * 1501
                     fill_in '改善点', with: 'b' * 1501
                     click_button '更新する'
@@ -50,6 +51,7 @@ RSpec.describe "AdminReviews", type: :system do
 
             context '入力値が正常' do
                 it '編集が成功する' do
+                    visit edit_admin_reviews_path(review)
                     fill_in '返信', with: 'update-reply'
                     click_button '更新する'
                     expect(page).to have_content '批評を更新しました'
@@ -59,6 +61,7 @@ RSpec.describe "AdminReviews", type: :system do
 
             context '字数制限超過' do
                 it '編集が失敗する' do
+                    visit edit_admin_reviews_path(review)
                     fill_in '返信', with: 'r' * 1001
                     click_button '更新する'
                     expect(page).to have_content '返信は1000文字以内で入力してください'

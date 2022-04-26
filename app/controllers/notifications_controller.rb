@@ -9,6 +9,6 @@ class NotificationsController < ApplicationController
   def destroy
     @notifications = Notification.find(params[:id])
     @notifications.destroy
-    redirect_to notifications_path
+    redirect_to notifications_path, alert: t('defaults.message.delete', item: Notification.model_name.human)
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Reviews", type: :system do
   let!(:novel) { create(:novel) }
-  let!(:other_user) { create(:user, :reader) }
+  let(:other_user) { create(:user, :reader) }
 
   describe 'ログイン後' do
     before { login(other_user) }
