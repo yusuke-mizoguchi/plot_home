@@ -15,7 +15,7 @@ RSpec.describe "Characters", type: :system do
             fill_in_rich_text_area '設定', with: 'test_text'
             execute_script('window.scrollBy(0,10000)')
             find(:xpath, '//*[@id="novel-post"]').hover.click
-            expect(page).to have_content('小説を更新しました')
+            expect(page).to have_content '小説を更新しました'
             expect(current_path).to eq novel_path(novel)
           end
         end
@@ -28,8 +28,8 @@ RSpec.describe "Characters", type: :system do
             fill_in_rich_text_area '設定', with: 'a' * 3001
             execute_script('window.scrollBy(0,10000)')
             find(:xpath, '//*[@id="novel-post"]').hover.click
-            expect(page).to have_content('役割は20文字以内で入力してください')
-            expect(page).to have_content('設定は3000文字以内で入力してください')
+            expect(page).to have_content '役割は20文字以内で入力してください'
+            expect(page).to have_content '設定は3000文字以内で入力してください'
             expect(current_path).to eq novel_path(novel)
           end
         end

@@ -70,7 +70,7 @@ RSpec.describe "Users", type: :system do
           end
           expect(page).to have_content 'ユーザー登録に失敗しました'
           expect(current_path).to eq users_path
-          expect(page).to have_content("メールアドレスはすでに存在します")
+          expect(page).to have_content 'メールアドレスはすでに存在します'
           expect(page).to have_field 'メールアドレス', with: existed_user.email
         end
       end
@@ -88,7 +88,7 @@ RSpec.describe "Users", type: :system do
             fill_in 'ペンネーム', with: 'update_name'
             fill_in_rich_text_area 'プロフィール', with: 'update_profile'
             click_button '更新する'
-            expect(page).to have_content('ユーザーを更新しました')
+            expect(page).to have_content 'ユーザーを更新しました'
             expect(current_path).to eq user_path(user)
           end
         end
@@ -100,8 +100,8 @@ RSpec.describe "Users", type: :system do
             fill_in 'ペンネーム', with: 'update_name'
             fill_in_rich_text_area 'プロフィール', with: 'update_profile'
             click_button '更新する'
-            expect(page).to have_content('ユーザーを更新できませんでした')
-            expect(page).to have_content("メールアドレスを入力してください")
+            expect(page).to have_content 'ユーザーを更新できませんでした'
+            expect(page).to have_content 'メールアドレスを入力してください'
             expect(current_path).to eq user_path(user)
           end
         end
@@ -113,8 +113,8 @@ RSpec.describe "Users", type: :system do
             fill_in 'ペンネーム', with: 'update_name'
             fill_in_rich_text_area 'プロフィール', with: 'update_profile'
             click_button '更新する'
-            expect(page).to have_content('ユーザーを更新できませんでした')
-            expect(page).to have_content("メールアドレスはすでに存在します")
+            expect(page).to have_content 'ユーザーを更新できませんでした'
+            expect(page).to have_content 'メールアドレスはすでに存在します'
             expect(current_path).to eq user_path(user)
           end
         end
@@ -126,8 +126,21 @@ RSpec.describe "Users", type: :system do
             fill_in 'ペンネーム', with: ''
             fill_in_rich_text_area 'プロフィール', with: 'update_profile'
             click_button '更新する'
-            expect(page).to have_content('ユーザーを更新できませんでした')
-            expect(page).to have_content("ペンネームを入力してください")
+            expect(page).to have_content 'ユーザーを更新できませんでした'
+            expect(page).to have_content 'ペンネームを入力してください'
+            expect(current_path).to eq user_path(user)
+          end
+        end
+
+        context 'プロフィール字数超過' do
+          it 'ユーザーの編集が失敗する' do
+            visit edit_user_path(user)
+            fill_in 'メールアドレス', with: 'update@example.com'
+            fill_in 'ペンネーム', with: 'update_name'
+            fill_in_rich_text_area 'プロフィール', with: 'a' * 5001
+            click_button '更新する'
+            xpect(page).to have_content 'ユーザーを更新できませんでした'
+            expect(page).to have_content 'プロフィールは5000文字以内で入力してください'
             expect(current_path).to eq user_path(user)
           end
         end
@@ -138,7 +151,7 @@ RSpec.describe "Users", type: :system do
           it '編集ページへのアクセスが失敗する' do
             visit edit_user_path(other_user)
             expect(current_path).to eq user_path(user)
-            expect(page).to have_content("権限がありません")
+            expect(page).to have_content '権限がありません'
           end
         end
       end

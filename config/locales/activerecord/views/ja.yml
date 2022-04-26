@@ -14,6 +14,7 @@ ja:
     unspecified: '指定なし'
     notification: '通知'
     cancel: 'キャンセル'
+    top: 'トップページへ'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を投稿しました"
@@ -92,7 +93,7 @@ ja:
   notifications:
     index:
       topic: '通知一覧'
-      notificayions_nil: '通知はありません'
+      notifications_nil: '通知はありません'
     notification:
       delete: '通知を削除'
   shared:

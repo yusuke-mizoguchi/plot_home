@@ -21,7 +21,7 @@ FactoryBot.define do
 
     trait :admin do
     sequence(:name) { |n| "admin-#{n}" }
-    sequence(:email) { |n| "admin-#{n}@example.com"}
+    sequence(:email) { |n| "admin-#{n}@example.com" }
     role { :writer }
     admin { true }
     end
