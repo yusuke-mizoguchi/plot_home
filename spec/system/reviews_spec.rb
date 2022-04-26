@@ -98,16 +98,6 @@ RSpec.describe "Reviews", type: :system do
           expect(page).not_to have_content review.bad_point
           expect(current_path).to eq novel_path(novel)
         end
-
-        it '批評の削除を取り消す' do
-          visit novel_path(novel)
-          page.dismiss_confirm("削除しますか？") do
-            find('.js-delete-review-button').click
-          end
-          expect(page).to have_content review.good_point
-          expect(page).to have_content review.bad_point
-          expect(current_path).to eq novel_path(novel)
-        end
       end
   end
 end

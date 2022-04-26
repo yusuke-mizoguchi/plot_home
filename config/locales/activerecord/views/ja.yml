@@ -14,6 +14,7 @@ ja:
     unspecified: '指定なし'
     notification: '通知'
     cancel: 'キャンセル'
+    top: 'トップページへ'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を投稿しました"
