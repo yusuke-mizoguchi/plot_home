@@ -15,6 +15,7 @@ ja:
     notification: '通知'
     cancel: 'キャンセル'
     top: 'トップページへ'
+    admin: '管理画面'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を投稿しました"
