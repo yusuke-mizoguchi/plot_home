@@ -51,9 +51,10 @@ RSpec.describe "Reviews", type: :system do
         context 'フォームの入力値が正常' do
           it '批評編集が成功する' do
             visit novel_path(novel)
-            find('.js-edit-review-button').clickgit 
+            find('.js-edit-review-button').click
             find("input[value='#{review.good_point}']").set('update_good')
             find("input[value='#{review.bad_point}']").set('update_bad')
+            execute_script('window.scroll(0,10000)')
             click_button '更新する'
             expect(page).to have_content 'update_good'
             expect(page).to have_content 'update_bad'
@@ -67,6 +68,7 @@ RSpec.describe "Reviews", type: :system do
             find('.js-edit-review-button').click
             find("input[value='#{review.good_point}']").set('')
             find("input[value='#{review.bad_point}']").set('update_bad')
+            execute_script('window.scroll(0,10000)')
             click_button '更新する'
             expect(page).to have_content '良い点を入力してください'
             expect(current_path).to eq novel_path(novel)
@@ -79,6 +81,7 @@ RSpec.describe "Reviews", type: :system do
             find('.js-edit-review-button').click
             find("input[value='#{review.good_point}']").set('g' * 1501)
             find("input[value='#{review.bad_point}']").set('b' * 1501)
+            execute_script('window.scroll(0,10000)')
             click_button '更新する'
             expect(page).to have_content '良い点は1500文字以内で入力してください'
             expect(page).to have_content '改善点は1500文字以内で入力してください'
@@ -146,7 +149,7 @@ RSpec.describe "Reviews", type: :system do
 
       describe '返信編集' do
         let!(:review) {create(:review, user: other_user, novel: novel)}
-        let!(:reply) { create(:review, parent_id: review.id, novel: novel, user: user) }
+        let!(:comment) { create(:review, :comment, parent_id: review.id, novel: novel, user: user) }
 
         context '入力値が正常' do
           it '更新が成功する' do
@@ -165,8 +168,9 @@ RSpec.describe "Reviews", type: :system do
             login(user)
             visit novel_path(novel)
             find('.js-edit-reply-button').click
-            find("input[value='#{reply.comment}']").set('')
+            fill_in 'review[comment]', with: ''
             find('.reply-commit').click
+            execute_script('window.scroll(10000,0)')
             expect(page).to have_content '返信を入力してください'
             expect(current_path).to eq novel_path(novel)
           end
@@ -177,8 +181,9 @@ RSpec.describe "Reviews", type: :system do
             login(user)
             visit novel_path(novel)
             find('.js-edit-reply-button').click
-            find("input[value='#{reply.comment}']").set('r' * 1001)
+            fill_in 'review[comment]', with: 'a' * 1001
             find('.reply-commit').click
+            execute_script('window.scroll(10000,0)')
             expect(page).to have_content '返信は1000文字以内で入力してください'
             expect(current_path).to eq novel_path(novel)
           end
@@ -187,7 +192,7 @@ RSpec.describe "Reviews", type: :system do
 
       describe '返信削除' do
         let!(:review) {create(:review, user: other_user, novel: novel)}
-        let!(:reply) { create(:review, parent_id: review.id, novel: novel, user: user) }
+        let!(:comment) { create(:review, :comment, parent_id: review.id, novel: novel, user: user) }
 
         it '返信の削除が成功する' do
           login(user)
@@ -195,7 +200,7 @@ RSpec.describe "Reviews", type: :system do
           page.accept_confirm("削除しますか？") do
             find('.js-delete-reply-button').click
           end
-          expect(page).not_to have_content reply.comment
+          expect(page).not_to have_content comment.comment
           expect(current_path).to eq novel_path(novel)
         end
       end
