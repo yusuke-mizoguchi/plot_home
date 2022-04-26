@@ -40,6 +40,9 @@
               <% end %>
             </div>
             <%= link_to (t 'users.show.topic'), user_path(current_user.id), class: 'dropdown-item' %>
+            <% if current_user.admin == true %>
+              <%= link_to (t 'defaults.admin'), admin_root_path, class: 'dropdown-item' %>
+            <% end %>
             <%= link_to (t 'defaults.logout'), logout_path, class: 'dropdown-item', method: :delete %>
           </ul>
         </li>
