@@ -20,6 +20,9 @@ ja:
         plot: 'プロット'
         image: '添付画像'
         release: '公開範囲'
+      novel/characters:
+        character_role: '役割'
+        character_text: '設定'
       character:
         character_role: '役割'
         character_text: '設定'

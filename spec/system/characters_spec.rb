@@ -6,7 +6,6 @@ RSpec.describe "Characters", type: :system do
   describe 'ログイン後' do
     before { login(novel.user) }
 
-    #スクロールできれば通ると思われる
       describe 'キャラクター追加' do
         context 'フォームの入力値が正常' do
           it 'キャラクターの追加が成功する' do
@@ -14,24 +13,23 @@ RSpec.describe "Characters", type: :system do
             find('.add_fields').click
             fill_in '役割', with: 'test_role'
             fill_in_rich_text_area '設定', with: 'test_text'
-            execute_script('window.scrollBy(0,10000)')
-            find(:xpath, '//*[@id="novel-post"]').hover.click
+            find(:id, 'novel-post').send_keys :tab
+            click_button('更新する')
             expect(page).to have_content '小説を更新しました'
             expect(current_path).to eq novel_path(novel)
           end
         end
 
-        #スクロールできれば通ると思われる
         context '字数超過' do
           it 'キャラクターの追加が失敗する' do
             visit edit_novel_path(novel)
             find('.add_fields').click
             fill_in '役割', with: 'a' * 21
-            fill_in_rich_text_area '設定', with: 'a' * 3001
-            execute_script('window.scrollBy(0,10000)')
-            find(:xpath, '//*[@id="novel-post"]').hover.click
+            fill_in_rich_text_area '設定', with: 'a' * 5001
+            find(:id, 'novel-post').send_keys :tab
+            click_button('更新する')
             expect(page).to have_content '役割は20文字以内で入力してください'
-            expect(page).to have_content '設定は3000文字以内で入力してください'
+            expect(page).to have_content '設定は5000文字以内で入力してください'
             expect(current_path).to eq novel_path(novel)
           end
         end
@@ -48,7 +46,7 @@ RSpec.describe "Characters", type: :system do
           end
           expect(page).not_to have_content character.character_role
           expect(page).not_to have_content character.character_text
-          expect(current_path).to eq novel_path(novel)
+          expect(current_path).to eq edit_novel_path(novel)
         end
       end
   end
