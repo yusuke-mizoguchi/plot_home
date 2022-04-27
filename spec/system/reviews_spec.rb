@@ -121,7 +121,6 @@ RSpec.describe "Reviews", type: :system do
           end
         end
 
-        #上にスクロールできれば通ると思われる
         context 'commentが未入力' do
           it '返信が失敗する' do
             login(user)
@@ -135,7 +134,6 @@ RSpec.describe "Reviews", type: :system do
           end
         end
 
-        #上にスクロールできれば通ると思われる
         context '字数超過' do
           it '返信が失敗する' do
             login(user)
@@ -166,7 +164,6 @@ RSpec.describe "Reviews", type: :system do
           end
         end
 
-        #上にスクロールできれば通ると思われる
         context 'commentが未入力' do
           it '返信が失敗する' do
             login(user)
@@ -174,13 +171,11 @@ RSpec.describe "Reviews", type: :system do
             find('.js-edit-reply-button').click
             fill_in 'review[comment]', with: ''
             find('.reply-commit').click
-            execute_script('window.scroll(10000,0)')
             expect(page).to have_content '返信を入力してください'
             expect(current_path).to eq novel_path(novel)
           end
         end
 
-        #上にスクロールできれば通ると思われる
         context '字数超過' do
           it '返信が失敗する' do
             login(user)
@@ -188,7 +183,6 @@ RSpec.describe "Reviews", type: :system do
             find('.js-edit-reply-button').click
             fill_in 'review[comment]', with: 'a' * 1001
             find('.reply-commit').click
-            execute_script('window.scroll(10000,0)')
             expect(page).to have_content '返信は1000文字以内で入力してください'
             expect(current_path).to eq novel_path(novel)
           end

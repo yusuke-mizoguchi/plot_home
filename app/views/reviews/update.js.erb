@@ -1,6 +1,7 @@
 $("#error_messages").remove()
 <% if @review.errors.present? %>
   $("#js-new-review").prepend("<%= j(render 'shared/error_messages', object: @review) %>")
+  $("#js-new-reply").prepend("<%= j(render 'shared/error_messages', object: @review) %>")
 <% elsif @review.comment == 'Review' %>
   $('#review-area').html("<%= escape_javascript(render 'reviews/reviews', reviews: @reviews) %>")
 <% else %>
