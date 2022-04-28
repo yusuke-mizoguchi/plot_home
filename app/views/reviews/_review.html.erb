@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag "reviews/review" %>
 <tr id="review-<%= review.id %>">
   <% if !review.parent_id %>
     <td>
@@ -14,7 +15,7 @@
       <br>
       <br>
 
-      <div class="card card-body m-0 p-3" id="review-text-<%= review.id %>">
+      <div class="card review-card card-body m-0 p-3" id="review-text-<%= review.id %>">
         <ul class="m-0 p-0">
           <li class="list-inline-item">
             <%= t('activerecord.attributes.review.good_point') %>

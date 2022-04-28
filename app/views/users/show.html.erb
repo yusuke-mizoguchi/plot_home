@@ -9,7 +9,7 @@
           <%= link_to (t 'defaults.edit'), edit_user_path(@user), class: 'btn btn-success edit-button' %>
         </div>
       <% end %>
-      <table class="table">
+      <table class="table" >
         <tr>
           <th scope="row"><%= t('activerecord.attributes.user.name') %></th>
           <td><%= @user.name %></td>

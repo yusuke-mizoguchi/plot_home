@@ -1,5 +1,6 @@
+<%= stylesheet_link_tag "reviews/reply" %>
 <div id="js-reply-<%= reply.id %>">
-  <ul class="card m-3 p-3">
+  <ul class="card reply-card m-3 p-3">
     <li class="card-title">
       <%= link_to reply.user.name, user_path(reply.user) %>
       <% if current_user&.own?(reply) %>

@@ -6,7 +6,7 @@ window.addEventListener("trix-file-accept", function(event) {
       alert("添付できる拡張子は、jpg、jpeg、pngのみです")
     }
     // 画像のbyte数をチェック
-    const maxFileSize = 2048 * 2048 // 1MB 
+    const maxFileSize = 2048 * 2048
     if (event.file.size > maxFileSize) {
       event.preventDefault()
       alert("アップできる画像は4MBまでです。")
