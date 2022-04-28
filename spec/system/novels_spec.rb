@@ -124,7 +124,7 @@ RSpec.describe "Novels", type: :system do
           select '読み手まで', from: 'novel_release'
           fill_in_rich_text_area 'プロット', with: 'a' * 5001
           click_button '投稿する'
-          expect(page).to have_content 'プロットは5000文字以内で入力してください'
+          expect(page).to have_content 'プロットは8000文字以内で入力してください'
           expect(page).to have_content '小説を投稿できませんでした'
           expect(current_path).to eq novels_path
         end
@@ -235,7 +235,7 @@ RSpec.describe "Novels", type: :system do
           select '公開', from: 'novel_release'
           fill_in_rich_text_area 'プロット', with: 'a' * 5001
           click_button '更新する'
-          expect(page).to have_content 'プロットは5000文字以内で入力してください'
+          expect(page).to have_content 'プロットは8000文字以内で入力してください'
           expect(page).to have_content '小説を更新できませんでした'
           expect(current_path).to eq novel_path(novel)
         end

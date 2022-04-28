@@ -45,6 +45,6 @@ class Novel < ApplicationRecord
 
   def plot_required
     errors.add(:plot, I18n.t('defaults.message.nill_plot')) unless plot.body.present?
-    errors.add(:plot, I18n.t('defaults.message.over_plot')) unless ApplicationController.helpers.strip_tags(plot.to_s).gsub(/[\n]/,"").strip.length < 5001
+    errors.add(:plot, I18n.t('defaults.message.over_plot')) unless ApplicationController.helpers.strip_tags(plot.to_s).gsub(/[\n]/,"").strip.length < 8001
   end
 end
