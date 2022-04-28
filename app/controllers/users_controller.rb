@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     @user_novels = @narrow.order(created_at: :desc).page(params[:novel_page]).per(4)
 
     #批評した作品に表示する作品を抽出
-    @reviews = Review.from(Review.where(comment: nil, user_id: params[:id]).select('DISTINCT ON ("novel_id") *').order("novel_id, created_at DESC"),:reviews).order(created_at: :desc)
+    @reviews = Review.from(Review.where(comment: 'Review', user_id: params[:id]).select('DISTINCT ON ("novel_id") *').order("novel_id, created_at DESC"),:reviews).order(created_at: :desc)
     @narrow_reviews = @reviews.page(params[:review_page]).per(4)
   end
 

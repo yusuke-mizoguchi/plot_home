@@ -3,7 +3,7 @@ class TopsController < ApplicationController
 
     def top
         #最近批評した人を抽出
-        @reviews = Review.select(:user_id).where(comment: nil, id: Review.select("DISTINCT ON (user_id) id").order(:user_id, id: :desc)).order(id: :desc).limit(3)
+        @reviews = Review.select(:user_id).where(comment: 'Review', id: Review.select("DISTINCT ON (user_id) id").order(:user_id, id: :desc)).order(id: :desc).limit(3)
 
         #最近投稿された作品を振り分け
         @novels_post = Novel.where.not(release: 'draft').order(created_at: :desc)
