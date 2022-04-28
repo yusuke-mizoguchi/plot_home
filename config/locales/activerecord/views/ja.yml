@@ -52,6 +52,7 @@ ja:
       topic: 'ログイン'
       to_register_page: '登録ページへ'
       password_forget: 'パスワードをお忘れの方はこちら'
+      remember: 'ログインを維持する'
     create:
       success: 'ログインしました'
       fail: 'ログインに失敗しました'

@@ -12,6 +12,10 @@
           <%= f.label :password, User.human_attribute_name(:password) %>
           <%= f.password_field :password, class: 'form-control' %>
         </div>
+        <div class="form-group text-center mt-5">
+          <%= check_box_tag :remember, params[:remember], true %>
+          <%= label_tag (t'.remember') %>
+        </div>
         <div class="actions mb-5 text-center">
           <%= f.submit (t '.topic'), class: 'btn btn-primary' %>
         </div>
