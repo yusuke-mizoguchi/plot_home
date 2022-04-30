@@ -20,3 +20,9 @@ ul{
 li {
   margin: 0;
 }
+
+@media (max-width: 720px) {
+  .notification {
+    width: 100%;
+  }
+}

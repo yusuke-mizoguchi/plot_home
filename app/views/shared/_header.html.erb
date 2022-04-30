@@ -12,12 +12,21 @@
     <div class="collapse navbar-collapse" id="responsiveMenu">
       <ul class="navbar-nav ml-auto">
 
-        <li class="nav-item dropdown m-2 ">
+      <li class="nav-item dropdown m-2">
+          <%= link_to notifications_path, class: 'btn btn-lg btn-primary notification' do %>
+            <%= t ('defaults.notification') %>
+            <% if unchecked_notifications.any? %>
+              <i class="fa-solid fa-comment" style="color: orange;"></i>
+            <% end %>
+          <% end %>
+      </li>
+
+        <li class="nav-item dropdown m-2">
           <a class="nav-link btn btn-secondary btn-lg dropdown-toggle bg-primary text-white"
             href="#"role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <%= t('shared.header.novel_menu') %>
           </a>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
             <%= link_to (t 'novels.index.topic'), novels_path, class: 'dropdown-item' %>
             <% if current_user.role == "writer" %>
               <%= link_to (t 'shared.header.novel_post'), new_novel_path, class: 'dropdown-item' %>
@@ -30,15 +39,7 @@
             href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <%= current_user.name %>
           </a>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <div class="d-flex">
-              <%= link_to notifications_path, class: 'dropdown-item notification' do %>
-                <%= t ('defaults.notification') %>
-                <% if unchecked_notifications.any? %>
-                  <i class="fa-solid fa-comment" style="color: orange;"></i>
-                <% end %>
-              <% end %>
-            </div>
+          <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
             <%= link_to (t 'users.show.topic'), user_path(current_user.id), class: 'dropdown-item' %>
             <% if current_user.admin == true %>
               <%= link_to (t 'defaults.admin'), admin_root_path, class: 'dropdown-item' %>
