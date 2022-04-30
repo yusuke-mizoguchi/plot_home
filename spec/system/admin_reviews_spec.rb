@@ -64,7 +64,7 @@ RSpec.describe "AdminReviews", type: :system do
                     visit edit_admin_review_path(reply)
                     fill_in '返信', with: 'r' * 1001
                     click_button '更新する'
-                    expect(page).to have_content '返信は1000文字以内で入力してください'
+                    expect(page).to have_content '返信は1500文字以内で入力してください'
                     expect(current_path).to eq admin_review_path(reply)
                 end
             end
