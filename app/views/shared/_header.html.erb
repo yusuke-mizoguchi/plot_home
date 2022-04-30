@@ -13,14 +13,12 @@
       <ul class="navbar-nav ml-auto">
 
       <li class="nav-item dropdown m-2">
-        <div class="d-flex">
           <%= link_to notifications_path, class: 'btn btn-lg btn-primary notification' do %>
             <%= t ('defaults.notification') %>
             <% if unchecked_notifications.any? %>
               <i class="fa-solid fa-comment" style="color: orange;"></i>
             <% end %>
           <% end %>
-        </div>
       </li>
 
         <li class="nav-item dropdown m-2">
