@@ -4,11 +4,11 @@
         <%= form_with model: [novel, review], id: 'js-new-review', local: false do |f| %>
           <div class="form-group">
             <%= f.label :good_point %>
-            <%= f.text_area :good_point, class: 'form-control edit-good', id: 'js-new-review-good_point', rows: 3 %>
+            <%= f.text_area :good_point, class: 'form-control edit-good', id: 'js-new-review-good_point js-text', rows: 3 %>
           </div>
           <div class="form-group">
             <%= f.label :bad_point %>
-            <%= f.text_area :bad_point, class: 'form-control edit-bad', id: 'js-new-review-bad_point', rows: 3 %>
+            <%= f.text_area :bad_point, class: 'form-control edit-bad', id: 'js-new-review-bad_point js-text', rows: 3 %>
           </div>
           <div class="form-group">
             <%= f.hidden_field :comment, class: 'form-control', value: 'Review' %>

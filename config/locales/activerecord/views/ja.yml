@@ -78,7 +78,7 @@ ja:
       genre_select: 'ジャンルを選択'
       story_length_select: '文量を選択'
       releace_select: '公開範囲を選択'
-      plot_word: '5000文字以内で入力してください'
+      plot_word: '8000文字以内で入力してください'
       add_character: 'キャラクターの追加'
     character_fields:
       character_role_word: '20文字以内で入力してください'

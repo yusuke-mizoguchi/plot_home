@@ -142,7 +142,7 @@ RSpec.describe "Reviews", type: :system do
             click_link '返信'
             fill_in 'review[comment]', with: 'a' * 1001
             find('.reply-commit').click
-            expect(page).to have_content '返信は1000文字以内で入力してください'
+            expect(page).to have_content '返信は1500文字以内で入力してください'
             expect(current_path).to eq novel_path(novel)
           end
         end
@@ -183,7 +183,7 @@ RSpec.describe "Reviews", type: :system do
             find('.js-edit-reply-button').click
             fill_in 'review[comment]', with: 'a' * 1001
             find('.reply-commit').click
-            expect(page).to have_content '返信は1000文字以内で入力してください'
+            expect(page).to have_content '返信は1500文字以内で入力してください'
             expect(current_path).to eq novel_path(novel)
           end
         end
