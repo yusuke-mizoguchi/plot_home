@@ -22,6 +22,10 @@
 
     .top-word {
       margin-bottom: 40px;
+      a {
+        color: rgb(52, 137, 216);
+        border-bottom: 2px solid rgb(52, 137, 216);
+      }
     }
 
 
@@ -33,10 +37,13 @@
     }
     .background {
       background-color: rgb(206, 248, 206);
-      border-radius: 1rem;
       color: rgb(243, 126, 31);
+      border-radius: 1rem;
       padding: 1rem;
       box-shadow: 2px 2px 4px gray;
+      a {
+        border-bottom: 2px solid rgb(243, 126, 31);
+      }
     }
   }
 }
@@ -49,7 +56,7 @@
       background-position: center;
       
       .top-inner-text{
-        font-size: 1.5rem;
+        font-size: 1.3rem;
       }
     }
   }
