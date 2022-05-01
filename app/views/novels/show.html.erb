@@ -49,7 +49,7 @@
               <% unless @novel.characters.blank? %>
                 <h2 class="mt-4"><%= t('.character_text') %></h2>
               <% end %>
-              <% @novel.characters.each do |c| %>
+              <% @novel.characters.order(id: :asc).each do |c| %>
                 <div class="card mb-3">
                   <div class="ml-2 mr-2">
                     <h4 class="m-2"><%= c.character_role %></h4>
