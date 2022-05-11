@@ -60,4 +60,4 @@ SNSや匿名掲示板では使用目的が多岐に渡り、かえって人が�
 https://www.figma.com/file/cgih3TY4eChXL8ExLkZfYX/%E3%83%97%E3%83%AD%E3%83%83%E3%83%88%E3%83%9B%E3%83%BC%E3%83%A0
 
 ## ER図
-https://drive.google.com/file/d/1KGkOcK8Nd18qDtd52ZoC7w4AlSQ8j26C/view?usp=sharing
+https://drive.google.com/file/d/1JmJ2pXNunXdpAkYT-BRtxFURUPUh6WO1/view?usp=sharing
