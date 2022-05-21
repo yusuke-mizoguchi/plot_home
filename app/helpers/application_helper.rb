@@ -13,7 +13,8 @@ module ApplicationHelper
       site: 'PlotHome - プロットホーム',
       reverse: true,
       separator: '|',
-      description: '小説のプロットを投稿し、批評し合う場所です。書き手、読み手を問わず、率直な批評をお待ちしております。',
+      description: '小説のプロットを投稿し、批評し合う場所です。作品が批評された方は、相手の作品も批評してみましょう。
+                    書き手、読み手を問わず、率直な批評をお待ちしております',
       keywords: 'プロットホーム,plothome,小説,批評',
       canonical: 'https://www.plot-home.com',
       noindex: ! Rails.env.production?,
@@ -22,7 +23,8 @@ module ApplicationHelper
         { href: image_url('apple_touch.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' },],
       og: {
         title: 'PlotHome - プロットホーム',
-        description: '小説のプロットを投稿し、批評し合う場所です。書き手、読み手を問わず、率直な批評をお待ちしております。', 
+        description: '小説のプロットを投稿し、批評し合う場所です。作品が批評された方は、相手の作品も批評してみましょう。
+                      書き手、読み手を問わず、率直な批評をお待ちしております', 
         type: 'website',
         url: 'https://www.plot-home.com',
         image: image_url('ogp.jpg'),
