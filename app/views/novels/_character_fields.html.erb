@@ -1,13 +1,13 @@
 <%= stylesheet_link_tag "actiontext" %>
 <div class="nested-fields mb-5">
-    <div class="form-group">
-        <%= f.label :character_role %>
-        <%= f.text_field :character_role, class: 'form-control', placeholder: (t '.character_role_word') %>
-    </div>
-    <div class="form-group">
-        <%= f.label :character_text %>
-        <%= f.rich_text_area :character_text, class: 'form-control', placeholder: (t '.character_text_word') %>
-    </div>
-    <%= link_to_remove_association (t 'defaults.delete'), f,
-        id: 'delete-character', data: { confirm: t('defaults.message.delete_confirm') } %>
+  <div class="form-group">
+    <%= f.label :character_role %>
+    <%= f.text_field :character_role, class: 'form-control', placeholder: (t '.character_role_word') %>
+  </div>
+  <div class="form-group">
+    <%= f.label :character_text %>
+    <%= f.rich_text_area :character_text, class: 'form-control', placeholder: (t '.character_text_word') %>
+  </div>
+  <%= link_to_remove_association (t 'defaults.delete'), f,
+      id: 'delete-character', data: { confirm: t('defaults.message.delete_confirm') } %>
 </div>

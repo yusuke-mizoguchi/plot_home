@@ -1,9 +1,9 @@
 class StaticPagesController < ApplicationController
-    skip_before_action :require_login
+  skip_before_action :require_login
 
-    def rule; end
+  def rule; end
 
-    def privacy; end
+  def privacy; end
 
-    def about; end
+  def about; end
 end

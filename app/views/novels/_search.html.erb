@@ -1,29 +1,29 @@
 <%= stylesheet_link_tag "novels/search" %>
 <%= search_form_for @q, url: url do |f| %>
 
-    <!-- 検索フォーム -->
-    <div class="input-group mb-3">
-        <%= f.search_field :title_cont, class:'rounded text-center', placeholder: (t '.title') %>
-        <%= f.search_field :user_name_cont, class:'rounded text-center user-name', placeholder: (t '.user_name') %>
-        <%= f.select :genre_eq, Novel.genres_i18n.invert.map{|key, value| [key, Novel.genres[value]]},
-            {include_blank: (t '.genre')}, { class: 'rounded text-center' } %>
-        <%= f.select :story_length_eq, Novel.story_lengths_i18n.invert.map{|key, value| [key, Novel.story_lengths[value]]},
-            {include_blank: (t '.story_length')}, { class: 'rounded text-center story-length' } %>
-        <div class="input-group-append">
-            <%= f.submit (t '.search'), class:'btn btn-primary search-button rounded pl-4 pr-4' %>
-        </div>
+  <!-- 検索フォーム -->
+  <div class="input-group mb-3">
+    <%= f.search_field :title_cont, class:'rounded text-center', placeholder: (t '.title') %>
+    <%= f.search_field :user_name_cont, class:'rounded text-center user-name', placeholder: (t '.user_name') %>
+    <%= f.select :genre_eq, Novel.genres_i18n.invert.map{|key, value| [key, Novel.genres[value]]},
+        {include_blank: (t '.genre')}, { class: 'rounded text-center' } %>
+    <%= f.select :story_length_eq, Novel.story_lengths_i18n.invert.map{|key, value| [key, Novel.story_lengths[value]]},
+        {include_blank: (t '.story_length')}, { class: 'rounded text-center story-length' } %>
+    <div class="input-group-append">
+      <%= f.submit (t '.search'), class:'btn btn-primary search-button rounded pl-4 pr-4' %>
     </div>
+  </div>
 
-    <!-- ソート -->
-    <ul class="list-inline row sort">
-        <li class="list-inline-item rounded sort-list text-center col-sm-3 col-lg-2">
-            <%= sort_link(@q, :title, (t '.title_sort')) %>
-        </li>
-        <li class="list-inline-item rounded sort-list text-center col-sm-3 col-lg-2">
-            <%= sort_link(@q, :created_at, (t '.created_sort')) %>
-        </li>
-        <li class="list-inline-item rounded sort-list text-center col-sm-3 col-lg-2">
-            <%= sort_link(@q, :updated_at, (t '.updated_sort')) %>
-        </li>
-    </ul>
+  <!-- ソート -->
+  <ul class="list-inline row sort">
+    <li class="list-inline-item rounded sort-list text-center col-sm-3 col-lg-2">
+      <%= sort_link(@q, :title, (t '.title_sort')) %>
+    </li>
+    <li class="list-inline-item rounded sort-list text-center col-sm-3 col-lg-2">
+      <%= sort_link(@q, :created_at, (t '.created_sort')) %>
+    </li>
+    <li class="list-inline-item rounded sort-list text-center col-sm-3 col-lg-2">
+      <%= sort_link(@q, :updated_at, (t '.updated_sort')) %>
+    </li>
+  </ul>
 <% end %>
