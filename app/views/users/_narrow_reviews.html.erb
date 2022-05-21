@@ -1,8 +1,8 @@
 <!-- 表示する批評を振り分け -->
 <% if narrow_reviews.novel.release == 'writer' && current_user&.role == 'writer' %>
-    <%= render 'user_reviews', { narrow_reviews: narrow_reviews } %>
+  <%= render 'user_reviews', { narrow_reviews: narrow_reviews } %>
 <% elsif narrow_reviews.novel.release == 'reader' && current_user.role.present? %>
-    <%= render 'user_reviews', { narrow_reviews: narrow_reviews } %>
+  <%= render 'user_reviews', { narrow_reviews: narrow_reviews } %>
 <% elsif narrow_reviews.novel.release == 'release' %>
-    <%= render 'user_reviews', { narrow_reviews: narrow_reviews } %>
+  <%= render 'user_reviews', { narrow_reviews: narrow_reviews } %>
 <% end %>
